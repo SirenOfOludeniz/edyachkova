@@ -5,15 +5,15 @@ package ru.job4j;
  *@since 08.09.2017
  *version 1
  */
-
-	
-public class Calculate{
-	/**главный метод. Точка запуска программы
-	*не возвращает никаких значений так как void
-	*выводит на экран Hello world
-	*/
-	public static void main(String[] args){
-		System.out.println("Hello world");
+public class Calculate {
+/**главный метод Точка запуска программы.
+ *не возвращает никаких значений так как void.
+ *выводит на экран Hello world.
+ *Main.
+ *@param args - args.
+ */
+public static void main(String[] args) {
+	System.out.println("Hello world");
 }
 /**
 * Method echo.
