@@ -8,7 +8,7 @@ public class Board {
 
             for (int j = 0; j < width ; j++) {
                 if((i % 2 == 0 && j % 2 ==0) || (i %2 !=0 && j % 2 != 0)) { //поправить тут написать условия прорисовки х и пробелов
-                    brbr.append("X");
+                    brbr.append("x");
                     }
                  else {brbr.append(" ");
                     }
@@ -19,10 +19,5 @@ public class Board {
     }
         return brbr.toString(); }
 
-    public static void main(String[] args) {
-        Board b = new Board();
-        String result =  b.paint(5,5);
 
-        System.out.println(result);
-    }
 }
