@@ -1,28 +1,28 @@
 package ru.job4j.loop;
 
 public class Board {
-    StringBuilder brbr = new StringBuilder();
-    public void paint(int width, int height) {
-        for (int i = 1; i < height ; i++) {
-            if(i % 2 != 0) {
-                for (int j = 0; j < width ; j++) {
-                    brbr.append("X");
-                }
-            }
-            if(i%2==0) {
-                for (int j = 0; j < width ; j++) {
-                    brbr.append("Y");
-                }
-            }
+    //StringBuilder brbr = new StringBuilder();
+    public String paint(int width, int height) {
+        StringBuilder brbr = new StringBuilder();
+        for (int i = 0; i < height ; i++) {
 
-        }
+            for (int j = 0; j < width ; j++) {
+                if((i % 2 == 0 && j % 2 ==0) || (i %2 !=0 && j % 2 != 0)) { //поправить тут написать условия прорисовки х и пробелов
+                    brbr.append("X");
+                    }
+                 else {brbr.append(" ");
+                    }
+                }
+
+
+            brbr.append(System.lineSeparator());
     }
-}
-class TestBoard {
+        return brbr.toString(); }
+
     public static void main(String[] args) {
         Board b = new Board();
-        b.paint(5,5);
-        String a = b.toString();
-        System.out.println(a);
+        String result =  b.paint(5,5);
+
+        System.out.println(result);
     }
 }
