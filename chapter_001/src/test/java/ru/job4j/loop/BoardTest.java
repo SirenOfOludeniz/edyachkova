@@ -1,5 +1,7 @@
 package ru.job4j.loop;
 import org.junit.Test;
+import ru.edyachkova.job4j.loop.Board;
+
 import static org.hamcrest.number.IsCloseTo.closeTo;
 
 import static org.hamcrest.core.Is.is;
