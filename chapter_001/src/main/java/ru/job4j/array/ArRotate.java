@@ -7,8 +7,6 @@ public class ArRotate {
 
         int[][] result = rotate(nums);
 
-
-
        for (int i = 0; i < nums.length ; i++) { //строка
             for (int j = 0; j <nums.length ; j++) { //столбец
                // System.out.print(nums[i][j]);
@@ -20,10 +18,10 @@ public class ArRotate {
 
     public static int[][] rotate(int[][] array) {
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-
-               array[i][j] = array[j][i];
-
+            for (int j = 0; j != array.length; j++) {
+               int a = array[i][j];
+              array[i][j] = array[j][i];
+             array[j][i] = a;
 
             }
 
