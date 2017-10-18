@@ -1,4 +1,4 @@
-package ru.job4j.example;
+package ru.job4j.models;
 
 public class Item {
     private String id;

@@ -1,5 +1,5 @@
 package ru.job4j.start;
-import ru.job4j.example.*;
+import ru.job4j.models.*;
 
 import java.util.*;
 

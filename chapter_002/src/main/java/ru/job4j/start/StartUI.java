@@ -1,6 +1,6 @@
 package ru.job4j.start;
 
-import ru.job4j.example.*;
+import ru.job4j.models.*;
 
 public class StartUI {
     public static void main(String[] args) {
