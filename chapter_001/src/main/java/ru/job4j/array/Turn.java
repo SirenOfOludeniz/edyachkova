@@ -3,7 +3,7 @@ package ru.job4j.array;
 import java.util.Arrays;
 
 public class Turn {
-  /*public static void main(String[] args) {
+  public static void main(String[] args) {
 
 
         int[] nums = new int[9];
@@ -19,7 +19,7 @@ public class Turn {
 
 
 
-        System.out.println(Arrays.toString(back(nums))); }  */
+        System.out.println(Arrays.toString(back(nums))); }
 
 
 
@@ -27,7 +27,7 @@ public class Turn {
         for (int i = 0; i < array.length/2; i++) {
             int a;
             a = array[i];
-            array[i] = ((array.length - 1) - i);
+            array[i] = array[((array.length - 1) - i)];
             array[((array.length -1) - i)] = a;
 
         }

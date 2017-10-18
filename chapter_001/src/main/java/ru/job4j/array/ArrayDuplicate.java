@@ -1,7 +1,7 @@
 package ru.job4j.array;
 import java.util.Arrays;
 public class ArrayDuplicate {
-    public static int a = 0;
+    public  int a = 0;
    /* public static void main(String[] args) {
         String[] stroka = {"Привет", "Мир", "Привет", "Супер", "Мир"};
         String[] result = remote(stroka);
@@ -9,7 +9,7 @@ public class ArrayDuplicate {
             System.out.println(result[i]);
         }
     }*/
-    public static String[] remote(String[] array) {
+    public  String[] remote(String[] array) {
         String Elmass;
         //int a = 0;
         for (int i = 0; i <array.length ; i++) {
