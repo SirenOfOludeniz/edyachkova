@@ -8,7 +8,12 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item1 = new Item("brbr","Televizor", "Pochnit telik", 23102017, "horosho");
         tracker.add(item1);
-        assertThat(tracker.findAll()[0],is(item1));
+        Item result_item = new Item();
+        result_item = tracker.add(item1);
+        Item expected_item = new Item();
+        expected_item = item1;
+
+        assertThat(result_item,is(expected_item));
     }
 
 }
