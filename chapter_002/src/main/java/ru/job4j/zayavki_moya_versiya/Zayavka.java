@@ -15,6 +15,8 @@ public class Zayavka {
    // private ArrayList<String> listkomments = new ArrayList<String>();
     private String komment = reader.readLine();
 
+   public Zayavka() throws IOException { }
+
     public Zayavka(String name, String Description, long datecreation,String komment) throws IOException {
         this.name = name;
         this.Description = Description;

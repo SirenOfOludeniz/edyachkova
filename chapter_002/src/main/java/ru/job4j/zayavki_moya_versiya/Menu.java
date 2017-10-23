@@ -11,9 +11,12 @@ public class Menu {
     ArrayList<Zayavka> bubu = new ArrayList<Zayavka>();
 
     Deistviya_s_zayavkoy deistviya = new Deistviya_s_zayavkoy();
-
     Zayavka zayavka = new Zayavka();
 
+   // Zayavka zayavka = new Zayavka("Vasya", "bubub", 34, "brbr");
+
+    public Menu() throws IOException {
+    }
 
 
     public void commands(String s) throws IOException {

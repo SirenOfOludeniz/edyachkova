@@ -26,6 +26,7 @@ public class Tracker {
     String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt(100));
     }
+
     public Item[] getAll() {
         Item[] result = new Item[position];
         for(int index =0; index != this.position; index++) {

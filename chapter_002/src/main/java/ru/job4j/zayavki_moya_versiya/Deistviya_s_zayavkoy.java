@@ -12,11 +12,11 @@ public class Deistviya_s_zayavkoy {
 
      //я могу создать поле массив Аррейлист и туда перезаписать элементы из adddzayavka
 
-    public ArrayList<Zayavka> add(Zayavka zayavka, ArrayList<Zayavka> zl) {
+    public ArrayList<Zayavka> add(Zayavka zayavka, ArrayList<Zayavka> bubu) {
 
-        zl.add(zayavka);
+        listzayz.add(zayavka);
 
-        return zl ;
+        return listzayz ;
     }
 
     public Zayavka edit(Zayavka zayavka) throws IOException {
