@@ -16,6 +16,7 @@ public class Tracker {
         for (int i = 0; i < items.length ; i++) {
             if(this.items[i].getId().equals(item.getId())) { // надо this или не надо?
                 this.items[i] = item;
+                break;
             }
         }
     }
@@ -55,9 +56,9 @@ public class Tracker {
     public Item findById(String id) {
         Item copyitem = new Item();
 
-        for (int i = 0; i < items.length; i++) {
-            if(items[i].getId().equals(id)) {
-                copyitem = items[i];
+        for (int i = 0; i < this.items.length; i++) {
+            if(this.items[i].getId().equals(id)) {
+                copyitem = this.items[i];
             }
             else copyitem = null;
 
