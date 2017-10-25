@@ -1,18 +1,18 @@
-package ru.job4j.Task_chapter2;
+package ru.job4j.taskchapter2;
 
 public class Item {
     private String id;
     private String name;
-    private String Description;
+    private String description;
     private long datecreation;
     private String komment;
 
     public Item() { }
 
-    public Item(String id, String name, String Description, long datecreation,String komment) {
+    public Item(String id, String name, String description, long datecreation, String komment) {
         this.id = id;
         this.name = name;
-        this.Description = Description;
+        this.description = description;
         this.datecreation = datecreation;
         this.komment = komment;
     }
@@ -23,16 +23,16 @@ public class Item {
         this.name = name;
     }
     public  String getDescription() {
-        return this.Description;
+        return this.description;
     }
-    public void setDescription(String Descripton) {
-        this.Description = Descripton;
+    public void setDescription(String description) {
+        this.description = description;
     }
     public long getDatecreation() {
         return this.datecreation;
     }
-    public void setDatecreation(long Datecreation) {
-        this.datecreation = Datecreation;
+    public void setDatecreation(long datecreation) {
+        this.datecreation = datecreation;
     }
     public String getKomment() {
         return this.komment;
