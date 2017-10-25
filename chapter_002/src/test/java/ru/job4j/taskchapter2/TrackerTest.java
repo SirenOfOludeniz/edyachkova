@@ -27,6 +27,11 @@ public class TrackerTest {
     }
     @Test
     public void deleteTest() {
+        Tracker tracker = new Tracker();
+        Item item3 = new Item();
+        tracker.add(item3);
+        tracker.delete(item3);
+        assertThat(tracker.findById(item3.getId()), is(null));
 
     }
 

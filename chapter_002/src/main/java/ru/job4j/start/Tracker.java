@@ -15,8 +15,8 @@ public class Tracker {
     }
     protected Item findById(String id) {
         Item result = null;
-       for(Item item : items) {
-           if(item != null && item.getId().equals(id)) {
+       for (Item item : items) {
+           if (item != null && item.getId().equals(id)) {
                result = item;
                break;
            }
@@ -29,7 +29,7 @@ public class Tracker {
 
     public Item[] getAll() {
         Item[] result = new Item[position];
-        for(int index =0; index != this.position; index++) {
+        for (int index = 0; index != this.position; index++) {
             result[index] = this.items[index];
         }
         return result;

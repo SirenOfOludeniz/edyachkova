@@ -21,7 +21,7 @@ class Course {
     public int amounttheme;
 
     public int study(int hours, int thems) {
-        return hours*thems;
+        return hours * thems;
     }
     public Course(int hoursinweek, int amounttheme) {
         this.hoursinweek = hoursinweek;
@@ -35,7 +35,7 @@ class Student {
     public int amountofdisciplin;
 
     public int education(Course course, int amountofdisciplin, int hours, int week) {
-        return course.study(hours,week)*amountofdisciplin;
+        return course.study(hours, week) * amountofdisciplin;
     }
     public Student(int numbercourse, String sex, int age, int amountofcourse) {
         this.numbercourse = numbercourse;
