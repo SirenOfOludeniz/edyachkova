@@ -43,9 +43,19 @@ public class TrackerTest {
     public void deleteTest() {
         Tracker tracker = new Tracker();
         Item item3 = new Item("1", " TV", "Repair", 27102017, "brbr");
+        Item item4 = new Item("2", "Radio", "Repair", 3, "frfr");
+        Item item5 = new Item("3", "TV", "R", 4, "frfr");
+
         tracker.add(item3);
+        tracker.add(item4);
+        tracker.add(item5);
+
         tracker.delete(item3);
-       assertThat(tracker.findById(item3.getId()), is(nullValue()));
+       //assertThat(tracker.findById("1"), is(nullValue()));
+       // for (int i = 0; i < tracker.findAll().length; i++) {
+            //System.out.println(tracker.findAll()[i]);
+        //}
+        assertThat(tracker.findAll()[0],is(item4));
 
     }
    @Test
@@ -58,6 +68,10 @@ public class TrackerTest {
      tracker.add(item1);
      tracker.add(item2);
      tracker.add(item3);
+
+       for (int i = 0; i < tracker.findAll().length; i++) {
+           System.out.println(tracker.findAll()[i]);
+       }
 
      assertThat(tracker.findAll().length,is(3));
   }
