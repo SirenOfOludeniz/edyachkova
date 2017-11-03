@@ -80,6 +80,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item1 = new Item("1", "Notebook", "Screen", 4, "brbr");
         tracker.add(item1);
+      System.out.println(tracker.findById(item1.getId()));
         assertThat(tracker.findById(item1.getId()),is(item1));
   }
   @Test
