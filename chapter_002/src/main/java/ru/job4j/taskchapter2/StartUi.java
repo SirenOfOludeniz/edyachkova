@@ -8,11 +8,11 @@ public class StartUi {
     private Input input;
     private static final int EXIT = 0;
     private static final int ADD = 1;
-    private static final int FINDALL = 1;
-    private static final int UPDATE = 1;
-    private static final int DELETE = 1;
-    private static final int FINDBYID = 1;
-    private static final int FINDBYNAME = 1;
+    private static final int FINDALL = 2;
+    private static final int UPDATE = 3;
+    private static final int DELETE = 4;
+    private static final int FINDBYID = 5;
+    private static final int FINDBYNAME = 6;
 
 
     public StartUi(Input input) {
@@ -25,54 +25,64 @@ public class StartUi {
 
     public void menu() {
 
-        String word = input.action("Введите 0, если хотите закрыть программу");
-       long Datecreate = Integer.parseInt(word);
+       // String word = input.action("Введите 0, если хотите закрыть программу");
+       //long Datecreate = Long.parseLong(word);
 
 
-        while(!(word.equals(EXIT))) {
+       boolean exit = false;
+       do{
+
             //тут надо применять Consileinput input = new Consoleinput();?
             Tracker tracker = new Tracker();
-            Item item = new Item(input.action("Введите id"), input.action("Введите name"),
-                    input.action("Введите описание"), Datecreate,
-            input.action("Введите комментарий")); //вот тут надо, чтоб полозователь заполнил поля объекта Item
+            Item item =  new Item();
+            /*Item item = new Item(input.action("Введите id"), input.action("Введите name"),
+                    input.action("Введите описание"), 7,
+            input.action("Введите комментарий"));*/
 
             System.out.println("Выберите пункт меню");
 
-            System.out.println("0. Add new Item");
-            System.out.println("1. Show all items");
-            System.out.println("2. Edit item");
-            System.out.println("3. Delete item");
-            System.out.println("4. Find item by Id");
-            System.out.println("5. Find items by name");
-            System.out.println("6. Exit Program");
+            System.out.println("1. Add new Item");
+            System.out.println("2. Show all items");
+            System.out.println("3. Edit item");
+            System.out.println("4. Delete item");
+            System.out.println("5. Find item by Id");
+            System.out.println("6. Find items by name");
+            System.out.println("0. Exit Program");
 
 
-            String action = input.action("Введите цифру нужного пункта");
+            String actionnumsd = input.action("Введите цифру нужного пункта");
+            int actionnums = Integer.parseInt(input.action("Введите цифру нужного пункта"));
 
-            if (action == "0") {
+            if (actionnums == ADD) {
+                Item item1 = new Item(input.action("Введите id"), input.action("Введите name"),
+                        input.action("Введите описание"), 7,
+                        input.action("Введите комментарий"));
                 tracker.add(item);
-            } else if (action == "1") {
+            } else if (actionnums == FINDALL) {
                 tracker.findAll();
-            } else if (action == "2") {
+            } else if (actionnums == UPDATE) {
                 tracker.update(item);
-            } else if (action == "3") {
+            } else if (actionnums == DELETE) {
                 tracker.delete(item);
-            } else if (action == "4") {
+            } else if (actionnums == FINDBYID) {
                 tracker.findById(input.action("Введите id"));
 
-            } else if (action == "5") {
+            } else if (actionnums == FINDBYNAME) {
                 tracker.findByName(input.action("Введите name"));
-            } else if (action == "6") {
-                //ну и как закрыть программу? в смысле как выйти из нее?
+            } else if (actionnums == EXIT) {
+
+                exit = true;
+                continue;
+
             }
-
-
         }
+        while (!exit);
     }
 
 
     public static void main(String[] args) {
-        StartUi start = new StartUi();
+        Input input = new ConsoleInput();
+        StartUi start = new StartUi(input);
         start.menu();
 
 
