@@ -4,4 +4,4 @@
 *@vesion$1$
 *since 08.09.2017
 */
-package ru.job4j;
+package ru.edyachkova.job4j;
