@@ -60,31 +60,41 @@ public class Tracker {
         }
         return result;
     }
-
-
-
-
-
-
-
-
     public Item findById(String id) {
+        for (int i = 0; i < this.items.length; i++) {
+            if (this.items[i] != null && this.items[i].getId().equals(id)) {
+                return this.items[i];
+            } /*else {
+                copyitem = null; // в трэк студио написано, что findById() возвращает или item или null
+           }*/ //убрано по причине возвращения null, даже если добавлена Item методом Add
+            break;
+
+        }
+        return null;
+    }
+
+
+
+
+
+
+
+
+    /*public Item findById(String id) {//мой актуальный вариант
         Item copyitem = new Item(); // может тут причина null? в том, что copyitem ничего не присваивается?
         // и там остается null, как изначально и был
-
-
 
         for (int i = 0; i < this.items.length; i++) {
             if (this.items[i] != null && this.items[i].getId().equals(id)) {
                 copyitem = this.items[i];
-            } else {
+            } /*else {
                 copyitem = null; // в трэк студио написано, что findById() возвращает или item или null
-           }
-           break;
+           }*/ //убрано по причине возвращения null, даже если добавлена Item методом Add
+          /* break;
 
         }
         return copyitem;
-    }
+    }*/
 
     public Item[] getItems() {
         return items;

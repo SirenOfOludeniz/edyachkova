@@ -59,13 +59,17 @@ public class StartUi {
                         input.action("Введите комментарий"));
                 tracker.add(item);
             } else if (actionnums == FINDALL) {
-                tracker.findAll();
+
+               tracker.findAll();
             } else if (actionnums == UPDATE) {
                 tracker.update(item);
             } else if (actionnums == DELETE) {
                 tracker.delete(item);
             } else if (actionnums == FINDBYID) {
-                tracker.findById(input.action("Введите id"));
+                //tracker.findById(input.action("Введите id"));
+
+                System.out.println(tracker.findById(input.action("Введите id")));
+
 
             } else if (actionnums == FINDBYNAME) {
                 tracker.findByName(input.action("Введите name"));
