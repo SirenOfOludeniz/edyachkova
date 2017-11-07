@@ -23,7 +23,7 @@ public class StartUi {
     }
 
 
-    public void menu() {
+    public void menu(Tracker tracker, Item item) {
 
        // String word = input.action("Введите 0, если хотите закрыть программу");
        //long Datecreate = Long.parseLong(word);
@@ -33,8 +33,8 @@ public class StartUi {
        do{
 
             //тут надо применять Consileinput input = new Consoleinput();?
-            Tracker tracker = new Tracker();
-            Item item =  new Item();
+            //Tracker tracker = new Tracker();
+           // Item item =  new Item();
             /*Item item = new Item(input.action("Введите id"), input.action("Введите name"),
                     input.action("Введите описание"), 7,
             input.action("Введите комментарий"));*/
@@ -85,9 +85,11 @@ public class StartUi {
 
 
     public static void main(String[] args) {
+        Tracker tracker = new Tracker();
+        Item item = new Item();
         Input input = new ConsoleInput();
         StartUi start = new StartUi(input);
-        start.menu();
+        start.menu(tracker,item);
 
 
 
