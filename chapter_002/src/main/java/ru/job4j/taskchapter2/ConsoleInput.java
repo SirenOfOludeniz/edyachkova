@@ -8,4 +8,8 @@ public class ConsoleInput implements Input {
         System.out.println(choice);
         return scanner.nextLine();
     }
+    public long inputdate(String askdate) {
+        System.out.println(askdate);
+        return scanner.nextLong();
+    }
 }

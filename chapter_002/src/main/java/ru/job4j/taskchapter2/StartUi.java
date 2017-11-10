@@ -23,21 +23,11 @@ public class StartUi {
     }
 
 
-    public void menu(Tracker tracker, Item item) {
-
-       // String word = input.action("Введите 0, если хотите закрыть программу");
-       //long Datecreate = Long.parseLong(word);
+    public void menu(Tracker tracker) {
 
 
        boolean exit = false;
        do{
-
-            //тут надо применять Consileinput input = new Consoleinput();?
-            //Tracker tracker = new Tracker();
-           // Item item =  new Item();
-            /*Item item = new Item(input.action("Введите id"), input.action("Введите name"),
-                    input.action("Введите описание"), 7,
-            input.action("Введите комментарий"));*/
 
             System.out.println("Выберите пункт меню");
 
@@ -50,26 +40,32 @@ public class StartUi {
             System.out.println("0. Exit Program");
 
 
-            String actionnumsd = input.action("Введите цифру нужного пункта");
             int actionnums = Integer.parseInt(input.action("Введите цифру нужного пункта"));
 
             if (actionnums == ADD) {
                 Item item1 = new Item(input.action("Введите id"), input.action("Введите name"),
-                        input.action("Введите описание"), 7,
+                        input.action("Введите описание"),input.inputdate("Введите дату создания"),
                         input.action("Введите комментарий"));
-                tracker.add(item);
+                tracker.add(item1);
             } else if (actionnums == FINDALL) {
+
+                for (int i = 0; i < tracker.findAll().length ; i++) {
+                    itemTable(tracker.findAll()[i]);
+                }
+
 
                tracker.findAll();
             } else if (actionnums == UPDATE) {
-                tracker.update(item);
+
+                tracker.update(tracker.findById(input.action("Введите id редактируемой заявки")));
+                //tracker.update(item);
             } else if (actionnums == DELETE) {
-                tracker.delete(item);
+
+                tracker.delete(tracker.findById(input.action("Введите id удаляемой заявки")));
+
             } else if (actionnums == FINDBYID) {
-                //tracker.findById(input.action("Введите id"));
 
-                System.out.println(tracker.findById(input.action("Введите id")));
-
+                itemTable(tracker.findById(input.action("Введите id")));
 
             } else if (actionnums == FINDBYNAME) {
                 tracker.findByName(input.action("Введите name"));
@@ -83,17 +79,25 @@ public class StartUi {
         while (!exit);
     }
 
+    public void itemTable(Item item) {
+        System.out.println("--------------------------------------------------------------------------------------------");
+        System.out.printf("|%-5s|%-11s|%-30s|%-10s|%-30s|%n","Id","Name","Description","Date", "Comment");
+        System.out.println("--------------------------------------------------------------------------------------------");
+        System.out.printf("|%-5s|%-11s|%-30s|%-10d|%-30s|%n", item.getId(), item.getName(), item.getDescription(), item.getDatecreation(), item.getKomment());
+        System.out.println("--------------------------------------------------------------------------------------------");
+    }
+
+
 
     public static void main(String[] args) {
         Tracker tracker = new Tracker();
-        Item item = new Item();
+        //Item item = new Item();
         Input input = new ConsoleInput();
         StartUi start = new StartUi(input);
-        start.menu(tracker,item);
+        start.menu(tracker);
 
 
 
-            // тут надо как-то menu вызывать, но я не знаю как, проблемы со Static
 
         //как выйти из программы?
 
