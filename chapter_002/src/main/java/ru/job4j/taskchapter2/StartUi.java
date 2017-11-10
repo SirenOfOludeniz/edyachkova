@@ -58,7 +58,7 @@ public class StartUi {
             } else if (actionnums == UPDATE) {
 
                 tracker.update(tracker.findById(input.action("Введите id редактируемой заявки")));
-                //tracker.update(item);
+
             } else if (actionnums == DELETE) {
 
                 tracker.delete(tracker.findById(input.action("Введите id удаляемой заявки")));
@@ -68,7 +68,12 @@ public class StartUi {
                 itemTable(tracker.findById(input.action("Введите id")));
 
             } else if (actionnums == FINDBYNAME) {
-                tracker.findByName(input.action("Введите name"));
+
+                for (int i = 0; i < tracker.findByName(input.action("")).length; i++) {
+                    itemTable(tracker.findByName(input.action(" "))[i]);
+
+                }
+
             } else if (actionnums == EXIT) {
 
                 exit = true;
