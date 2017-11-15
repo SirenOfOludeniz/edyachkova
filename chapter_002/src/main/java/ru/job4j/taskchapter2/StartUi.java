@@ -13,11 +13,17 @@ public class StartUi {
     private static final int DELETE = 4;
     private static final int FINDBYID = 5;
     private static final int FINDBYNAME = 6;
+    Tracker tracker5;
 
+    public StartUi(Input input, Tracker tracker) {
+        this.input = input;
+        this.tracker5 = tracker;
+    }
 
     public StartUi(Input input) {
         this.input = input;
     }
+
     public StartUi() {
 
     }
@@ -27,7 +33,7 @@ public class StartUi {
 
 
        boolean exit = false;
-       do{
+       do {
 
             System.out.println("Выберите пункт меню");
 
@@ -44,20 +50,30 @@ public class StartUi {
 
             if (actionnums == ADD) {
                 Item item1 = new Item(input.action("Введите id"), input.action("Введите name"),
-                        input.action("Введите описание"),input.inputdate("Введите дату создания"),
+                        input.action("Введите описание"), input.inputdate("Введите дату создания"),
                         input.action("Введите комментарий"));
                 tracker.add(item1);
             } else if (actionnums == FINDALL) {
 
-                for (int i = 0; i < tracker.findAll().length ; i++) {
+                for (int i = 0; i < tracker.findAll().length; i++) {
                     itemTable(tracker.findAll()[i]);
                 }
 
 
                tracker.findAll();
             } else if (actionnums == UPDATE) {
+                System.out.println("Для редактирования заявки, заполните данные новой заявки, которая заменит" +
+                        "старую заявку");
 
-                tracker.update(tracker.findById(input.action("Введите id редактируемой заявки")));
+                Item newitem = new Item(input.action("Введите id"), input.action("Введите name"),
+                        input.action("Введите описание"), input.inputdate("Введите дату создания"),
+                        input.action("Введите комментарий"));
+
+
+                newitem.setId(tracker.findById(input.action("Введите id редактируемой заявки")).getId());
+
+                tracker.update(newitem);
+
 
             } else if (actionnums == DELETE) {
 
@@ -69,8 +85,8 @@ public class StartUi {
 
             } else if (actionnums == FINDBYNAME) {
 
-                for (int i = 0; i < tracker.findByName(input.action("")).length; i++) {
-                    itemTable(tracker.findByName(input.action(" "))[i]);
+                for (int i = 0; i < tracker.findByName(input.action("Введите name заявок, которые ищете")).length; i++) {
+                    itemTable(tracker.findByName(input.action("Введите тоже самое"))[i]);
 
                 }
 
@@ -86,7 +102,7 @@ public class StartUi {
 
     public void itemTable(Item item) {
         System.out.println("--------------------------------------------------------------------------------------------");
-        System.out.printf("|%-5s|%-11s|%-30s|%-10s|%-30s|%n","Id","Name","Description","Date", "Comment");
+        System.out.printf("|%-5s|%-11s|%-30s|%-10s|%-30s|%n", "Id", "Name", "Description", "Date", "Comment");
         System.out.println("--------------------------------------------------------------------------------------------");
         System.out.printf("|%-5s|%-11s|%-30s|%-10d|%-30s|%n", item.getId(), item.getName(), item.getDescription(), item.getDatecreation(), item.getKomment());
         System.out.println("--------------------------------------------------------------------------------------------");
@@ -101,10 +117,6 @@ public class StartUi {
         StartUi start = new StartUi(input);
         start.menu(tracker);
 
-
-
-
-        //как выйти из программы?
 
 
 

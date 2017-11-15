@@ -25,7 +25,7 @@ public class Tracker {
     }
 
     public void delete(Item item) {
-        for (int i = 0; i < this.index; i++ ) {
+        for (int i = 0; i < this.index; i++) {
             Item it = this.items[i];
             if (it != null && it.getId().equals(item.getId())) {
                 System.arraycopy(this.items, i + 1, this.items, i, index--);
@@ -80,7 +80,7 @@ public class Tracker {
 
 
 
-   public Item findById(String id) {//мой актуальный вариант
+   public Item findById(String id) { //мой актуальный вариант
        Item copyitem = new Item(); // может тут причина null? в том, что copyitem ничего не присваивается?
          //и там остается null, как изначально и был
 
@@ -89,7 +89,7 @@ public class Tracker {
                 copyitem = this.items[i];
             } else {
                 copyitem = null; // в трэк студио написано, что findById() возвращает или item или null
-         }//убрано по причине возвращения null, даже если добавлена Item методом Add
+         } //убрано по причине возвращения null, даже если добавлена Item методом Add
           break;
 
         }
