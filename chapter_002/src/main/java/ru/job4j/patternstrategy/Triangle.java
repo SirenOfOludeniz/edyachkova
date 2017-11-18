@@ -4,11 +4,14 @@ public class Triangle implements Shape {
     public String pic() {
         StringBuilder triangle = new StringBuilder();
 
-            triangle.append("*");
-            triangle.append("**");
-            triangle.append("***");
-            triangle.append("****");
-            triangle.append("*****");
+
+        for (int j = 5; j > 0 ; j--) {
+            for (int i = j - 1; i < 5; i++) {
+                triangle.append("*");
+            }
+            triangle.append(System.lineSeparator());
+
+        }
 
 
         return triangle.toString();

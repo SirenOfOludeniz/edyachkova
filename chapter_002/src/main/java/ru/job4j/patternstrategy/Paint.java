@@ -12,6 +12,16 @@ public class Paint {
 
 
     public void draw(Shape shape) {
-        System.setOut(shape.pic());
+        System.out.println(shape.pic());
+    }
+
+    public static void main(String[] args) {
+        Paint paint = new Paint(new Triangle());
+        paint.draw(new Triangle());
+
+        System.out.println("");
+
+        Paint paint1 = new Paint(new Square());
+        paint1.draw(new Square());
     }
 }
