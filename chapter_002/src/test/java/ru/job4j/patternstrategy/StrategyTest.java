@@ -10,7 +10,7 @@ public class StrategyTest {
         painttriangle.draw(new Triangle());
         final String line = System.getProperty("line.separator");
         String expected = String.format("*%s**%s***%s****%s*****", line, line, line, line, line);
-        assertThat(System.out.print(painttriangle.draw(new Triangle())),is(expected));
+        assertThat(painttriangle.draw(new Triangle()),is(expected));
     }
 
 
