@@ -10,21 +10,21 @@ import static org.junit.Assert.assertThat;
 public class StrategyTest {
 
     @Test
-    public void SquareTest() {
+    public void squareTest() {
         Square square = new Square();
         final String line = System.getProperty("line.separator");
         String expected = String.format("*****%s*****%s*****%s*****%s*****%s", line, line, line, line, line);
         assertThat(square.pic(), is(expected));
     }
     @Test
-    public void TriangleTest() {
+    public void triangleTest() {
         Triangle triangle = new Triangle();
         final String line = System.getProperty("line.separator");
         String expected = String.format("*%s**%s***%s****%s*****%s", line, line, line, line, line);
         assertThat(triangle.pic(), is(expected));
     }
     @Test
-    public void PaintTest() {
+    public void paintTest() {
         PrintStream stdout = System.out;
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));

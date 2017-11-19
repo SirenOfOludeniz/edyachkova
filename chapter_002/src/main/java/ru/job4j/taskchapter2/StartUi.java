@@ -24,9 +24,9 @@ public class StartUi {
         this.input = input;
     }
 
-    public StartUi() {
+    //public StartUi() {
 
-    }
+    //}
 
 
     public void menu(Tracker tracker) {
@@ -62,8 +62,8 @@ public class StartUi {
 
                tracker.findAll();
             } else if (actionnums == UPDATE) {
-                System.out.println("Для редактирования заявки, заполните данные новой заявки, которая заменит" +
-                        "старую заявку");
+                System.out.println("Для редактирования заявки, заполните данные новой заявки, которая заменит"
+                        + "старую заявку");
 
                 Item newitem = new Item(input.action("Введите id"), input.action("Введите name"),
                         input.action("Введите описание"), input.inputdate("Введите дату создания"),

@@ -5,7 +5,7 @@ public class Triangle implements Shape {
         StringBuilder triangle = new StringBuilder();
 
 
-        for (int j = 5; j > 0 ; j--) {
+        for (int j = 5; j > 0; j--) {
             for (int i = j - 1; i < 5; i++) {
                 triangle.append("*");
             }
