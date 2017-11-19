@@ -1,5 +1,6 @@
 package ru.job4j.patternstrategy;
 
+
 public class Paint {
 
     private Shape shape;
@@ -8,8 +9,7 @@ public class Paint {
         this.shape = shape;
     }
 
-
-
+    public Paint() { }
 
     public void draw(Shape shape) {
         System.out.println(shape.pic());
