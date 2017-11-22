@@ -28,6 +28,19 @@ public class StartUi {
 
     //}
 
+    public void init() {
+        Tracker tracker = new Tracker();
+        MenuTracker menu3 = new MenuTracker(this.input, tracker);
+        menu3.fillActions();
+        do {
+            menu3.show();
+            int key = Integer.valueOf(input.action("Select: "));
+            menu3.select(key);
+        } while (!"y".equals(this.input.action("Exit?")));
+
+
+    }
+
 
     public void menu(Tracker tracker) {
 

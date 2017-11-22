@@ -32,6 +32,7 @@ public class StrategyTest {
         final String line = System.getProperty("line.separator");
         String expected = String.format("*****%s*****%s*****%s*****%s*****%s%s", line, line, line, line, line, line);
         assertThat(new String(out.toByteArray()), is(expected));
+        System.setOut(stdout);
 
     }
 
