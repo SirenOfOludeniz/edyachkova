@@ -34,6 +34,8 @@ class DeleteItem implements UserAction {
 
 
 public class MenuTracker {
+
+
     private Input input;
     private Tracker tracker;
     private UserAction[] actions = new UserAction[5];
@@ -59,7 +61,7 @@ public class MenuTracker {
 
     }
 
-    public void select(int key) {
+    public void select(int key) { // SELECT НАШЕЛСЯ!!!!!!!!!!!!
         this.actions[key].execute(this.input, this.tracker);
     }
 

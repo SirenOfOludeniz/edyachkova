@@ -11,6 +11,12 @@ public class StubInput implements Input {
     public String action(String choice) {
         return answers[position++]; // получать значения из нашего массива и делать постинкремент для увеличения значения
     }
+
+    @Override
+    public int action(String choice, int[] range) {
+        return 0;
+    }
+
     public long inputdate(String askdate) {
         return datecreate;
     }

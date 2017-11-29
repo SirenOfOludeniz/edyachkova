@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 public class StartUi {
     private Input input;
+   int[] ranges = new int[] {1, 2, 5}; //как сделать, чтобы тут были значения из MenuTracker? и зачем это надо? вообще не понятно
     private static final int EXIT = 0;
     private static final int ADD = 1;
     private static final int FINDALL = 2;
@@ -24,11 +25,20 @@ public class StartUi {
         this.input = input;
     }
 
+    public void init() {
+        Tracker tracker = new Tracker();
+        MenuTracker menu = new MenuTracker(this.input, tracker);
+        menu.fillActions();
+        do {
+            menu.show();
+            menu.select(input.action("select: ", ranges)); // здесь применен новый ask(String question, int[] ranges)
+        } while (! "y".equals(this.input.action("Exit?(y)"))); }
+
     //public StartUi() {
 
     //}
 
-    public void init() {
+   /* public void init() { //прежний init
         Tracker tracker = new Tracker();
         MenuTracker menu3 = new MenuTracker(this.input, tracker);
         menu3.fillActions();
@@ -39,7 +49,7 @@ public class StartUi {
         } while (!"y".equals(this.input.action("Exit?")));
 
 
-    }
+    }*/
 
 
     public void menu(Tracker tracker) {
@@ -59,7 +69,7 @@ public class StartUi {
             System.out.println("0. Exit Program");
 
 
-            int actionnums = Integer.parseInt(input.action("Введите цифру нужного пункта"));
+            int actionnums = Integer.parseInt(input.action("Введите цифру нужного пункта")); // здесь выбрасывает исключение
 
             if (actionnums == ADD) {
                 Item item1 = new Item(input.action("Введите id"), input.action("Введите name"),
@@ -126,7 +136,7 @@ public class StartUi {
     public static void main(String[] args) {
         Tracker tracker = new Tracker();
         //Item item = new Item();
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput();
         StartUi start = new StartUi(input);
         start.menu(tracker);
 
