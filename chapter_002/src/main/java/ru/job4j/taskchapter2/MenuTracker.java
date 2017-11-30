@@ -39,6 +39,7 @@ public class MenuTracker {
     private Input input;
     private Tracker tracker;
     private UserAction[] actions = new UserAction[5];
+    private int position = 0;
 
 
     public MenuTracker(Input input, Tracker tracker) {
@@ -52,13 +53,17 @@ public class MenuTracker {
     }*/
 
     public void fillActions() {
-        this.actions[0] = this.new AddItem();
-        this.actions[1] = new MenuTracker.ShowItems(); // new ShowItems();
-        this.actions[2] = new EditItem();
-        this.actions[3] = new DeleteItem();
-        this.actions[4] = this.new FindByName();
-        this.actions[5] = new MenuTracker.FindItemById();
+        this.actions[position++] = this.new AddItem();
+        this.actions[position++] = new MenuTracker.ShowItems(); // new ShowItems();
+        this.actions[position++] = new EditItem();
+        this.actions[position++] = new DeleteItem();
+        this.actions[position++] = this.new FindByName();
+        this.actions[position++] = new MenuTracker.FindItemById();
 
+    }
+
+    public void addAction(UserAction action) {
+        this.actions[position++] = action;
     }
 
     public void select(int key) { // SELECT НАШЕЛСЯ!!!!!!!!!!!!

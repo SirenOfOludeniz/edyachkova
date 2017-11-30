@@ -29,6 +29,23 @@ public class StartUi {
         Tracker tracker = new Tracker();
         MenuTracker menu = new MenuTracker(this.input, tracker);
         menu.fillActions();
+        UserAction deleteAction = new UserAction() {
+            @Override
+            public int key() {
+                return 3;
+            }
+
+            @Override
+            public void execute(Input input, Tracker tracker) {
+
+            }
+
+            @Override
+            public String info() {
+                return "Delete";
+            }
+        };
+        menu.addAction(deleteAction);
         do {
             menu.show();
             menu.select(input.action("select: ", ranges)); // здесь применен новый ask(String question, int[] ranges)
@@ -135,6 +152,7 @@ public class StartUi {
 
     public static void main(String[] args) {
         Tracker tracker = new Tracker();
+        new StartUI(input).init();
         //Item item = new Item();
         Input input = new ValidateInput();
         StartUi start = new StartUi(input);
