@@ -15,7 +15,7 @@ class EditItem implements UserAction {
         tracker.update(new Item(id, name, desc, date, comment));
     }
     public String info() {
-        return String.format("s. $s", this.key(), "Add the new item.");
+        return String.format("%s. %s", this.key(), "Update item.");
     }
 }
 
@@ -27,24 +27,31 @@ class DeleteItem implements UserAction {
         tracker.delete(tracker.findById(input.action("Введите id удаляемой заявки")));
     }
     public String info() {
-        return String.format("s. $s", this.key(), "Delete item");
+        return String.format("%s. %s", this.key(), "Delete item");
     }
 }
 
 
 
 public class MenuTracker {
-
-
     private Input input;
     private Tracker tracker;
-    private UserAction[] actions = new UserAction[5];
+    private UserAction[] actions = new UserAction[7];
     private int position = 0;
 
 
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
+    }
+
+    public int[] range() {
+        int[] rsl = new int[position]; //здесь был [position]
+        int count = 0;
+        for (UserAction action : this.actions) {
+            rsl[count++] = action.key();
+        }
+        return rsl;
     }
 
     /*public static void test() { //mojno zakommentit
@@ -83,14 +90,14 @@ public class MenuTracker {
         }
         public void execute(Input input, Tracker tracker) {
             String id = input.action("Введите id");
-            String name = input.action("Введите называние заявки");
+            String name = input.action("Введите название заявки");
             String desc = input.action("Введите описание");
             long date = input.inputdate("Введите дату");
             String comment = input.action("Введите комментарий");
             tracker.add(new Item(id, name, desc, date, comment));
         }
         public String info() {
-            return String.format("s. $s", this.key(), "Add the new item.");
+            return String.format("%s. %s", this.key(), "Add the new item.");
         }
     }
 
@@ -105,7 +112,7 @@ public class MenuTracker {
             }
         }
         public String info() {
-            return String.format("s. $s", this.key(), "Find Items by Name");
+            return String.format("%s. %s", this.key(), "Find Items by Name");
         }
     }
 
@@ -120,7 +127,7 @@ public class MenuTracker {
             }
         }
         public String info() {
-            return String.format("s. $s", this.key(), "Show all items.");
+            return String.format("%s. %s", this.key(), "Show all items.");
         }
     }
     private static class FindItemById implements UserAction {
@@ -132,7 +139,7 @@ public class MenuTracker {
             System.out.println(tracker.findById(input.action("Enter id")));
         }
         public String info() {
-            return String.format("s. $s", this.key(), "Find Item by Id");
+            return String.format("%s. %s", this.key(), "Find Item by Id");
         }
     }
 

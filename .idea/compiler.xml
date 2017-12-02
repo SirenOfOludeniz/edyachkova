@@ -13,7 +13,6 @@
     <bytecodeTargetLevel>
       <module name="chapter_001" target="1.8" />
       <module name="chapter_002" target="1.8" />
-      <module name="edyachkova" target="1.8" />
       <module name="junior" target="1.8" />
     </bytecodeTargetLevel>
   </component>
