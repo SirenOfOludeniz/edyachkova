@@ -6,27 +6,29 @@ import static org.junit.Assert.assertThat;
 public class StubInputTest {
     @Test
     public void whenUserAddItem() {
+
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"0", "4", "Tv", "desc", "15112017", "y"});
-        // 0 -add item, y = exit, 4 - id, Tv - name итд
+        Input input = new StubInput(new String[]{"3", "4", "Tv", "desc", "5", "y"});// 0 -add item, y = exit, 4 - id, Tv - name итд
+        //3 здесь воспринимается как id, 4 как name, Tv = описание итд
         StartUi start = new StartUi(input, tracker);
          start.init();
+        System.out.println("id " + tracker.findAll()[0].getId());
          assertThat(tracker.findAll()[0].getName(), is("Tv"));
 
     }
    /* @Test
     public void whenUserUpdateItem() {
         Tracker tracker = new Tracker();
-        Item olditem = tracker.add(new Item("14", "Tv", "desc", 17, "brbr"));
+        Item olditem = tracker.add(new Item("14", "Tv", "desc", "17", "brbr"));
         tracker.add(olditem);
         Input input = new StubInput(new String[]{"3", "4", "Radio", "desc", "15", "14", "0"});
         // 3 update, 4 id newitem, 14 id olditem, 0- exit
-        StartUi start = new StartUi(input);
-        start.menu(tracker);
+        StartUi start = new StartUi(input, tracker);
+        start.init();
         assertThat(tracker.findById("14").getName(), is("Radio"));
 
     }
-    @Test
+   /* @Test
     public void whenUserChooseFindAll() {
         Tracker tracker = new Tracker();
 

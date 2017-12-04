@@ -28,8 +28,5 @@ public class ConsoleInput implements Input {
 
     }
 
-    public long inputdate(String askdate) {
-        System.out.println(askdate);
-        return scanner.nextLong();
-    }
+
 }

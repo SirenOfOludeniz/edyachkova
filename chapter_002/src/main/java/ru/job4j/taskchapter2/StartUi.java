@@ -29,10 +29,13 @@ public class StartUi {
             }
         };*/
         //menu.addAction(deleteAction);
+        String exit;
         do {
             menu.show();
             menu.select(input.action("select: ", menu.range())); // здесь применен новый ask(String question, int[] ranges)
-        } while (! "y".equals(this.input.action("Exit?(y)"))); }
+             exit = this.input.action("exit?");
+            System.out.println("exit" + exit);
+        } while (! "y".equals(exit)); }
 
 
     public static void main(String[] args) {

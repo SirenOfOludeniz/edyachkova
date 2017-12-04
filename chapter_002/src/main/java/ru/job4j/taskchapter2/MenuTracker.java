@@ -8,7 +8,7 @@ class EditItem implements UserAction {
         String id = input.action("Введите id");
         String name = input.action("Введите называние заявки");
         String desc = input.action("Введите описание");
-        long date = input.inputdate("Введите дату");
+        String date = input.action("Введите дату");
         String comment = input.action("Введите комментарий");
         Item item = new Item(id, name, desc, date, comment);
         item.setId(id);
@@ -36,7 +36,7 @@ class DeleteItem implements UserAction {
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
-    private UserAction[] actions = new UserAction[7];
+    private UserAction[] actions = new UserAction[6];
     private int position = 0;
 
 
@@ -49,7 +49,12 @@ public class MenuTracker {
         int[] rsl = new int[position]; //здесь был [position]
         int count = 0;
         for (UserAction action : this.actions) {
+           // System.out.println("action: " + action );
+//            System.out.println("count: " + count);
+//            System.out.println("rsl" + count + ": " + rsl[count]);
+//            System.out.println("action: " + action + "action.key(): " + action.key() );
             rsl[count++] = action.key();
+//            System.out.println("rsl" + count + ": " +  + rsl[count-1]);
         }
         return rsl;
     }
@@ -89,10 +94,10 @@ public class MenuTracker {
             return 0;
         }
         public void execute(Input input, Tracker tracker) {
-            String id = input.action("Введите id");
+            String id = input.action("Введите id это запрос из AddItem класс MenuTracker");
             String name = input.action("Введите название заявки");
             String desc = input.action("Введите описание");
-            long date = input.inputdate("Введите дату");
+            String date = input.action("Введите дату");
             String comment = input.action("Введите комментарий");
             tracker.add(new Item(id, name, desc, date, comment));
         }
@@ -123,7 +128,7 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
 
             for(Item item : tracker.findAll()) {
-                System.out.println(String.format("%s. %s. %s. %d. %s", item.getId(), item.getName(), item.getDescription(), item.getDatecreation(), item.getKomment()));
+                System.out.println(String.format("%s. %s. %s. %s. %s", item.getId(), item.getName(), item.getDescription(), item.getDatecreation(), item.getKomment()));
             }
         }
         public String info() {
