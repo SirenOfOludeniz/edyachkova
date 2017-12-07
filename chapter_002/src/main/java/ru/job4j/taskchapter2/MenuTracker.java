@@ -106,15 +106,31 @@ public class MenuTracker {
         }
     }
 
-    private class FindByName implements UserAction{
+   /* private class FindByName implements UserAction{
         public int key() {
             return 4;
         }
         public void execute(Input input, Tracker tracker) {
             for (int i = 0; i < tracker.findByName(input.action("Enter name of items")).length ; i++) {
-                System.out.println(tracker.findByName("")[i]);
+                System.out.println(tracker.findByName("Введите название заявки еще раз")[i]);
 
             }
+        }
+        public String info() {
+            return String.format("%s. %s", this.key(), "Find Items by Name");
+        }
+    }*/
+
+    private class FindByName implements UserAction{
+        public int key() {
+            return 4;
+        }
+        public void execute(Input input, Tracker tracker) {
+
+            for (Item item : tracker.findByName(input.action("Enter name"))) {
+                System.out.println(String.format("%s. %s. %s. %s. %s", item.getId(), item.getName(), item.getDescription(), item.getDatecreation(), item.getKomment()));
+            }
+
         }
         public String info() {
             return String.format("%s. %s", this.key(), "Find Items by Name");
@@ -135,6 +151,7 @@ public class MenuTracker {
             return String.format("%s. %s", this.key(), "Show all items.");
         }
     }
+
     private static class FindItemById implements UserAction {
         public int key() {
             return 5;
