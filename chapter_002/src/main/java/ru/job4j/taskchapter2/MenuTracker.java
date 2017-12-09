@@ -1,6 +1,10 @@
 package ru.job4j.taskchapter2;
 
-class EditItem implements UserAction {
+class EditItem extends BaseAction {
+
+    public EditItem(String name, int key) {
+        super(name, key);
+    }
     public int key() {
         return 2;
     }
@@ -19,7 +23,10 @@ class EditItem implements UserAction {
     }
 }
 
-class DeleteItem implements UserAction {
+class DeleteItem extends BaseAction{
+    public DeleteItem(String name, int key) {
+        super(name, key);
+    }
     public int key() {
         return 3;
     }
@@ -65,9 +72,9 @@ public class MenuTracker {
     }*/
 
     public void fillActions() {
-        this.actions[position++] = this.new AddItem();
-        this.actions[position++] = new MenuTracker.ShowItems(); // new ShowItems();
-        this.actions[position++] = new EditItem();
+        this.actions[position++] = this.new AddItem("что сюда ввести?", 0); // здесь красным из-за наследования AddItem класса BaseActions с коструктором с параметрами String name, int key
+        this.actions[position++] = new MenuTracker.ShowItems("сюда тоже надо что-то передать", 0); // new ShowItems();
+        this.actions[position++] = new EditItem("конструктор по умолчанию в классах нельзя создать почему-то", 0);
         this.actions[position++] = new DeleteItem();
         this.actions[position++] = this.new FindByName();
         this.actions[position++] = new MenuTracker.FindItemById();
@@ -75,7 +82,7 @@ public class MenuTracker {
     }
 
     public void addAction(UserAction action) {
-        this.actions[position++] = action;
+        this.actions[position++] = action; //заполнение нашего массива actions[]
     }
 
     public void select(int key) { // SELECT НАШЕЛСЯ!!!!!!!!!!!!
@@ -89,7 +96,10 @@ public class MenuTracker {
         }
     }
 
-    private class AddItem implements UserAction { //внутренний нестатический класс
+    private class AddItem extends BaseAction { //внутренний нестатический класс
+        public AddItem(String name, int key) {
+            super(name, key);
+        }
         public int key() {
             return 0;
         }
@@ -121,7 +131,10 @@ public class MenuTracker {
         }
     }*/
 
-    private class FindByName implements UserAction{
+    private class FindByName extends BaseAction {
+        public FindByName(String name, int key) {
+            super(name, key);
+        }
         public int key() {
             return 4;
         }
@@ -137,7 +150,10 @@ public class MenuTracker {
         }
     }
 
-    private static class ShowItems implements UserAction {
+    private static class ShowItems extends BaseAction{
+        public ShowItems(String name, int key) {
+            super(name, key);
+        }
         public int key() {
             return 1;
         }
@@ -152,7 +168,10 @@ public class MenuTracker {
         }
     }
 
-    private static class FindItemById implements UserAction {
+    private static class FindItemById extends BaseAction {
+        public FindItemById(String name, int key) {
+            super(name, key);
+        }
         public int key() {
             return 5;
         }

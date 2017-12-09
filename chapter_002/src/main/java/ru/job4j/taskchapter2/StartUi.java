@@ -12,7 +12,7 @@ public class StartUi {
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, tracker);
         menu.fillActions();
-       /* UserAction deleteAction = new UserAction() {
+       /* UserAction deleteAction = new UserAction() { // создали объект анонимного класса
             @Override
             public int key() {
                 return 3;
