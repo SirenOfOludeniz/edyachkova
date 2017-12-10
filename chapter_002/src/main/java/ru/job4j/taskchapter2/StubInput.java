@@ -5,8 +5,7 @@ public class StubInput implements Input {
     private int position = 0; //счетчик
 
 
-    public StubInput(String[] answers)
-    { this.answers = answers; }
+    public StubInput(String[] answers) { this.answers = answers; }
 
 
     public String action(String choice) {

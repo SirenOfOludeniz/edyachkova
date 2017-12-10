@@ -8,7 +8,7 @@ public class StubInputTest {
     public void whenUserAddItem() {
 
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"0", "4", "Tv", "desc", "5", "comment", "y"});// 0 -add item, y = exit, 4 - id, Tv - name итд
+        Input input = new StubInput(new String[]{"0", "4", "Tv", "desc", "5", "comment", "y"}); // 0 -add item, y = exit, 4 - id, Tv - name итд
         //3 здесь воспринимается как id, 4 как name, Tv = описание итд
         StartUi start = new StartUi(input, tracker);
          start.init();

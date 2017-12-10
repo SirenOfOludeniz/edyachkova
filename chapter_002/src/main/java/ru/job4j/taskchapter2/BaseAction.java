@@ -6,6 +6,6 @@ public abstract class BaseAction implements UserAction {
 
     }
 
-    public String info() { return "я не знаю что тут нужно вернуть."; }
+    public String info() {return "..."; }
 
 }

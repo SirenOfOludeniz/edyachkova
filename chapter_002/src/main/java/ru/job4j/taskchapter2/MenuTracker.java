@@ -23,7 +23,7 @@ class EditItem extends BaseAction {
     }
 }
 
-class DeleteItem extends BaseAction{
+class DeleteItem extends BaseAction {
     public DeleteItem(String name, int key) {
         super(name, key);
     }
@@ -72,12 +72,12 @@ public class MenuTracker {
     }*/
 
     public void fillActions() {
-        this.actions[position++] = this.new AddItem("что сюда ввести?", 0); // здесь красным из-за наследования AddItem класса BaseActions с коструктором с параметрами String name, int key
-        this.actions[position++] = new MenuTracker.ShowItems("сюда тоже надо что-то передать", 0); // new ShowItems();
-        this.actions[position++] = new EditItem("конструктор по умолчанию в классах нельзя создать почему-то", 0);
-        this.actions[position++] = new DeleteItem();
-        this.actions[position++] = this.new FindByName();
-        this.actions[position++] = new MenuTracker.FindItemById();
+        this.actions[position++] = this.new AddItem("Add Item", 0); // здесь красным из-за наследования AddItem класса BaseActions с коструктором с параметрами String name, int key
+        this.actions[position++] = new MenuTracker.ShowItems("Show All Item", 1); // new ShowItems();
+        this.actions[position++] = new EditItem("Edit Item", 2);
+        this.actions[position++] = new DeleteItem("Delete Item", 3);
+        this.actions[position++] = this.new FindByName("Find Item By Name", 4);
+        this.actions[position++] = new MenuTracker.FindItemById("Find Item By Id", 5);
 
     }
 
@@ -90,8 +90,8 @@ public class MenuTracker {
     }
 
     public void show() {
-        for(UserAction action : this.actions) {
-            if(action != null)
+        for (UserAction action : this.actions) {
+            if (action != null)
             System.out.println(action.info());
         }
     }
@@ -150,7 +150,7 @@ public class MenuTracker {
         }
     }
 
-    private static class ShowItems extends BaseAction{
+    private static class ShowItems extends BaseAction {
         public ShowItems(String name, int key) {
             super(name, key);
         }
@@ -159,7 +159,7 @@ public class MenuTracker {
         }
         public void execute(Input input, Tracker tracker) {
 
-            for(Item item : tracker.findAll()) {
+            for (Item item : tracker.findAll()) {
                 System.out.println(String.format("%s. %s. %s. %s. %s", item.getId(), item.getName(), item.getDescription(), item.getDatecreation(), item.getKomment()));
             }
         }
