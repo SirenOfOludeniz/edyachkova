@@ -7,10 +7,10 @@ public class Bishop extends Figure { //по условию нужен implements
         super(position);
     }
     public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException {
-        Cell[] copyway = new Cell[dest.getX() - source.getX()];
+        Cell[] copyway = new Cell[Math.abs(dest.getX() - source.getX())]; // то Вернуть массив ячеек. которые должна пройти фигура.
+        //включая ячейчку source или нет?
         int b1 = 0; int b2 = 0; int k1 = 1; int k2 = -1;
         int beginx = 0; int beginy = 0;
-        int endx = 0; int endy = 0;
         int arraylenght = 0;
 
         try {
@@ -87,6 +87,44 @@ public class Bishop extends Figure { //по условию нужен implements
                 diagonalRightDown[i].setX(beginx + i);
                 diagonalRightDown[i].setX(beginy - i);
             }
+
+            /*Cell[] allAbleCells = new Cell[diagonalRightDown.length + diagonalRightUp.length]; // он может вообще и не нужен нам
+
+            System.arraycopy(diagonalRightDown, 0, allAbleCells, 0, diagonalRightDown.length);
+            System.arraycopy(diagonalRightUp, 0, allAbleCells, diagonalRightDown.length, diagonalRightUp.length);*/
+
+            if (dest.getY() == dest.getX() + b1) { //если dest принадлежит диагонали RightUp
+                // нужно еще определить находится dest выше source или ниже
+                if (dest.getY() - source.getY() > 0) { //выше
+                    for (int i = 0; i < copyway.length ; i++) {
+                        copyway[i].setX(source.getX() + i);
+                        copyway[i].setY(source.getY() + i);
+                    }
+                }
+                if (dest.getY() - source.getY() < 0) { //ниже
+                    for (int i = 0; i < copyway.length ; i++) {
+                        copyway[i].setY(source.getY() - i);
+                        copyway[i].setX(source.getX() - i);
+                    }
+                }
+
+            }
+            if (dest.getY() == dest.getY() + b2) {
+                if (dest.getY() - source.getY() > 0) { //выше
+                    for (int i = 0; i < copyway.length ; i++) {
+                        copyway[i].setX(source.getX() - i);
+                        copyway[i].setY(source.getY() + i);
+                    }
+                }
+                if (dest.getY() - source.getY() < 0) { //ниже
+                    for (int i = 0; i < copyway.length ; i++) {
+                        copyway[i].setX(source.getX() + i);
+                        copyway[i].setY(source.getY() - i);
+                    }
+                }
+            }
+
+
 
 
 
