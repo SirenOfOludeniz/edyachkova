@@ -10,8 +10,7 @@ public class Bishop extends Figure { //по условию нужен implements
         Cell[] copyway = new Cell[Math.abs(dest.getX() - source.getX())]; // то Вернуть массив ячеек. которые должна пройти фигура.
         //включая ячейчку source или нет?
         int b1 = 0; int b2 = 0; int k1 = 1; int k2 = -1;
-        int beginx = 0; int beginy = 0;
-        int arraylenght = 0;
+
 
         try {
             b1 = source.getY() - source.getX();
@@ -93,16 +92,16 @@ public class Bishop extends Figure { //по условию нужен implements
             System.arraycopy(diagonalRightDown, 0, allAbleCells, 0, diagonalRightDown.length);
             System.arraycopy(diagonalRightUp, 0, allAbleCells, diagonalRightDown.length, diagonalRightUp.length);*/
 
-            if (dest.getY() == dest.getX() + b1) { //если dest принадлежит диагонали RightUp
+            if (dest.getY() == dest.getX() + b1) { //если dest принадлежит диагонали RightUp==> y = kx + b
                 // нужно еще определить находится dest выше source или ниже
                 if (dest.getY() - source.getY() > 0) { //выше
-                    for (int i = 0; i < copyway.length ; i++) {
+                    for (int i = 0; i < copyway.length; i++) {
                         copyway[i].setX(source.getX() + i);
                         copyway[i].setY(source.getY() + i);
                     }
                 }
                 if (dest.getY() - source.getY() < 0) { //ниже
-                    for (int i = 0; i < copyway.length ; i++) {
+                    for (int i = 0; i < copyway.length; i++) {
                         copyway[i].setY(source.getY() - i);
                         copyway[i].setX(source.getX() - i);
                     }
@@ -111,13 +110,13 @@ public class Bishop extends Figure { //по условию нужен implements
             }
             if (dest.getY() == k2 * dest.getX() + b2) { // y = -kx + b
                 if (dest.getY() - source.getY() > 0) { //выше
-                    for (int i = 0; i < copyway.length ; i++) {
+                    for (int i = 0; i < copyway.length; i++) {
                         copyway[i].setX(source.getX() - i);
                         copyway[i].setY(source.getY() + i);
                     }
                 }
                 if (dest.getY() - source.getY() < 0) { //ниже
-                    for (int i = 0; i < copyway.length ; i++) {
+                    for (int i = 0; i < copyway.length; i++) {
                         copyway[i].setX(source.getX() + i);
                         copyway[i].setY(source.getY() - i);
                     }
@@ -137,7 +136,8 @@ public class Bishop extends Figure { //по условию нужен implements
             // ГДЕ ПИСАТЬ САМУ ЛОГИКУ ТОГО, ЧТО СЛОН ХОДИТ ПО-ДИАГОНАЛИ?*/
 
 
-            return copyway ; }
+            //return copyway ; } //тут же не нужен return? инаже два раза вернет массив
+        }
         catch (ImpossibleMoveException ime) {
             ime.printStackTrace();
             System.out.println("Фигура туда не может пойти");
