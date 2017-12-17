@@ -22,7 +22,7 @@ public class Bishop extends Figure { //по условию нужен implements
             // любая точка source лежит на таких двух диагоналях
 
             //диагональ y = kx + b
-            if (b1 > 0) {
+           /* if (b1 > 0) {
               beginy = b1 + 1;
               beginx = 1;
             }
@@ -86,7 +86,7 @@ public class Bishop extends Figure { //по условию нужен implements
             for (int i = 0; i < diagonalRightDown.length; i++) {
                 diagonalRightDown[i].setX(beginx + i);
                 diagonalRightDown[i].setX(beginy - i);
-            }
+            }*/
 
             /*Cell[] allAbleCells = new Cell[diagonalRightDown.length + diagonalRightUp.length]; // он может вообще и не нужен нам
 
@@ -109,7 +109,7 @@ public class Bishop extends Figure { //по условию нужен implements
                 }
 
             }
-            if (dest.getY() == dest.getY() + b2) {
+            if (dest.getY() == k2 * dest.getX() + b2) { // y = -kx + b
                 if (dest.getY() - source.getY() > 0) { //выше
                     for (int i = 0; i < copyway.length ; i++) {
                         copyway[i].setX(source.getX() - i);
