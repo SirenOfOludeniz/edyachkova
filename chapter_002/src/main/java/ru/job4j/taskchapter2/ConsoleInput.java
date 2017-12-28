@@ -8,8 +8,24 @@ public class ConsoleInput implements Input {
         System.out.println(choice);
         return scanner.nextLine();
     }
-    public long inputdate(String askdate) {
-        System.out.println(askdate);
-        return scanner.nextLong();
+
+    @Override
+    public int action(String choice, int[] range) {
+        int key = Integer.valueOf(this.action(choice));
+        boolean exist = false;
+        for (int value : range) {
+            if (value == key) {
+                exist = true;
+                break;
+            }
+        }
+        if (exist) {
+            return key; }
+        else {
+            throw new MenuOutException("Out of menu range.");
+        }
+
     }
+
+
 }

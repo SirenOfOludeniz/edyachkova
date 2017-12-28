@@ -4,12 +4,12 @@ public class Item {
     private String id;
     private String name;
     private String description;
-    private long datecreation;
+    private String datecreation;
     private String komment;
 
     public Item() { }
 
-    public Item(String id, String name, String description, long datecreation, String komment) {
+    public Item(String id, String name, String description, String datecreation, String komment) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -28,10 +28,10 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }
-    public long getDatecreation() {
+    public String getDatecreation() {
         return this.datecreation;
     }
-    public void setDatecreation(long datecreation) {
+    public void setDatecreation(String datecreation) {
         this.datecreation = datecreation;
     }
     public String getKomment() {
