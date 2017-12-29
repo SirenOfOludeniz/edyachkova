@@ -2,10 +2,19 @@ package ru.job4j.coffeemachine;
 
 public class CoffeeMachine {
     public static void main(String[] args) {
-        for (int i = 0; i < changes(50, 35).length; i++) {
-            System.out.println(changes(50, 35)[i]);
+        int[] nums = {15, 7, 1};
+        //universalcoins(100, 35, nums);
+        for (int i = 0; i < universalcoins(100, 35, nums).length; i++) {
+            System.out.println(universalcoins(100, 35, nums)[i]);
 
         }
+    }
+    /*public static void main(String[] args) {
+        System.out.println(5/7);
+//        for (int i = 0; i < changes(50, 35).length; i++) {
+//            System.out.println(changes(50, 35)[i]);
+//
+//        }
     }
     public static int[] changes(int value, int price) {
         int moneta10, moneta5, moneta2, moneta1;
@@ -32,5 +41,36 @@ public class CoffeeMachine {
 
         }
         return changessss;
+    }*/
+
+    public static int[] universalcoins(int value, int price, int[] coins) {
+        //нужно ли сначала отсортировать по убыванию входящий массив int[] coins?
+        int change = value - price;
+        int sumcoins;
+        int counter = 0;
+        int[] arraymonetki = new int[coins.length]; //каждый элемент хранит количество монеток одного номинала
+
+            for (int i = 0; i < coins.length ; i++) {
+                if (change/coins[i] != 0) { //почему здесь coins[0] = 0, а не 15
+                sumcoins = change/coins[i];
+                arraymonetki[i] = sumcoins;
+                change = change - (sumcoins*coins[i]);
+                counter = sumcoins + counter;
+                }
+                else coins[i] = 0;
+            }
+            int counter2 = 0;
+        int[] changes = new int[counter];
+
+        for (int j = 0; j < coins.length ; j++) {
+            if (coins[j] != 0) {
+            for (int i = 0; i <arraymonetki[j] ; i++) {
+                    changes[counter2++] = coins[j];
+
+                }
+            }
+        }
+
+        return changes;
     }
 }
