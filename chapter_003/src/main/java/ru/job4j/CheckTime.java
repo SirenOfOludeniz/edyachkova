@@ -5,7 +5,7 @@ import java.util.*;
 public class CheckTime {
     public long add(Collection<String> collection, int amount) {
         Date current = new Date();
-        for (int i = 0; i < 100 ; i++) {
+        for (int i = 0; i < 1000000 ; i++) {
             collection.add("Vasya");
         }
         Date newtime = new Date();
@@ -17,7 +17,7 @@ public class CheckTime {
 
     public long deleteByObject(Collection<String> collection, int amount) {
         Date current = new Date();
-        for (int i = 0; i < 20 ; i++) {
+        for (int i = 0; i < 20000 ; i++) {
             collection.remove("Vasya");
         }
         Date newtime = new Date();
@@ -27,7 +27,7 @@ public class CheckTime {
     public long deleteByIterator(Collection<String> collection, int amount) {
         Date current = new Date();
         Iterator iterator = collection.iterator();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 20000; i++) {
             while (iterator.hasNext()) {
                collection.remove(iterator.next());
             }
@@ -38,7 +38,7 @@ public class CheckTime {
     }
     public long deleteForArrLAndLinkedL(List<String> arrlist, int amount) {
         Date current = new Date();
-        for (int i = 0; i < 20 ; i++) {
+        for (int i = 0; i < 20000 ; i++) {
             arrlist.remove(0); //удаление первых 20ти элементов
         }
         Date  newtime = new Date();
@@ -47,7 +47,7 @@ public class CheckTime {
     }
     public long deleteForTreeSet(TreeSet<String> set, int amount) {
         Date current = new Date();
-        for (int i = 0; i < 20 ; i++) {
+        for (int i = 0; i < 20000 ; i++) {
             set.remove(set.first()); //удаление первых 20ти элементов
         }
         Date  newtime = new Date();
