@@ -34,10 +34,11 @@ public class ConvertList {
         if (remainder == 0) {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                nums[rows][columns] = list.get(rows + columns);
+                nums[i][j] = list.get(i + j);
             }
         }
         }
+
         if (remainder != 0) {
             if (list.size() < (rows*columns)) {
                 for (int i = 0; i < amount0 ; i++) {
@@ -46,15 +47,23 @@ public class ConvertList {
             }
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < columns; j++) {
-                    nums[rows][columns] = list.get(rows + columns);
+                    nums[i][j] = list.get(i + j);
                 }
             }
 
 
         }
-
-
         return nums;
+    }
+
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> result = new ArrayList<>();
+        for (int[] a : list) {
+            for (int b : a) {
+                result.add(b);
+            }
+        }
+        return result;
     }
 
    /* public static void main(String[] args) {
@@ -83,4 +92,22 @@ public class ConvertList {
         System.out.println("chisla(8) " + chisla.get(8));
 
     }*/
+   /*public static void main(String[] args) {
+       ArrayList<Integer> numbers = new ArrayList<>();
+       for (int i = 0; i < 9 ; i++) {
+           numbers.add(5);
+       }
+       // теперь нужно добавить список в массив int[3][3]
+       int[][] aaaaa = new int[3][3];
+
+      // куда можно записать ArrayList
+       for (int a : numbers) {
+           for (int i = 0; i < 3 ; i++) {
+               for (int j = 0; j < 3 ; j++) {
+                   aaaaa[i][j] = a;
+               }
+           }
+       }
+
+   }*/
 }
