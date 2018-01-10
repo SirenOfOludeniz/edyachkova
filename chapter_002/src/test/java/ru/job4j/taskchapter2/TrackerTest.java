@@ -20,11 +20,18 @@ public class TrackerTest {
         Tracker tracker1 = new Tracker();
         Item previous = new Item("Radio", "Radio remont", "Zamena tranzistora", "23102017", "brbr");
          tracker1.add(previous);
+         // проверяем, есть ли в items заявка previous
+        System.out.println("findbyname " + tracker1.findByName(previous.getName())); //да, есть
+        //создаем новую заявку, но не добавляем ее в items
         Item next = new Item("RadioNext", "Radio repair", "Change tranzistor", "23102017", "frfr");
-        next.setId(previous.getId()); //проставляем в новую заявку next id из старой заявки privious. в заявке next было id "RadioNext" стало "Radio"
+        //проставляем в новую заявку next id из старой заявки previous. в заявке next было id "RadioNext" стало "Radio"
+        next.setId(previous.getId());
         // т.е. id это связь между старой заявкой и новой.
         tracker1.update(next); //по id в next мы найдем заявку с таким же id previous и заменим previous на next
-       assertThat(tracker1.findById(previous.getId()).getName(), is("Radio repair")); // проверяем, изменилось ли поле name c Radio revomont на Radio repair
+        System.out.println("все заявки после update " + tracker1.findAll());
+        // проверяем, изменилось ли поле name c Radio remont на Radio repair
+       //assertThat(tracker1.findById(previous.getId()).getName(), is("Radio repair"));
+        assertThat(tracker1.findByName(next.getName()), is("Radio repair"));
     }
     @Test
     public void deleteTest() {
@@ -42,7 +49,7 @@ public class TrackerTest {
        // for (int i = 0; i < tracker.findAll().length; i++) {
             //System.out.println(tracker.findAll()[i]);
         //}
-        assertThat(tracker.findAll()[0], is(item4));
+        assertThat(tracker.findAll().get(0), is(item4));
 
     }
    @Test
@@ -56,11 +63,12 @@ public class TrackerTest {
      tracker.add(item2);
      tracker.add(item3);
 
-       for (int i = 0; i < tracker.findAll().length; i++) {
-           System.out.println(tracker.findAll()[i]);
+       for (int i = 0; i < tracker.findAll().size(); i++) {
+           System.out.println(tracker.findAll().get(i));
        }
+       tracker.findAll();
 
-     assertThat(tracker.findAll().length, is(3));
+     assertThat(tracker.findAll().size(), is(3));
   }
   @Test
     public void findByIdTest() {
@@ -77,11 +85,11 @@ public class TrackerTest {
         Item item1 = new Item("2", "TV", "Screen", "5", "frfr");
         tracker.add(item);
         tracker.add(item1);
-      for (int i = 0; i < tracker.findByName("TV").length; i++) {
-          System.out.println(tracker.findByName("TV")[i]);
+      for (int i = 0; i < tracker.findByName("TV").size(); i++) {
+          System.out.println(tracker.findByName("TV").get(i));
 
       }
-        assertThat(tracker.findByName(item.getName())[0], is(item));
+        assertThat(tracker.findByName(item.getName()).get(0), is(item));
   }
 
 }

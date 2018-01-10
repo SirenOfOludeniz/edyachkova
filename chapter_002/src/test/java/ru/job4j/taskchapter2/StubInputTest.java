@@ -12,8 +12,8 @@ public class StubInputTest {
         //3 здесь воспринимается как id, 4 как name, Tv = описание итд
         StartUi start = new StartUi(input, tracker);
          start.init();
-        System.out.println("id " + tracker.findAll()[0].getId());
-         assertThat(tracker.findAll()[0].getName(), is("Tv"));
+        System.out.println("id " + tracker.findAll().get(0).getId());
+         assertThat(tracker.findAll().get(0).getName(), is("Tv"));
 
     }
     @Test
@@ -42,7 +42,7 @@ public class StubInputTest {
         Input input = new StubInput(new String[]{"1", "y"});
         StartUi start = new StartUi(input, tracker);
         start.init();
-        assertThat(tracker.findAll().length, is(3));
+        assertThat(tracker.findAll().size(), is(3));
     }
     @Test
     public void whenUserDeleteItem() {
@@ -58,7 +58,7 @@ public class StubInputTest {
         Input input = new StubInput(new String[]{"3", "45", "y"});
         StartUi start = new StartUi(input, tracker);
         start.init();
-        assertThat(tracker.findAll()[0], is(item1));
+        assertThat(tracker.findAll().get(0), is(item1));
     }
     @Test
     public void whenUserChooseFindById() {
@@ -80,7 +80,7 @@ public class StubInputTest {
         Input input = new StubInput(new String[] {"4", "Tv", "y"});
         StartUi start = new StartUi(input, tracker);
         start.init();
-        assertThat(tracker.findByName("Tv").length, is(1));
+        assertThat(tracker.findByName("Tv").size(), is(1));
     }
 }
 
