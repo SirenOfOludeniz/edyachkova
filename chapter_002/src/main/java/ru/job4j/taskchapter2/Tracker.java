@@ -14,6 +14,11 @@ public class Tracker {
                break;
             }
         }
+        for (int i = 0; i < this.items.size() ; i++) {
+            System.out.println("cikl " + this.items.get(i));
+        }
+        System.out.println("sout " + this.items);
+        System.out.println("size " + this.items.size());
         return item;
     }
     public void update(Item item) {
