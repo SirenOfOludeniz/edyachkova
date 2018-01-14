@@ -17,6 +17,29 @@ public class ConvertList {
         return list;
 
     }
+    public int[][] toArray2(List<Integer> list, int rows) {
+        int columns = 0;
+        int amountOf0 = (rows* columns) - list.size();
+        if ((list.size()%rows) == 0) {
+            columns = list.size()/rows;
+        }
+        else {
+            columns = (list.size()/rows) + 1;
+            for (int i = 0; i < amountOf0 ; i++) {
+                list.add(0);
+            }
+        }
+        int[][] array = new int[rows][columns];
+        for (int value : list) {
+            for (int i = 0; i < rows ; i++) {
+                for (int j = 0; j < columns; j++) {
+                    array[i][j] = value;
+                }
+            }
+        }
+        return array;
+    }
+
     public int[][] toArray(List<Integer> list, int rows) {
         int remainder = list.size()%rows;
         int columns = 0;

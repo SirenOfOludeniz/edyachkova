@@ -29,19 +29,21 @@ public class TestCheckTime {
         CheckTime checkTime = new CheckTime();
         Collection<String> arlist = new ArrayList<>();
         checkTime.add(arlist,0);
-        System.out.println("Время удаления 20ти элементов в ArrayList = " + checkTime.deleteByObject(arlist, 0));
+        System.out.println("Время удаления 20 000 ти элементов в ArrayList = " + checkTime.deleteByObject(arlist, 0));
     }
     @Test
     public void deleteByObjectTestLinkedList() {
         CheckTime checkTime = new CheckTime();
         Collection<String> linklist = new LinkedList<>();
-        System.out.println("Время удаления 20ти элементов в LinkedList = " + checkTime.deleteByObject(linklist, 0));
+        checkTime.add(linklist, 0);
+        System.out.println("Время удаления 20 000 ти элементов в LinkedList = " + checkTime.deleteByObject(linklist, 0));
     }
     @Test
     public void deleteByObjectTestTreeSet() {
         CheckTime checkTime = new CheckTime();
         Collection<String> set = new TreeSet<>();
-        System.out.println("Время удаления 20ти элементов в TreeSet = " + checkTime.deleteByObject(set, 0));
+        checkTime.add(set, 0);
+        System.out.println("Время удаления 20 000 ти элементов в TreeSet = " + checkTime.deleteByObject(set, 0));
     }
     @Test
     public void deleteByIteratorTestArrayList() {
@@ -65,12 +67,14 @@ public class TestCheckTime {
     public void deleteForArrayListAndLinkedList1() {
         CheckTime checkTime = new CheckTime();
         List<String> linklist = new LinkedList<>();
+        checkTime.add(linklist, 0);
         System.out.println("Время удаления 20ти элементов в LinkedList с итератором = " + checkTime.deleteForArrLAndLinkedL(linklist, 0));
     }
     @Test
     public void deleteForArrayListAndLinkedList2() {
         CheckTime checkTime = new CheckTime();
         List<String> arrlist = new ArrayList<>();
+        checkTime.add(arrlist, 0);
         System.out.println("Время удаления 20ти элементов в LinkedList с итератором = " + checkTime.deleteForArrLAndLinkedL(arrlist, 0));
     }
 
@@ -78,6 +82,7 @@ public class TestCheckTime {
     public void deleteForTreeSet() {
         CheckTime checkTime = new CheckTime();
         TreeSet<String> set = new TreeSet<>();
+        checkTime.add(set, 0);
         System.out.println("Время удаления 20ти элементов в TreeSet с итер.= " + checkTime.deleteForTreeSet(set, 0));
     }
 }

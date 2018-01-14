@@ -6,19 +6,18 @@ public class CheckTime {
     public long add(Collection<String> collection, int amount) {
         Date current = new Date();
         for (int i = 0; i < 1000000 ; i++) {
-            collection.add("Vasya");
+            collection.add("Vasya"+ i);
         }
         Date newtime = new Date();
         long operationTime = newtime.getTime() - current.getTime();
-        System.out.println("opertime =" + operationTime);
-        //System.out.println(collection);
+        System.out.println("Время добавления 1 000 000 элементов :" + operationTime);
         return operationTime;
     }
 
     public long deleteByObject(Collection<String> collection, int amount) {
         Date current = new Date();
         for (int i = 0; i < 20000 ; i++) {
-            collection.remove("Vasya");
+            collection.remove("Vasya" + i);
         }
         Date newtime = new Date();
         long operationTime = newtime.getTime() - current.getTime();
@@ -47,9 +46,11 @@ public class CheckTime {
     }
     public long deleteForTreeSet(TreeSet<String> set, int amount) {
         Date current = new Date();
-        for (int i = 0; i < 20000 ; i++) {
-            set.remove(set.first()); //удаление первых 20ти элементов
-        }
+        set.remove(set.first());
+        //set.remove(set.first());
+//        for (int i = 0; i < 20000 ; i++) {
+//            set.remove(set.first()); //удаление первых 20ти элементов
+//        }
         Date  newtime = new Date();
         long operationTime = newtime.getTime() - current.getTime();
         return operationTime;
