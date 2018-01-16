@@ -1,10 +1,16 @@
 package ru.job4j.list_in_map;
 
-public class User {
+public class User implements Comparable<User> {
     private Integer id;
     private String name;
     private String city;
+    public User(){
 
+    }
+
+    public User(String name) {
+        this.name = name;
+    }
     public Integer getId() {
         return id;
     }
@@ -24,5 +30,17 @@ public class User {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return this.name.compareTo(o.name);
     }
 }
