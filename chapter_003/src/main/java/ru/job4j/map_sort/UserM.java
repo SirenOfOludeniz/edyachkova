@@ -1,6 +1,6 @@
 package ru.job4j.map_sort;
 
-public class UserM implements Comparable{
+public class UserM implements Comparable<UserM> {
     private String name;
     private int age;
     public UserM() {
@@ -23,9 +23,20 @@ public class UserM implements Comparable{
         this.age = age;
     }
 
-
     @Override
+    public int compareTo(UserM o) {
+        return this.age - o.age;
+    }
+
+
+   /* @Override
+    public int compareTo(UserM o) {
+        return this.name.compareTo(o.name);
+    }*/
+
+    /*@Override
     public int compareTo(Object o) {
         return 0;
-    }
+    }*/
+
 }
