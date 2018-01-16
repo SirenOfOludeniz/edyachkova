@@ -1,5 +1,7 @@
 package ru.job4j.taskchapter2;
 
+import java.util.ArrayList;
+
 public class StubInput implements Input {
     private String[] answers;
     private int position = 0; //счетчик
@@ -23,7 +25,7 @@ public class StubInput implements Input {
     }
 
     @Override
-    public int action(String choice, int[] range) {
+    public int action(String choice, ArrayList<Integer> range) {
         return Integer.valueOf(this.action(choice));
     }
 

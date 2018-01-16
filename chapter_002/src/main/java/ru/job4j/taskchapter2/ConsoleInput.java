@@ -1,5 +1,6 @@
 package ru.job4j.taskchapter2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ConsoleInput implements Input {
@@ -10,7 +11,7 @@ public class ConsoleInput implements Input {
     }
 
     @Override
-    public int action(String choice, int[] range) {
+    public int action(String choice, ArrayList<Integer> range) {
         int key = Integer.valueOf(this.action(choice));
         boolean exist = false;
         for (int value : range) {

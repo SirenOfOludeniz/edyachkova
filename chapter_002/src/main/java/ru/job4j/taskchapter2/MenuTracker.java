@@ -1,5 +1,7 @@
 package ru.job4j.taskchapter2;
 
+import java.util.ArrayList;
+
 class EditItem extends BaseAction {
 
     public EditItem(String name, int key) {
@@ -43,7 +45,8 @@ class DeleteItem extends BaseAction {
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
-    private UserAction[] actions = new UserAction[6];
+    //private UserAction[] actions = new UserAction[6];
+    private ArrayList<UserAction> actions = new ArrayList<>();
     private int position = 0;
 
 
@@ -52,15 +55,15 @@ public class MenuTracker {
         this.tracker = tracker;
     }
 
-    public int[] range() {
-        int[] rsl = new int[position]; //здесь был [position]
+    public ArrayList<Integer> range() {
+        ArrayList<Integer> rsl = new ArrayList<>(); //здесь был [position]
         int count = 0;
         for (UserAction action : this.actions) {
            // System.out.println("action: " + action );
 //            System.out.println("count: " + count);
 //            System.out.println("rsl" + count + ": " + rsl[count]);
 //            System.out.println("action: " + action + "action.key(): " + action.key() );
-            rsl[count++] = action.key();
+            rsl.add(action.key());
 //            System.out.println("rsl" + count + ": " +  + rsl[count-1]);
         }
         return rsl;
@@ -72,21 +75,21 @@ public class MenuTracker {
     }*/
 
     public void fillActions() {
-        this.actions[position++] = this.new AddItem("Add Item", 0); // здесь красным из-за наследования AddItem класса BaseActions с коструктором с параметрами String name, int key
-        this.actions[position++] = new MenuTracker.ShowItems("Show All Item", 1); // new ShowItems();
-        this.actions[position++] = new EditItem("Edit Item", 2);
-        this.actions[position++] = new DeleteItem("Delete Item", 3);
-        this.actions[position++] = this.new FindByName("Find Item By Name", 4);
-        this.actions[position++] = new MenuTracker.FindItemById("Find Item By Id", 5);
+        this.actions.add(this.new AddItem("Add Item", 0)); // здесь красным из-за наследования AddItem класса BaseActions с коструктором с параметрами String name, int key
+        this.actions.add(new MenuTracker.ShowItems("Show All Item", 1)); // new ShowItems();
+        this.actions.add(new EditItem("Edit Item", 2));
+        this.actions.add(new DeleteItem("Delete Item", 3));
+        this.actions.add(this.new FindByName("Find Item By Name", 4));
+        this.actions.add(new MenuTracker.FindItemById("Find Item By Id", 5));
 
     }
 
     public void addAction(UserAction action) {
-        this.actions[position++] = action; //заполнение нашего массива actions[]
+        this.actions.add(action); //заполнение нашего массива actions[]
     }
 
     public void select(int key) { // SELECT НАШЕЛСЯ!!!!!!!!!!!!
-        this.actions[key].execute(this.input, this.tracker);
+        this.actions.get(key).execute(this.input, this.tracker);
     }
 
     public void show() {
