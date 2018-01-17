@@ -31,7 +31,8 @@ public class TrackerTest {
         System.out.println("все заявки после update " + tracker1.findAll());
         // проверяем, изменилось ли поле name c Radio remont на Radio repair
        //assertThat(tracker1.findById(previous.getId()).getName(), is("Radio repair"));
-        assertThat(tracker1.findByName(next.getName()), is("Radio repair"));
+        //System.out.println("name " + tracker1.findByName());
+        assertThat(tracker1.findByName(next.getName()).get(0).getName(), is("Radio repair"));
     }
     @Test
     public void deleteTest() {
