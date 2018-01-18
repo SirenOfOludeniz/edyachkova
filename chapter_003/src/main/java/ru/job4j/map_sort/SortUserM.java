@@ -1,30 +1,54 @@
 package ru.job4j.map_sort;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class SortUserM {
-    public Set<UserM> sort (List<UserM> list) {
+    public Set<UserM> sortByage (List<UserM> list) {
         Set<UserM> treeset = new TreeSet<>();
 
-        for (int i = 0; i < list.size() ; i++) {
-            treeset.add(list.get(i));
+//        for (int i = 0; i < list.size() ; i++) {
+//            treeset.add(list.get(i));
+//        }
+        for (UserM userM : list) {
+            treeset.add(list.get(list.indexOf(userM)));
         }
-        //System.out.println(treeset);
+
         for (UserM userM : treeset) {
            System.out.println("age " + userM.getAge());
         }
         return treeset;
     }
 
-    /*public static void main(String[] args) {
-        Set<Integer> set = new TreeSet<>();
-        set.add(3);
-        set.add(9);
-        set.add(1);
-        set.add(2);
-        set.add(33);
-        System.out.println(set);
-    }*/
+    public List<UserM> sortNameLength (List<UserM> list) {
+        ArrayList<UserM> list1 = new ArrayList<UserM>(list);
+        list1.sort(new Comparator<UserM>() {
+            @Override
+            public int compare(UserM o1, UserM o2) {
+                return o1.getName().length() - o2.getName().length();
+            }
+        });
+        for (UserM userM : list1) {
+            System.out.println("Name lenght " + list1.get(list1.indexOf(userM)).getName());
+        }
+       // System.out.println("sortBy length of name " + list);
+        return list1;
+    }
+    public List<UserM> sortByAllFields (List<UserM> list) {
+
+        list.sort(new Comparator<UserM>() {
+            @Override
+            public int compare(UserM o1, UserM o2) {
+                int agedif = 0;
+                int result = 0;
+                agedif = (o1.getAge() - o2.getAge());
+                return ((o1.getName().compareTo(o2.getName())) - agedif);
+            }
+        });
+        for (UserM userM : list) {
+            System.out.println("sort by name and age " + list.get(list.indexOf(userM)).getName() +
+                    list.get(list.indexOf(userM)).getAge());
+        }
+
+        return list;
+    }
+
 }

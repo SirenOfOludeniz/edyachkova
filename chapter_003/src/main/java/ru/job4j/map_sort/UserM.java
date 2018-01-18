@@ -1,12 +1,18 @@
 package ru.job4j.map_sort;
 
-public class UserM implements Comparable<UserM> {
+import java.util.Comparator;
+
+public class UserM implements Comparable<UserM>, Comparator<UserM> {
     private String name;
     private int age;
     public UserM() {
 
     }
     public UserM(int age) {
+        this.age = age;
+    }
+    public UserM(String name, int age) {
+        this.name = name;
         this.age = age;
     }
 
@@ -28,15 +34,12 @@ public class UserM implements Comparable<UserM> {
         return this.age - o.age;
     }
 
-
-   /* @Override
-    public int compareTo(UserM o) {
-        return this.name.compareTo(o.name);
-    }*/
-
-    /*@Override
-    public int compareTo(Object o) {
+    @Override
+    public int compare(UserM o1, UserM o2) {
         return 0;
-    }*/
+    }
 
-}
+
+    }
+
+

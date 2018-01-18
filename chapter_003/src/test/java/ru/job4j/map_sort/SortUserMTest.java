@@ -1,5 +1,6 @@
 package ru.job4j.map_sort;
 import org.junit.Test;
+import ru.job4j.list_in_map.User;
 
 import java.util.*;
 
@@ -20,10 +21,37 @@ public class SortUserMTest {
         for (int i = 23; i < 25; i++) {
             list.add(new UserM(i));
         }
-        sortUserM.sort(list);
+        sortUserM.sortByage(list);
 
        // System.out.println(sortUserM.sort(list));
 
+    }
+    @Test
+    public void sortNameLenghtTest() {
+
+        SortUserM sortUserM = new SortUserM();
+        ArrayList<UserM> list = new ArrayList<>();
+        list.add(new UserM("Ivan", 12));
+        list.add(new UserM("Vasya", 35));
+        list.add(new UserM("Sasha", 17));
+        list.add(new UserM("Abraham", 5));
+        list.add(new UserM("Abragam", 10));
+        list.add(new UserM("Moisha", 38));
+
+        sortUserM.sortNameLength(list);
+    }
+    @Test
+    public void sortByNameAndAgeTest() {
+        SortUserM sortUserM = new SortUserM();
+        ArrayList<UserM> list = new ArrayList<>();
+        list.add(new UserM("Ivan", 12));
+        list.add(new UserM("Vasya", 35));
+        list.add(new UserM("Sasha", 17));
+        list.add(new UserM("Abraham", 5));
+        list.add(new UserM("Abragam", 10));
+        list.add(new UserM("Moisha", 38));
+
+        sortUserM.sortByAllFields(list);
     }
 
 }
