@@ -37,10 +37,10 @@ public class SortUserM {
         list.sort(new Comparator<UserM>() {
             @Override
             public int compare(UserM o1, UserM o2) {
-                int ageDifference = 0;
-                //int ageDifference = o1.getAge() > o2.getAge() ? 1 : (o1.getAge() == o2.getAge() ? 0 : - 1);
+               // int ageDifference = 0;
+                int ageDifference = o1.getAge() > o2.getAge() ? 1 : (o1.getAge() == o2.getAge() ? 0 : - 1);
 
-                if (o1.getAge() > o2.getAge()) {
+               /* if (o1.getAge() > o2.getAge()) {
                     ageDifference = 1;
                 }
                 if (o1.getAge() == o2.getAge()) {
@@ -48,9 +48,10 @@ public class SortUserM {
                 }
                 if (o1.getAge() < o2.getAge()) {
                     ageDifference = -1;
-                }
+                }*/
                 int result = 0;
                 int nameCompare = o1.getName().compareTo(o2.getName());
+               // result = nameCompare !=0 ? nameCompare : Integer.compare(o1.getAge(), o2.getAge());
                 result = nameCompare != 0 ? nameCompare : ageDifference;
 
 //                agedif = (o1.getAge() - o2.getAge());
