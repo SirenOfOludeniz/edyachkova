@@ -11,20 +11,20 @@ public class Tracker {
     }
 
     public void update(Item item) {
-        int index = 0;
         for (Item item1 : this.items) {
             if (item.getId().equals(item)) {
-                index = this.items.indexOf(item1);
+                this.items.set(this.items.indexOf(item1), item);
+                break;
             }
         }
-        this.items.set(index, item);
+        }
 
        /*for (Item item1 : this.items) {
            if (item1.getId().equals(item.getId())) {
                this.items.add(item);
            }
        }*/
-    }
+
 
     public void delete(Item item) {
         this.items.remove(item);
@@ -51,13 +51,13 @@ public class Tracker {
     }
 
    public Item findById(String id) {
-        int index = 0;
+        Item result = new Item();
         for (Item item : this.items) {
             if (item.getId().equals(id)) {
-                index = this.items.indexOf(item);
+                result = this.items.get(this.items.indexOf(item));
             }
         }
-        return this.items.get(index);
+        return result;
       /* Item copyitem = new Item();
        for (Item item : this.items) {
            if (item.getId().equals(id)) {
