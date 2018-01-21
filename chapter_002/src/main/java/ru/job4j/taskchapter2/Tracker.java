@@ -11,29 +11,17 @@ public class Tracker {
     }
 
     public void update(Item item) {
-        for (Item item1 : this.items) {
-            if (item.getId().equals(item)) {
-                this.items.set(this.items.indexOf(item1), item);
+        for (int i = 0; i < this.items.size() ; i++) {
+            if (this.items.get(i).getId().equals(item.getId())) {
+                this.items.set(i, item);
                 break;
             }
         }
         }
 
-       /*for (Item item1 : this.items) {
-           if (item1.getId().equals(item.getId())) {
-               this.items.add(item);
-           }
-       }*/
-
 
     public void delete(Item item) {
         this.items.remove(item);
-
-        /*for (Item item1 : this.items) {
-            if (item1.getId().equals(item.getId())) {
-                this.items.remove(item1); // так нормально удалять?
-            }
-        }*/
     }
 
     public ArrayList<Item> findAll() {
@@ -51,21 +39,13 @@ public class Tracker {
     }
 
    public Item findById(String id) {
-        Item result = new Item();
+        Item result = null;
         for (Item item : this.items) {
             if (item.getId().equals(id)) {
                 result = this.items.get(this.items.indexOf(item));
             }
         }
         return result;
-      /* Item copyitem = new Item();
-       for (Item item : this.items) {
-           if (item.getId().equals(id)) {
-               copyitem = item;
-           }
-           else copyitem = null;
-       }
-        return copyitem;*/
     }
 
     public ArrayList<Item> getItems() {
