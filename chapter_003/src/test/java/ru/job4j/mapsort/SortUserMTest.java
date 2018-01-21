@@ -1,6 +1,5 @@
-package ru.job4j.map_sort;
+package ru.job4j.mapsort;
 import org.junit.Test;
-import ru.job4j.list_in_map.User;
 
 import java.util.*;
 
@@ -12,10 +11,10 @@ public class SortUserMTest {
         SortUserM sortUserM = new SortUserM();
         ArrayList<UserM> list = new ArrayList<>();
 
-        for (int i = 33; i <35 ; i++) {
+        for (int i = 33; i < 35; i++) {
             list.add(new UserM(i));
         }
-        for (int i = 5; i < 9 ; i++) {
+        for (int i = 5; i < 9; i++) {
             list.add(new UserM(i));
         }
         for (int i = 23; i < 25; i++) {

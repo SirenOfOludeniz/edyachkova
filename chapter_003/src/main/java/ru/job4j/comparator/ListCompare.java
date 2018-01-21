@@ -20,10 +20,10 @@ public class ListCompare implements Comparator<List<Integer>> {
             result = 1;
         }
         if (o1.size() < o2.size()) {
-            result = - 1;
+            result = -1;
         }
-        if (o1.size() == o2.size() && o1.containsAll(o2) == false) {
-            for (int i = 0; i < o1.size() ; i++) {
+        if ((o1.size() == o2.size()) && !(o1.containsAll(o2))) {
+            for (int i = 0; i < o1.size(); i++) {
                 if (o1.get(i) > o2.get(i)) {
                     resultArrayElement = 1;
                 }

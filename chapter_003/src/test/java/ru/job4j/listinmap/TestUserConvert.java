@@ -1,7 +1,6 @@
-package ru.job4j.list_in_map;
+package ru.job4j.listinmap;
 import org.junit.Test;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.*;
 
 import static org.hamcrest.core.Is.is;

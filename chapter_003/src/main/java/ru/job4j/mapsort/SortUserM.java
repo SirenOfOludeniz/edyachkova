@@ -1,8 +1,8 @@
-package ru.job4j.map_sort;
+package ru.job4j.mapsort;
 import java.util.*;
 
 public class SortUserM {
-    public Set<UserM> sortByage (List<UserM> list) {
+    public Set<UserM> sortByage(List<UserM> list) {
         Set<UserM> treeset = new TreeSet<>();
         for (UserM userM : list) {
             treeset.add(list.get(list.indexOf(userM)));
@@ -14,7 +14,7 @@ public class SortUserM {
         return treeset;
     }
 
-    public List<UserM> sortNameLength (List<UserM> list) {
+    public List<UserM> sortNameLength(List<UserM> list) {
         ArrayList<UserM> list1 = new ArrayList<UserM>(list);
         list1.sort(new Comparator<UserM>() {
             @Override
@@ -27,7 +27,7 @@ public class SortUserM {
         }
         return list1;
     }
-    public List<UserM> sortByAllFields (List<UserM> list) {
+    public List<UserM> sortByAllFields(List<UserM> list) {
 
         list.sort(new Comparator<UserM>() {
             @Override
@@ -39,8 +39,9 @@ public class SortUserM {
             }
         });
         for (UserM userM : list) {
-            System.out.println("sort by name and age " + list.get(list.indexOf(userM)).getName() +
-                    list.get(list.indexOf(userM)).getAge());
+            System.out.println("sort by name and age "
+                    + list.get(list.indexOf(userM)).getName()
+                    + list.get(list.indexOf(userM)).getAge());
         }
 
         return list;

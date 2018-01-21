@@ -19,19 +19,18 @@ public class ConvertList {
     }
     public int[][] toArray2(List<Integer> list, int rows) {
         int columns = 0;
-        int amountOf0 = (rows* columns) - list.size();
-        if ((list.size()%rows) == 0) {
-            columns = list.size()/rows;
-        }
-        else {
-            columns = (list.size()/rows) + 1;
-            for (int i = 0; i < amountOf0 ; i++) {
+        int amountOf0 = (rows * columns) - list.size();
+        if ((list.size() % rows) == 0) {
+            columns = list.size() / rows;
+        } else {
+            columns = (list.size() / rows) + 1;
+            for (int i = 0; i < amountOf0; i++) {
                 list.add(0);
             }
         }
         int[][] array = new int[rows][columns];
         for (int value : list) {
-            for (int i = 0; i < rows ; i++) {
+            for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < columns; j++) {
                     array[i][j] = value;
                 }
@@ -41,16 +40,16 @@ public class ConvertList {
     }
 
     public int[][] toArray(List<Integer> list, int rows) {
-        int remainder = list.size()%rows;
+        int remainder = list.size() % rows;
         int columns = 0;
         int amount0 = 0;
         if (remainder == 0) {
-            columns = list.size()/rows;
+            columns = list.size() / rows;
         }
         if (remainder != 0) {
-          int kratnoe = list.size()/rows;
-          columns = ((kratnoe + 1) * rows)/rows;
-          amount0 = columns - (list.size()%columns);
+          int kratnoe = list.size() / rows;
+          columns = ((kratnoe + 1) * rows) / rows;
+          amount0 = columns - (list.size() % columns);
     }
     int[][] nums = new int[rows][columns];
 
@@ -63,8 +62,8 @@ public class ConvertList {
         }
 
         if (remainder != 0) {
-            if (list.size() < (rows*columns)) {
-                for (int i = 0; i < amount0 ; i++) {
+            if (list.size() < (rows * columns)) {
+                for (int i = 0; i < amount0; i++) {
                     list.add(0);
                 }
             }
