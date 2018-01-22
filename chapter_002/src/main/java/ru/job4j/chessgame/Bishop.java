@@ -1,4 +1,4 @@
-package ru.job4j.ChessGame;
+package ru.job4j.chessgame;
 
 public class Bishop extends Figure { //по условию нужен implements, но
     // я не думаю, что implements применимо к абстрактному классу Figure
@@ -137,8 +137,7 @@ public class Bishop extends Figure { //по условию нужен implements
 
 
             //return copyway ; } //тут же не нужен return? инаже два раза вернет массив
-        }
-        catch (ImpossibleMoveException ime) {
+        } catch (ImpossibleMoveException ime) {
             ime.printStackTrace();
             System.out.println("Фигура туда не может пойти");
         }

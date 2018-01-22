@@ -1,4 +1,4 @@
-package ru.job4j.ChessGame;
+package ru.job4j.chessgame;
 
 public class Cell {
     private int x; //или здесь public надо?

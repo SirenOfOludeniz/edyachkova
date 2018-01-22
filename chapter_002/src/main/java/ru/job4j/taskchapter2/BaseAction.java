@@ -10,6 +10,8 @@ public abstract class BaseAction implements UserAction {
         this.key = key;
     }
 
-    public String info() {return name + key(); }
+    public String info() {
+        return name + key();
+    }
 
 }

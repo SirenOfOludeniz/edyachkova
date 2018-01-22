@@ -6,8 +6,8 @@ public class Pyr3 {
     public static void main(String[] args) {
         StringBuilder buka = new StringBuilder();
        // int width = 0;
-        for(int width = 0; width< MIDDLE; width++){
-            for (int i = 0; i < MIDDLE-width; i++) {
+        for (int width = 0; width < MIDDLE; width++) {
+            for (int i = 0; i < MIDDLE - width; i++) {
                 System.out.print(" ");  // поставьте здесь вместо пробела i, чтобы проверить, что середина на 20-м символе
             }
             for (int i = 0; i < width; i++) {
@@ -22,11 +22,6 @@ public class Pyr3 {
 
 
         }
-
-
-
-
-
         }
     }
 

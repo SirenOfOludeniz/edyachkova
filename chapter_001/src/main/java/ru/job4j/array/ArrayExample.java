@@ -27,8 +27,8 @@ public class ArrayExample {
     }
     public static User findByName(User[] users, String name) {
         User result = null; //создаем пустого пользователя
-        for(User user : users) {
-            if(name.equals(user.name)) { // user.name == у ссылочной переменной объекта User получаем поле name этого объекта
+        for (User user : users) {
+            if (name.equals(user.name)) { // user.name == у ссылочной переменной объекта User получаем поле name этого объекта
                 result = user; //инициализируем переменную "User user <--- вот её инициализируем
                 break; // останавливаемся , так как нашли пользователя
             }

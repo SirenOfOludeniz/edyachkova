@@ -19,17 +19,17 @@ public class Turn {
 
 
 
-        System.out.println(Arrays.toString(back(nums))); }
+        System.out.println(Arrays.toString(back(nums)));
+  }
 
 
 
     public static int[] back(int[] array) {
-        for (int i = 0; i < array.length/2; i++) {
+        for (int i = 0; i < array.length / 2; i++) {
             int a;
             a = array[i];
             array[i] = array[((array.length - 1) - i)];
-            array[((array.length -1) - i)] = a;
-
+            array[((array.length - 1) - i)] = a;
         }
             return array;
         }

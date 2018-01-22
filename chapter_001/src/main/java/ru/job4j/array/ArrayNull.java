@@ -3,9 +3,9 @@ import java.util.Arrays;
 public class ArrayNull {
 
     public static void main(String[] args) {
-        int[] nums = {1,4,0,2,7,0,3,0,2,0};// не можем сделать пустые null элементы, используем 0
+        int[] nums = {1, 4, 0, 2, 7, 0, 3, 0, 2, 0}; // не можем сделать пустые null элементы, используем 0
         int[] numw1 = sort(nums);
-        for (int i = 0; i < numw1.length ; i++) {
+        for (int i = 0; i < numw1.length; i++) {
             System.out.println(numw1[i]);
 
         }
@@ -14,8 +14,8 @@ public class ArrayNull {
 
     public static int[] sort(int[] nums) {
         int[] copynums = new int[nums.length];
-        for (int origin = 0, copy = 0; origin < nums.length ; origin++) {
-            if(nums[origin] != 0) {
+        for (int origin = 0, copy = 0; origin < nums.length; origin++) {
+            if (nums[origin] != 0) {
                 copynums[copy] = nums[origin];
                 copy++;
             }
