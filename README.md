@@ -1,5 +1,8 @@
 http://job4j.ru/
-Цели:
-Изучить часть 001 не позднее 20 сентября 2017 года.
-Изучить часть 002 не позднее 20 октбря 2017 года
-Изучить часть 003 не позднее 15 ноября 2017 года
+пїЅпїЅпїЅпїЅ:
+пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 001 пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 20 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2017 пїЅпїЅпїЅпїЅ.
+пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 002 пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 20 пїЅпїЅпїЅпїЅпїЅпїЅ 2017 пїЅпїЅпїЅпїЅ
+пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 003 пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 15 пїЅпїЅпїЅпїЅпїЅпїЅ 2017 пїЅпїЅпїЅпїЅ
+
+[![Build Status](https://travis-ci.org/SirenOfOludeniz/edyachkova.svg?branch=master)](https://travis-ci.org/SirenOfOludeniz/edyachkova)
+[![codecov](https://codecov.io/gh/SirenOfOludeniz/edyachkova/branch/master/graph/badge.svg)](https://codecov.io/gh/SirenOfOludeniz/edyachkova)
