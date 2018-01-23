@@ -35,7 +35,7 @@ public class StartUi {
             menu.select(input.action("select: ", menu.range())); // здесь применен новый ask(String question, int[] ranges)
              exit = this.input.action("exit?");
             System.out.println("exit" + exit);
-        } while ( !"y".equals(exit)); }
+        } while (!"y".equals(exit)); }
 
 
     public static void main(String[] args) {
