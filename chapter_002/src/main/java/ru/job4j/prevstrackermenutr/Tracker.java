@@ -1,4 +1,4 @@
-package ru.job4j.prevs_tracker_menutr;
+package ru.job4j.prevstrackermenutr;
 
 import ru.job4j.taskchapter2.Item;
 
@@ -17,7 +17,7 @@ public class Tracker {
                 break;
             }
         }
-        for (int i = 0; i < this.items.size() ; i++) {
+        for (int i = 0; i < this.items.size(); i++) {
             System.out.println("cikl " + this.items.get(i));
         }
         System.out.println("sout " + this.items);

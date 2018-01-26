@@ -18,7 +18,7 @@ public class ArRotate {
 
     public static int[][] rotate(int[][] array) {
         for (int i = 0; i < array.length; i++) {
-            for (int j = i+ 1; j < array.length ; j++) {
+            for (int j = i + 1; j < array.length; j++) {
 
                int a = array[i][j];
               array[i][j] = array[j][i];

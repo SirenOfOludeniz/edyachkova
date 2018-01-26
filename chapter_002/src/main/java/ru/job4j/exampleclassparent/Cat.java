@@ -1,6 +1,6 @@
 package ru.job4j.exampleclassparent;
 
-public class Cat extends Animal{
+public class Cat extends Animal {
     public static Cat kotan;
     public void makenoise() {
         super.makenoise();

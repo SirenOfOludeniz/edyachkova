@@ -10,13 +10,14 @@ public class Calculator {
 		this.result = first - second; 
 	}
 	void div(double first, double second) {
-		this.result =  first/ second;
+		this.result =  first / second;
 		}
 	void multiple(double first, double second) {
-	this.result = first*second;
+	this.result = first * second;
 	}
 	double getResult() {
-	return this.result; }
+	return this.result;
+	}
 
 
 

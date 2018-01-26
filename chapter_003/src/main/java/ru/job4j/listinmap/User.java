@@ -1,10 +1,10 @@
-package ru.job4j.list_in_map;
+package ru.job4j.listinmap;
 
 public class User implements Comparable<User> {
     private Integer id;
     private String name;
     private String city;
-    public User(){
+    public User() {
 
     }
 
@@ -34,9 +34,9 @@ public class User implements Comparable<User> {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                '}';
+        return "User{"
+                + "name='" + name + '\''
+                + '}';
     }
 
     @Override

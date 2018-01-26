@@ -24,6 +24,6 @@ public class Board {
 class Result {
     public static void main(String[] args) {
         Board bo = new Board();
-        System.out.println( bo.paint(4,4));
+        System.out.println(bo.paint(4, 4));
     }
 }

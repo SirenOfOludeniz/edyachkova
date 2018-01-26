@@ -16,7 +16,7 @@ public class CheckTreeSet {
         System.out.printf("В списке %d элементов \n", states.size());
 
        // states.remove("Германия");
-        for(String state : states){
+        for (String state : states) {
 
             System.out.println(state);
         }

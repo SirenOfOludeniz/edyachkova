@@ -10,17 +10,19 @@ public class ArrayWordInword {
        char[] full = origin.toCharArray();
        boolean a = false;
 
-        for (int i = 0; i < (origin.length()-bun.length())+1 ; i++) {
-            String fulw = new String(full,i, (bun.length()));
-            if(fulw.equals(bun)) {
+        for (int i = 0; i < (origin.length() - bun.length()) + 1; i++) {
+            String fulw = new String(full, i, (bun.length()));
+            if (fulw.equals(bun)) {
                 a = true;
                 break;
+            } else {
+                a = false;
             }
-            else a = false;
             System.out.println(fulw);
         }
 
-        return a; }
+        return a;
+    }
     }
 
 

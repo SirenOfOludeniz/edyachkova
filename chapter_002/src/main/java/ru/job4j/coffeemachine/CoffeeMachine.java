@@ -50,21 +50,22 @@ public class CoffeeMachine {
         int counter = 0;
         int[] arraymonetki = new int[coins.length]; //каждый элемент хранит количество монеток одного номинала
 
-            for (int i = 0; i < coins.length ; i++) {
-                if (change/coins[i] != 0) { //почему здесь coins[0] = 0, а не 15
-                sumcoins = change/coins[i];
+            for (int i = 0; i < coins.length; i++) {
+                if (change / coins[i] != 0) { //почему здесь coins[0] = 0, а не 15
+                sumcoins = change / coins[i];
                 arraymonetki[i] = sumcoins;
-                change = change - (sumcoins*coins[i]);
+                change = change - (sumcoins * coins[i]);
                 counter = sumcoins + counter;
+                } else {
+                    coins[i] = 0;
                 }
-                else coins[i] = 0;
             }
             int counter2 = 0;
         int[] changes = new int[counter];
 
-        for (int j = 0; j < coins.length ; j++) {
+        for (int j = 0; j < coins.length; j++) {
             if (coins[j] != 0) {
-            for (int i = 0; i <arraymonetki[j] ; i++) {
+            for (int i = 0; i < arraymonetki[j]; i++) {
                     changes[counter2++] = coins[j];
 
                 }

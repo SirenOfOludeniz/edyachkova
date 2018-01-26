@@ -11,29 +11,18 @@ public class Tracker {
     }
 
     public void update(Item item) {
-        int index = 0;
-        for (Item item1 : this.items) {
-            if (item.getId().equals(item)) {
-                index = this.items.indexOf(item1);
+        for (int i = 0; i < this.items.size(); i++) {
+            if (this.items.get(i).getId().equals(item.getId())) {
+                this.items.set(i, item);
+                break;
             }
         }
-        this.items.set(index, item);
+        }
 
-       /*for (Item item1 : this.items) {
-           if (item1.getId().equals(item.getId())) {
-               this.items.add(item);
-           }
-       }*/
-    }
 
     public void delete(Item item) {
-        this.items.remove(item);
-
-        /*for (Item item1 : this.items) {
-            if (item1.getId().equals(item.getId())) {
-                this.items.remove(item1); // так нормально удалять?
-            }
-        }*/
+        this.items.remove(this.items.indexOf(item));
+       // this.items.remove(item);
     }
 
     public ArrayList<Item> findAll() {
@@ -51,21 +40,13 @@ public class Tracker {
     }
 
    public Item findById(String id) {
-        int index = 0;
+        Item result = new Item();
         for (Item item : this.items) {
             if (item.getId().equals(id)) {
-                index = this.items.indexOf(item);
+                result = this.items.get(this.items.indexOf(item));
             }
         }
-        return this.items.get(index);
-      /* Item copyitem = new Item();
-       for (Item item : this.items) {
-           if (item.getId().equals(id)) {
-               copyitem = item;
-           }
-           else copyitem = null;
-       }
-        return copyitem;*/
+        return result;
     }
 
     public ArrayList<Item> getItems() {

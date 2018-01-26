@@ -1,4 +1,4 @@
-package ru.job4j.map_sort;
+package ru.job4j.mapsort;
 
 import java.util.Comparator;
 

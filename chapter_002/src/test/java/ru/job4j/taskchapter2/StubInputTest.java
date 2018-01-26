@@ -20,9 +20,10 @@ public class StubInputTest {
     public void whenUserUpdateItem() {
         Tracker tracker = new Tracker();
         Item olditem = tracker.add(new Item("45", "Tv", "desc", "17", "brbr"));
-        tracker.add(olditem);
         Input input = new StubInput(new String[]{"2", "45", "Radio", "desc", "15", "comment", "y"});
         // 2 update, 4 id newitem, 14 id olditem, 0- exit
+        System.out.println(tracker.findAll());
+
         StartUi start = new StartUi(input, tracker);
         start.init();
         assertThat(tracker.findById("45").getName(), is("Radio"));
@@ -48,16 +49,20 @@ public class StubInputTest {
     public void whenUserDeleteItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("45", "Tv", "desc", "15", "brbr");
-        Item item1 = new Item();
-        Item item2 = new Item();
+        Item item1 = new Item("35", "Radio", "desc", "23", "com");
+       Item item2 = new Item("5", "Radio", "desc", "55", "com");
 
         tracker.add(item);
-        tracker.add(item1);
+       tracker.add(item1);
         tracker.add(item2);
+        for (int i = 0; i < tracker.findAll().size(); i++) {
+            System.out.println(tracker.findAll().get(i).getId());
+        }
 
         Input input = new StubInput(new String[]{"3", "45", "y"});
         StartUi start = new StartUi(input, tracker);
         start.init();
+
         assertThat(tracker.findAll().get(0), is(item1));
     }
     @Test

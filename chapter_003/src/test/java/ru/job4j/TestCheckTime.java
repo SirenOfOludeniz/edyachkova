@@ -28,7 +28,7 @@ public class TestCheckTime {
     public void deleteByObjectTestArrayList() {
         CheckTime checkTime = new CheckTime();
         Collection<String> arlist = new ArrayList<>();
-        checkTime.add(arlist,0);
+        checkTime.add(arlist, 0);
         System.out.println("Время удаления 20 000 ти элементов в ArrayList = " + checkTime.deleteByObject(arlist, 0));
     }
     @Test

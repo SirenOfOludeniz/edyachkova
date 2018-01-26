@@ -5,8 +5,8 @@ import java.util.*;
 public class CheckTime {
     public long add(Collection<String> collection, int amount) {
         Date current = new Date();
-        for (int i = 0; i < 1000000 ; i++) {
-            collection.add("Vasya"+ i);
+        for (int i = 0; i < 1000000; i++) {
+            collection.add("Vasya" + i);
         }
         Date newtime = new Date();
         long operationTime = newtime.getTime() - current.getTime();
@@ -16,7 +16,7 @@ public class CheckTime {
 
     public long deleteByObject(Collection<String> collection, int amount) {
         Date current = new Date();
-        for (int i = 0; i < 20000 ; i++) {
+        for (int i = 0; i < 20000; i++) {
             collection.remove("Vasya" + i);
         }
         Date newtime = new Date();
@@ -37,7 +37,7 @@ public class CheckTime {
     }
     public long deleteForArrLAndLinkedL(List<String> arrlist, int amount) {
         Date current = new Date();
-        for (int i = 0; i < 20000 ; i++) {
+        for (int i = 0; i < 20000; i++) {
             arrlist.remove(0); //удаление первых 20ти элементов
         }
         Date  newtime = new Date();

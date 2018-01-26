@@ -1,4 +1,4 @@
-package ru.job4j.ChessGame;
+package ru.job4j.chessgame;
 
 public abstract class Figure {
     final Cell position = null;
