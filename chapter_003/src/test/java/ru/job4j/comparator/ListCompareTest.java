@@ -16,25 +16,25 @@ public class ListCompareTest {
        assertThat(listCompare.compare(list, list1), is(result));
    }
    @Test
-    public void compareListLiftGreaterThanRight() {
+    public void compareListLeftLessThanRight() {
        ListCompare listCompare = new ListCompare();
        ArrayList<Integer> list = new ArrayList<>();
        ArrayList<Integer> list1 = new ArrayList<>();
        list.addAll(Arrays.asList(2, 1, 4, 5, 9));
        list1.addAll(Arrays.asList(4, 1, 0, 2, 9));
        System.out.println(listCompare.compare(list, list1));
-       int result = 1;
+       int result = -1;
        assertThat(listCompare.compare(list, list1), is(result));
    }
    @Test
-    public void compareListWhenLiftLessRight() {
+    public void compareListWhenLeftGreaterThanRight() {
        ListCompare listCompare = new ListCompare();
        ArrayList<Integer> list = new ArrayList<>();
        ArrayList<Integer> list1 = new ArrayList<>();
        list.addAll(Arrays.asList(2, 1, 4, 5, 9));
        list1.addAll(Arrays.asList(0, 3, 0, 2, 9));
        System.out.println(listCompare.compare(list, list1));
-       int result = -1;
+       int result = 1;
        assertThat(listCompare.compare(list, list1), is(result));
    }
 }
