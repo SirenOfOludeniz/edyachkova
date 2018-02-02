@@ -39,15 +39,27 @@ public class Tracker {
         return result;
     }
 
-   public Item findById(String id) {
-        Item result = new Item();
+    public Item findById(String id) {
+        Item result = Item.EMPTY;
         for (Item item : this.items) {
-            if (item.getId().equals(id)) {
-                result = this.items.get(this.items.indexOf(item));
+            if (id == item.getId()) {
+                result = item;
+                break;
             }
         }
         return result;
     }
+
+  /* public Item findById(String id) {
+        Item result = new Item();
+        for (Item item : this.items) {
+            if (item.getId().equals(id)) {
+                //result = this.items.get(this.items.indexOf(item));
+           result = item;
+            }
+        }
+        return result;
+    }*/
 
     public ArrayList<Item> getItems() {
         return items;

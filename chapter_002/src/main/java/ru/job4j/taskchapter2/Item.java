@@ -1,6 +1,7 @@
 package ru.job4j.taskchapter2;
 
 public class Item {
+    public static final Item EMPTY = new Item();
     private String id;
     private String name;
     private String description;
