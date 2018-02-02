@@ -22,7 +22,7 @@ public class SortUserMTest {
         }
         sortUserM.sortByage(list);
 
-       // System.out.println(sortUserM.sort(list));
+       System.out.println(sortUserM.sortByage(list));
 
     }
     @Test
@@ -47,8 +47,9 @@ public class SortUserMTest {
         list.add(new UserM("Vasya", 35));
         list.add(new UserM("Sasha", 17));
         list.add(new UserM("Abraham", 5));
-        list.add(new UserM("Abragam", 10));
+        list.add(new UserM("Abraham", 10));
         list.add(new UserM("Moisha", 38));
+
 
         sortUserM.sortByAllFields(list);
     }

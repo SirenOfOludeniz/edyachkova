@@ -4,10 +4,11 @@ import java.util.*;
 public class SortUserM {
     public Set<UserM> sortByage(List<UserM> list) {
         Set<UserM> treeset = new TreeSet<>();
-        for (UserM userM : list) {
-            treeset.add(list.get(list.indexOf(userM)));
-        }
+//        for (UserM userM : list) {
+//            treeset.add(list.get(list.indexOf(userM)));
+//        }
 
+        treeset.addAll(list);
         for (UserM userM : treeset) {
            System.out.println("age " + userM.getAge());
         }

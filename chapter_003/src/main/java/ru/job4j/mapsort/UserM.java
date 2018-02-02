@@ -16,6 +16,13 @@ public class UserM implements Comparable<UserM>, Comparator<UserM> {
         this.age = age;
     }
 
+    @Override
+    public String toString() {
+        return "UserM{" +
+                "age=" + age +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
