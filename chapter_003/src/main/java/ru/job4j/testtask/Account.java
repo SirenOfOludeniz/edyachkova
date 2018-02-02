@@ -3,28 +3,28 @@ package ru.job4j.testtask;
 public class Account {
 
 
-    private int value;
-    private int requisites;
+    private double value;
+    private String requisites;
 
     public Account() {
     }
 
-    public Account(int value, int requisites) {
+    public Account(double value, String requisites) {
         this.value = value;
         this.requisites = requisites;
     }
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(double value) {
         this.value = value;
     }
-    public int getRequisites() {
+    public String getRequisites() {
         return requisites;
     }
-    public void setRequisites(int requisites) {
+    public void setRequisites(String requisites) {
         this.requisites = requisites;
     }
 }

@@ -45,15 +45,34 @@ public class Bank {
         }
         return list;
     }
+    public User findUserByPassport(String passport) {
+        User user = new User();
+        for (User user1 : this.users.keySet()) {
+            if (user1.getPassport().equals(passport)) {
+                user = user1;
+            }
+        }
+        return user;
+    }
+    public Account findAccountByRequisites(String passport, String requisites) {
+        Account account = new Account();
+        for (Account account1 : getUserAccounts(passport)) {
+            if (account1.getRequisites().equals(requisites)) {
+                account = account1;
+            }
+        }
+        return account;
+    }
 
     public boolean transferMoney (String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
         boolean result = false;
-        for (User user : this.users.keySet()) {
-            if (user.getPassport().equals(srcPassport)) {
-
-            }
+        Account accountSrc = findAccountByRequisites(srcPassport, srcRequisite);
+        Account accountDest = findAccountByRequisites(destPassport, dstRequisite);
+        if (amount <= accountSrc.getValue() && this.users.get(findUserByPassport(srcPassport)).contains(findAccountByRequisites(srcPassport, srcRequisite))) {
+            accountSrc.setValue(accountSrc.getValue() - amount);
+            accountDest.setValue(accountDest.getValue() + amount);
+            result = true;
         }
-        if (amount > )
         return result;
     }
 
