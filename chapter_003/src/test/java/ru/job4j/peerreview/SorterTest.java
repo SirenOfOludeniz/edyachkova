@@ -1,21 +1,43 @@
 package ru.job4j.peerreview;
 import org.junit.Test;
+import java.util.*;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import java.util.*;
 public class SorterTest {
     @Test
-    public void sortListReturnTreeSet() {
+    public void sortTest() {
         Sorter sorter = new Sorter();
+        User user = new User("Ivan");
+        User user1 = new User("Vasya");
+        User user2 = new User("Borya");
         ArrayList<User> list = new ArrayList<>();
-        list.add(new User("Vasya", 31));
-        list.add(new User("Anton", 34));
-        list.add(new User("Ivan", 23));
-        //System.out.println(sorter.sort(list));
-        sorter.sort(list);
-//        for (User user : list) {
-//            System.out.println(user.getName());
-//        }
-        System.out.println(list);
+        list.add(user);
+        list.add(user1);
+        list.add(user2);
+        System.out.println(sorter.sort(list));
+    }
+    @Test
+    public void sortByNameLenght() {
+        Sorter sorter = new Sorter();
+        User user = new User("Ivan");
+        User user1 = new User("Vasya");
+        User user2 = new User("Borya");
+        ArrayList<User> list = new ArrayList<>();
+        list.add(user);
+        list.add(user1);
+        list.add(user2);
+        System.out.println(sorter.sortnamelength(list));
+    }
+    @Test
+    public void sortBothTest() {
+        Sorter sorter = new Sorter();
+        User user = new User("Ivanus");
+        User user1 = new User("Vasyan");
+        User user2 = new User("BoryaVadim");
+        ArrayList<User> list = new ArrayList<>();
+        list.add(user);
+        list.add(user1);
+        list.add(user2);
+        System.out.println(sorter.sortboth(list));
     }
 }
