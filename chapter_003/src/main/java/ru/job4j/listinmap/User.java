@@ -7,7 +7,6 @@ public class User implements Comparable<User> {
     public User() {
 
     }
-
     public User(String name) {
         this.name = name;
     }
@@ -20,25 +19,21 @@ public class User implements Comparable<User> {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
     public String getCity() {
         return city;
     }
-
     public void setCity(String city) {
         this.city = city;
     }
-
     @Override
     public String toString() {
         return "User{"
                 + "name='" + name + '\''
                 + '}';
     }
-
     @Override
     public int compareTo(User o) {
         return this.name.compareTo(o.name);

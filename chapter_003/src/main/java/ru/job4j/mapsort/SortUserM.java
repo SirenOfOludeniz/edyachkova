@@ -2,34 +2,36 @@ package ru.job4j.mapsort;
 import java.util.*;
 
 public class SortUserM {
+    /**
+     *
+     * @param list
+     * @return
+     * //        for (UserM userM : list) {
+    //            treeset.add(list.get(list.indexOf(userM)));
+    //        }
+     */
     public Set<UserM> sortByage(List<UserM> list) {
-        Set<UserM> treeset = new TreeSet<>();
-//        for (UserM userM : list) {
-//            treeset.add(list.get(list.indexOf(userM)));
-//        }
-
-        treeset.addAll(list);
-        for (UserM userM : treeset) {
+        Set<UserM> userMS = new TreeSet<>();
+        userMS.addAll(list);
+        for (UserM userM : userMS) {
            System.out.println("age " + userM.getAge());
         }
-        return treeset;
+        return userMS;
     }
-
     public List<UserM> sortNameLength(List<UserM> list) {
-        ArrayList<UserM> list1 = new ArrayList<UserM>(list);
-        list1.sort(new Comparator<UserM>() {
+        ArrayList<UserM> users = new ArrayList<UserM>(list);
+        users.sort(new Comparator<UserM>() {
             @Override
             public int compare(UserM o1, UserM o2) {
                 return o1.getName().length() - o2.getName().length();
             }
         });
-        for (UserM userM : list1) {
-            System.out.println("Name lenght " + list1.get(list1.indexOf(userM)).getName());
+        for (UserM userM : users) {
+            System.out.println("Name lenght " + users.get(users.indexOf(userM)).getName());
         }
-        return list1;
+        return users;
     }
     public List<UserM> sortByAllFields(List<UserM> list) {
-
         list.sort(new Comparator<UserM>() {
             @Override
             public int compare(UserM o1, UserM o2) {
@@ -44,8 +46,6 @@ public class SortUserM {
                     + list.get(list.indexOf(userM)).getName()
                     + list.get(list.indexOf(userM)).getAge());
         }
-
         return list;
     }
-
 }

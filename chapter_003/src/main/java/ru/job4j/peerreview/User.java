@@ -5,11 +5,8 @@ public class User implements Comparable<User> {
     private Integer age;
     private String name;
     private String city;
-
     public User() {
-
     }
-
     public User(String name) {
         this.name = name;
     }
@@ -22,14 +19,12 @@ public class User implements Comparable<User> {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
     public String getCity() {
         return city;
     }
-
     public void setCity(String city) {
         this.city = city;
     }
@@ -45,10 +40,8 @@ public class User implements Comparable<User> {
                 + "name='" + name + '\''
                 + '}';
     }
-
     @Override
     public int compareTo(User o) {
         return this.name.compareTo(o.getName());
     }
-
 }

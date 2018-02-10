@@ -4,11 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConvertList {
+    /**
+     * @param array
+     * @return
+     * // первые скобки отвечают за ряды(строки), а вторые - за колонки
+    //  int rows = a.length;
+    //  int columns = a[0].length;
+     *
+     *
+     */
     public List<Integer> toList(int[][] array) {
         ArrayList<Integer> list = new ArrayList<>();
-       // первые скобки отвечают за ряды(строки), а вторые - за колонки
-      //  int rows = a.length;
-      //  int columns = a[0].length;
+
         for (int[] a : array) {
             for (int b : a) {
                 list.add(b);
@@ -19,12 +26,12 @@ public class ConvertList {
     }
     public int[][] toArray2(List<Integer> list, int rows) {
         int columns = 0;
-        int amountOf0 = (rows * columns) - list.size();
+        int zeros = (rows * columns) - list.size();
         if ((list.size() % rows) == 0) {
             columns = list.size() / rows;
         } else {
             columns = (list.size() / rows) + 1;
-            for (int i = 0; i < amountOf0; i++) {
+            for (int i = 0; i < zeros; i++) {
                 list.add(0);
             }
         }
@@ -87,49 +94,4 @@ public class ConvertList {
         }
         return result;
     }
-
-   /* public static void main(String[] args) {
-        int[][] nums = {{2,3,4},{3,5,6},{2,3}};    //new int[2][5];
-        int[] nums2 = {3,4,5,3};
-        ArrayList<Integer> numbers = new ArrayList<>();
-        ArrayList<Integer> numbers2 = new ArrayList<>();
-        for (int a : nums2) {
-            numbers2.add(a);
-        }
-        System.out.println(numbers2);
-        for (int[] a : nums) {
-            for (int b : a) {
-                numbers.add(b);
-            }
-        }
-        System.out.println(numbers);
-        int rows = 3;
-        int amount = numbers.size()/rows;
-        int rem = 5%2;
-        System.out.println("rem " + rem);
-        ArrayList<Integer> chisla = new ArrayList<>();
-        for (int i = 0; i < 5 ; i++) {
-            chisla.add(10);
-        }
-        System.out.println("chisla(8) " + chisla.get(8));
-
-    }*/
-   /*public static void main(String[] args) {
-       ArrayList<Integer> numbers = new ArrayList<>();
-       for (int i = 0; i < 9 ; i++) {
-           numbers.add(5);
-       }
-       // теперь нужно добавить список в массив int[3][3]
-       int[][] aaaaa = new int[3][3];
-
-      // куда можно записать ArrayList
-       for (int a : numbers) {
-           for (int i = 0; i < 3 ; i++) {
-               for (int j = 0; j < 3 ; j++) {
-                   aaaaa[i][j] = a;
-               }
-           }
-       }
-
-   }*/
 }

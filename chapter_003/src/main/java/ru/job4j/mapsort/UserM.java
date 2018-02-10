@@ -1,12 +1,10 @@
 package ru.job4j.mapsort;
 
 import java.util.Comparator;
-
 public class UserM implements Comparable<UserM>, Comparator<UserM> {
     private String name;
     private int age;
     public UserM() {
-
     }
     public UserM(int age) {
         this.age = age;
@@ -15,14 +13,12 @@ public class UserM implements Comparable<UserM>, Comparator<UserM> {
         this.name = name;
         this.age = age;
     }
-
     @Override
     public String toString() {
         return "UserM{" +
                 "age=" + age +
                 '}';
     }
-
     public String getName() {
         return name;
     }
@@ -40,13 +36,10 @@ public class UserM implements Comparable<UserM>, Comparator<UserM> {
     public int compareTo(UserM o) {
         return this.age - o.age;
     }
-
     @Override
     public int compare(UserM o1, UserM o2) {
         return 0;
     }
-
-
     }
 
 

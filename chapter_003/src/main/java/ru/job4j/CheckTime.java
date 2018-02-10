@@ -1,7 +1,5 @@
 package ru.job4j;
-
 import java.util.*;
-
 public class CheckTime {
     public long add(Collection<String> collection, int amount) {
         Date current = new Date();
@@ -13,7 +11,6 @@ public class CheckTime {
         System.out.println("Время добавления 1 000 000 элементов :" + operationTime);
         return operationTime;
     }
-
     public long deleteByObject(Collection<String> collection, int amount) {
         Date current = new Date();
         for (int i = 0; i < 20000; i++) {
@@ -44,13 +41,20 @@ public class CheckTime {
         long operationTime = newtime.getTime() - current.getTime();
         return operationTime;
     }
+
+    /**
+     *
+     * @param set
+     * @param amount
+     * @return
+     *       //set.remove(set.first());
+    //        for (int i = 0; i < 20000 ; i++) {
+    //            set.remove(set.first()); //удаление первых 20ти элементов
+    //        }
+     */
     public long deleteForTreeSet(TreeSet<String> set, int amount) {
         Date current = new Date();
         set.remove(set.first());
-        //set.remove(set.first());
-//        for (int i = 0; i < 20000 ; i++) {
-//            set.remove(set.first()); //удаление первых 20ти элементов
-//        }
         Date  newtime = new Date();
         long operationTime = newtime.getTime() - current.getTime();
         return operationTime;
