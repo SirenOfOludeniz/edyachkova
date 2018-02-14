@@ -55,7 +55,7 @@ public class SortDepartament {
         String[] partDesig;
         TreeSet<String> data = new TreeSet<>(departs);
         TreeSet<String> newdata = new TreeSet<>();
-        for (String name : data) { //здесь ConcurrentModificationException
+        for (String name : data) { //здесь ConcurrentModificationException, потому сохраняла в тот же сет
             partDesig = name.split("\\\\");
             for (String value : partDesig) {
                 name += value;
