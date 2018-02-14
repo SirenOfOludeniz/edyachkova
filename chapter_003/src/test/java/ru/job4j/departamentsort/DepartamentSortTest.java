@@ -34,20 +34,6 @@ public class DepartamentSortTest {
 //        }
     }
     @Test
-    public void addDepartTest() {
-        SortDepartament sortDepartament = new SortDepartament();
-        String[] designations = {
-                "K1\\SK1",
-                "K1\\SK2",
-                "K1\\SK1\\SSK1",
-                "K1\\SK1\\SSK2",
-                "K2",
-                "K2\\SK1\\SSK1",
-                "K2\\SK1\\SSK2"
-        };
-        sortDepartament.addDepart(designations);
-    }
-    @Test
     public void addDepartamentTest() {
         SortDepartament sortDepartament = new SortDepartament();
         String[] desigs = {
@@ -60,8 +46,23 @@ public class DepartamentSortTest {
                 "K2\\SK1\\SSK2"
         };
         ArrayList<String> designations = new ArrayList<String>();
-        //designations= Arrays.asList(desigs);
        Collections.addAll(designations, desigs);
         sortDepartament.addDepartment(designations);
+    }
+    @Test
+    public void reverseTest() {
+        SortDepartament sortDepartament = new SortDepartament();
+        String[] desigs = {
+                "K1\\SK1",
+                "K1\\SK2",
+                "K1\\SK1\\SSK1",
+                "K1\\SK1\\SSK2",
+                "K2",
+                "K2\\SK1\\SSK1",
+                "K2\\SK1\\SSK2"
+        };
+        ArrayList<String> designations = new ArrayList<String>();
+        Collections.addAll(designations, desigs);
+        sortDepartament.sortReversed(sortDepartament.addDepartment(designations));
     }
 }
