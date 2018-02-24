@@ -9,6 +9,7 @@ public class MatrixIterator implements Iterator{
     private int indexColumn = 0;
 
 
+
     public MatrixIterator(int[][] arrayIt) {
         this.arrayIt = arrayIt;
     }
