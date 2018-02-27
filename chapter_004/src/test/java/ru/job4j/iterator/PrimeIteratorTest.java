@@ -20,7 +20,6 @@ public class PrimeIteratorTest {
 
     @Test(expected = NoSuchElementException.class)
     public void shouldReturnPrimeNumbersOnly () {
-        //System.out.println("in.next вернул " + it.next());
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(2));
         assertThat(it.hasNext(), is(true));
@@ -37,7 +36,7 @@ public class PrimeIteratorTest {
 
     @Test
     public void sequentialHasNextInvocationDoesntAffectRetrievalOrder () {
-        assertThat(it.hasNext(), is(true));
+       assertThat(it.hasNext(), is(true));
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(2));
         assertThat(it.next(), is(3));

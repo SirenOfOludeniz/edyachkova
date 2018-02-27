@@ -35,6 +35,7 @@ public class EvenNumbersIterator implements Iterator<Integer>{
 
     @Override
     public Integer next() {
+        System.out.println(index);
         for (int i = index; i < numbers.length; i++) {
             if (numbers[i] % 2 == 0) {
                index = i;

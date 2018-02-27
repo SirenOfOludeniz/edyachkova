@@ -1,5 +1,7 @@
 package ru.job4j.iterator;
 
+import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -16,28 +18,33 @@ public class PrimeIterator implements Iterator<Integer>{
     @Override
     public boolean hasNext() {
         boolean result = false;
-        int count = 0;
+        int counthasNext = 0;
         for (int i = index; i < values.length; i++) {
+
             int divider = 0;
+            System.out.println("ИТЕРАЦИЯ " + i);
             for (int j = 1; j <= values[i]; j++) {
                 if (values[i] % j == 0) {
                     System.out.println(values[i] +  " % " + j + "= " + values[i] % j);
                     divider++;
                 }
-                System.out.println("divider from hasNext = " + divider);
+               // System.out.println("divider from hasNext = " + divider);
             }
             if (divider == 2) {
-               ++count;
+               ++counthasNext;
             }
-            if (count > 1) {
+            if (counthasNext >= 1) {
                 result = true;
             }
+            System.out.println("counthasNext = " + counthasNext);
         }
         return result;
     }
 
     @Override
     public Integer next() {
+        //if hasNaxt = false => exception
+        System.out.println("index " + index);
         int count = 0;
 
         for (int i = index; i < values.length; i++) {
@@ -53,20 +60,23 @@ public class PrimeIterator implements Iterator<Integer>{
                 index = i;
                break;
             }
-
         }
-        return values[index++];
-
-
-       /* for (int i = index; i < values.length; i++) {
-            if (values[i] > 1 && values[i] % values[i] == 0 && values[i] % 1 == 0) {
-                index = i;
-                break;
-            }
-        }
-        if (!(values[index] > 1 && values[index] % values[index] == 0 && values[index] % 1 == 0)) {
+        if (index >= values.length) {
             throw new NoSuchElementException();
         }
-        return values[index++];*/
+        for (int i = 1; i <= values[index]; i++) {
+            //System.out.println("index = " + index);
+            if (values[index] % i == 0) {
+                ++count;
+                System.out.println("count inside = " + count);
+            }
+
+        }
+        System.out.println("count " + count);
+        if (count != 2) {
+           throw new NoSuchElementException();
+        }
+
+        return values[index++];
     }
 }
