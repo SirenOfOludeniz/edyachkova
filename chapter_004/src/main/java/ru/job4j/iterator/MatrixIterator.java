@@ -14,19 +14,9 @@ public class MatrixIterator implements Iterator{
         this.arrayIt = arrayIt;
     }
 
-
-    public int lenghtArray(int[][] arr) {
-        int size = 0;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = arr[i].length - 1; j < arr[i].length; j++) {
-                size = size + arr[i].length;
-            }
-        }
-        return size;
-    }
     @Override
     public boolean hasNext() {
-        boolean result;
+        /*boolean result;
         if (indexColumn < arrayIt[indexRow].length) {
             result = true;
         }
@@ -36,17 +26,19 @@ public class MatrixIterator implements Iterator{
             }
             else result = false;
         }
-        return result;
-       // return indexRow < arrayIt.length && indexColumn < arrayIt[indexRow].length;
+        return result;*/
+       return indexRow < arrayIt.length && indexColumn < arrayIt[indexRow].length;
     }
 
     @Override
     public Object next() {
+        int element = 0;
         if (indexColumn < arrayIt[indexRow].length) {
-            return arrayIt[indexRow][indexColumn++];
+            element = arrayIt[indexRow][indexColumn++];
         }
         else { indexColumn = 0;
-            return arrayIt[++indexRow][indexColumn++];
+            element = arrayIt[++indexRow][indexColumn++];
         }
+        return element;
     }
 }
