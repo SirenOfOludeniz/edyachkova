@@ -63,6 +63,8 @@ public class EvenIteratorTest {
         assertThat(it.next(), is(6));
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(8));
+        //в письме было
+        assertThat(it.hasNext(), is(false));
     }
 }
 

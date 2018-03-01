@@ -15,27 +15,42 @@ public class EvenNumbersIterator implements Iterator<Integer>{
     public boolean hasNext() {
         int count = 0;
         boolean result = false;
-        if (numbers[index] % 2 == 0) {
-            result = true;
+        if (index >= numbers.length) {
+            result = false;
         }
-        else {
-            for (int i = index; i < numbers.length; i++) {
-                if (numbers[i] % 2 == 0) {
-                    count++;
-                }
+        for (int i = index; i < numbers.length; i++) {
+            if (numbers[i] % 2 == 0) {
+                ++count;
             }
-            if (count > 0) {
-                result = true;
-            }
-            else result = false;
-
+        }
+        if (count >= 1) {
+            result = true;
         }
         return result;
     }
 
     @Override
     public Integer next() {
-        System.out.println(index);
+        int element = 0;
+        if (hasNext()) {
+            if (numbers[index] % 2 == 0) {
+                element = numbers[index++];
+            }
+            else {
+                for (int i = index; i < numbers.length; i++) {
+                    if (numbers[i] % 2 == 0) {
+                        index = i;
+                        break;
+                    }
+                }
+                element = numbers[index++];
+            }
+        }
+        else {
+            throw new NoSuchElementException();
+        }
+        return element;
+       /* System.out.println(index);
         for (int i = index; i < numbers.length; i++) {
             if (numbers[i] % 2 == 0) {
                index = i;
@@ -45,6 +60,6 @@ public class EvenNumbersIterator implements Iterator<Integer>{
         if (numbers[index] %  2 != 0) {
             throw new NoSuchElementException();
         }
-        return numbers[index++];
+        return numbers[index++];*/
     }
 }
