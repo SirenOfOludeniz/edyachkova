@@ -33,33 +33,17 @@ public class EvenNumbersIterator implements Iterator<Integer>{
     public Integer next() {
         int element = 0;
         if (hasNext()) {
-            if (numbers[index] % 2 == 0) {
-                element = numbers[index++];
-            }
-            else {
-                for (int i = index; i < numbers.length; i++) {
-                    if (numbers[i] % 2 == 0) {
-                        index = i;
-                        break;
-                    }
+            for (int i = index; i < numbers.length; i++) {
+                if (numbers[i] % 2 == 0) {
+                    index = i;
+                    break;
                 }
-                element = numbers[index++];
             }
+            element = numbers[index++];
         }
         else {
             throw new NoSuchElementException();
         }
         return element;
-       /* System.out.println(index);
-        for (int i = index; i < numbers.length; i++) {
-            if (numbers[i] % 2 == 0) {
-               index = i;
-               break;
-            }
-        }
-        if (numbers[index] %  2 != 0) {
-            throw new NoSuchElementException();
-        }
-        return numbers[index++];*/
     }
 }
