@@ -18,7 +18,7 @@ public class PrimeIterator implements Iterator<Integer>{
     @Override
     public boolean hasNext() {
         boolean result = false;
-        int counthasNext = 0;
+        int count = 0;
         for (int i = index; i < values.length; i++) {
 
             int divider = 0;
@@ -28,55 +28,26 @@ public class PrimeIterator implements Iterator<Integer>{
                     System.out.println(values[i] +  " % " + j + "= " + values[i] % j);
                     divider++;
                 }
-               // System.out.println("divider from hasNext = " + divider);
             }
             if (divider == 2) {
-               ++counthasNext;
+                ++count;
             }
-            if (counthasNext >= 1) {
+            if (count == 1) {
+                index = i;
                 result = true;
+                break;
             }
-            System.out.println("counthasNext = " + counthasNext);
+
         }
         return result;
     }
 
     @Override
     public Integer next() {
-        //if hasNaxt = false => exception
-        System.out.println("index " + index);
-        int count = 0;
-
-        for (int i = index; i < values.length; i++) {
-            int divider = 0;
-            for (int j = 1; j <= values[i]; j++) {
-                if (values[i] % j == 0) {
-                    System.out.println(values[i] +  " % " + j + "= " + values[i] % j);
-                    divider++;
-                }
-            }
-            System.out.println("divider from next= " + divider);
-            if (divider == 2) {
-                index = i;
-               break;
-            }
-        }
-        if (index >= values.length) {
+        if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        for (int i = 1; i <= values[index]; i++) {
-            //System.out.println("index = " + index);
-            if (values[index] % i == 0) {
-                ++count;
-                System.out.println("count inside = " + count);
-            }
-
-        }
-        System.out.println("count " + count);
-        if (count != 2) {
-           throw new NoSuchElementException();
-        }
-
         return values[index++];
+
     }
 }

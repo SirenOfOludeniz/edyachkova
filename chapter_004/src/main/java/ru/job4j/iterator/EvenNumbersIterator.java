@@ -13,37 +13,22 @@ public class EvenNumbersIterator implements Iterator<Integer>{
 
     @Override
     public boolean hasNext() {
-        int count = 0;
         boolean result = false;
-        if (index >= numbers.length) {
-            result = false;
-        }
         for (int i = index; i < numbers.length; i++) {
             if (numbers[i] % 2 == 0) {
-                ++count;
+                index = i;
+                result = true;
+                break;
             }
-        }
-        if (count >= 1) {
-            result = true;
         }
         return result;
     }
 
     @Override
     public Integer next() {
-        int element = 0;
-        if (hasNext()) {
-            for (int i = index; i < numbers.length; i++) {
-                if (numbers[i] % 2 == 0) {
-                    index = i;
-                    break;
-                }
-            }
-            element = numbers[index++];
-        }
-        else {
+        if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        return element;
+        return numbers[index++];
     }
 }
