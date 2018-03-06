@@ -40,7 +40,6 @@ public class SimpleList<E> implements Iterable<E> {
         return element;
     }
 
-
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
