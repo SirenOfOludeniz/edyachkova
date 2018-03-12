@@ -1,13 +1,9 @@
 package ru.job4j.service;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class SimpleList<E> implements Iterable<E> {
-    //здесь нам нужно создать массив
-    //нужно задать тип этого массива
-    //так выглядят коллекции в java 5 (подобным образом)
     Object[] objects;
     int index = 0;
 
@@ -56,5 +52,12 @@ public class SimpleList<E> implements Iterable<E> {
                 return (E) objects[index++];
             }
         };
+    }
+    //как использовать ArrayList
+    public void showList() {
+        List<String> list = new ArrayList<>(100);
+    List<Integer> numbers = new LinkedList<>();
+    numbers.add(1);
+
     }
 }
