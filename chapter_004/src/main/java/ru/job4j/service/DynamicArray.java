@@ -27,6 +27,7 @@ public class DynamicArray<E> implements SimpleContainer<E> {
 
     @Override
     public void add(E o) {
+        arraycopy();
         this.container[index++] = o;
         this.modCount++;
     }

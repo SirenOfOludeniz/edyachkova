@@ -15,15 +15,21 @@ public class DynamicArrayTest {
         /**
          * почему не выводит первый элемент "А"?
          */
-//        for (String a : dynamicArray) {
-//            System.out.println(a);
-//        }
+        for (String a : dynamicArray) {
+            System.out.println(a);
+        }
         System.out.println("Вывод вне цикла, по методу get : " + dynamicArray.get(0));
+
+        for (int i = 0; i < 100500; i++) {
+            dynamicArray.add("bb");
+        }
+
+
 
 
         /**
-         * здесь должен кинуть ConcurrentModificationException
-         * но не кидает, если раскомментить первый цикл for-each. почему?
+         * здесь кидает ConcurrentModificationException
+         * так и должно быть
          */
         for (String d : dynamicArray) {
             dynamicArray.add("jj");
