@@ -25,7 +25,15 @@ public class Converter {
                         //result = false;
                     }
                 }
-                else result = false;
+                else {
+                    if (iter.hasNext()) {
+                        result = true;
+                    }
+                    else {
+                        result = false;
+                    }
+
+                }
 
                 return  result;
             }
@@ -33,7 +41,7 @@ public class Converter {
             @Override
             public Integer next() {
                 if (!hasNext()) {
-                   // throw new NoSuchElementException();
+                    throw new NoSuchElementException();
                 }
                 if (!iter.hasNext()) {
                     iter = it.next();
