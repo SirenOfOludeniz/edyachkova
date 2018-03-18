@@ -1,49 +1,69 @@
 package ru.job4j.service;
 
+import java.util.ConcurrentModificationException;
+
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class DynamicLinkedList<E> implements SimpleContainer<E> {
 
     public Node<E> first;
     public Node<E> last;
     public int size = last.index + 1;
+    int modCount = 0;
 
-    /**А мне нужен метод isEmpty?
-     * если да, то что проверять? first ? last?
-     * или и то и то?
-     * @param e
-     */
+    public boolean isEmpty() {
+        return first == null;
+    }
 
     @Override
     public void add(E e) {
         //вставка в конец
         Node<E> node = new Node<>(first, e, last);
-        last.next = node;
-        node.prev = last;
+        if (isEmpty()) {
+            first = node;
+        }
+        else {
+            last.next = node;
+            node.prev = last;
+        }
         last = node;
+        modCount++;
     }
 
     @Override
     public E get(int position) {
-        Node<E> current = last;
+        Node<E> current = first;
         while (current.index != position) {
             current = current.next;
         }
-
         return current.item;
     }
 
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
+            int indexIter = 0;
+            int expectedModCount = modCount;
             @Override
             public boolean hasNext() {
-                return false;
-            }
+                boolean result = false;
+                if (isEmpty()) {
+                    result = false;
+                }
+                else result = true;
 
+                return result;
+            }
             @Override
             public E next() {
-                return null;
+                if (modCount != expectedModCount) {
+                    throw new ConcurrentModificationException();
+                }
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return get(indexIter++);
             }
         };
     }
