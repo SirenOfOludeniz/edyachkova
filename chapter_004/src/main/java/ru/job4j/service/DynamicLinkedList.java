@@ -43,6 +43,8 @@ public class DynamicLinkedList<E> implements SimpleContainer<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
+            Node<E> current;
+            Node<E> next = first;
             int indexIter = 0;
             int expectedModCount = modCount;
             @Override
@@ -63,7 +65,10 @@ public class DynamicLinkedList<E> implements SimpleContainer<E> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return get(indexIter++);
+               // return get(indexIter++);
+                current = next;
+                next = current.next;
+                return current.item;
             }
         };
     }
