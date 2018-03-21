@@ -11,7 +11,7 @@ public class DoublyLinkedList {
     public void insertFirst(int dd) {
         Link newLink = new Link(dd);
         if (isEmpty()) {
-            last = newLink; //почему не в first?
+            last = newLink;
         }
         else {
             first.previous = newLink; }

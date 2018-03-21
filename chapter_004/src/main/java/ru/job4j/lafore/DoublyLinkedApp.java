@@ -16,6 +16,7 @@ public class DoublyLinkedApp {
 
 
         System.out.println("first " + theList.first.dData);
-        System.out.println("last " + theList.last.dData);
+        System.out.println("last " + theList.last.dData); //здесь лежит отдельный элемент last
+        //в которым элемент 22, если бы мы вызвали insertFirst(22)
     }
 }
