@@ -1,9 +1,9 @@
-package design.patterns.chapter1;
+package design.patterns.strategy;
 
 public class MallardDuck extends Duck{
 
     public MallardDuck() {
-        quackBehavior = new Qyack();
+        quackBehavior = new Quack();
         flyBehavior = new FlyWithWings();
     }
 

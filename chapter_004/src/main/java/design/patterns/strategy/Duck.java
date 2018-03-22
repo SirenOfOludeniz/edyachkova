@@ -1,4 +1,4 @@
-package design.patterns.chapter1;
+package design.patterns.strategy;
 
 public abstract class Duck {
     FlyBehavior flyBehavior;
@@ -6,6 +6,13 @@ public abstract class Duck {
 
     public Duck() {
 
+    }
+
+    public void setFlyBehavior(FlyBehavior fb) {
+        flyBehavior = fb;
+    }
+    public void setQuackBehavior(QuackBehavior qb) {
+        quackBehavior = qb;
     }
 
     public abstract void display();

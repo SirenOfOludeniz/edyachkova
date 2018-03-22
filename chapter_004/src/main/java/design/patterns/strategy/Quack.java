@@ -1,6 +1,6 @@
-package design.patterns.chapter1;
+package design.patterns.strategy;
 
-public class Qyack implements QuackBehavior{
+public class Quack implements QuackBehavior{
     @Override
     public void quack() {
         System.out.println("Quack!");
