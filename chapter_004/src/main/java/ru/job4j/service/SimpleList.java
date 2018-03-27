@@ -3,9 +3,7 @@ package ru.job4j.service;
 import java.util.*;
 import java.util.function.Consumer;
 
-public class SimpleList<E> implements Iterable<E> {
-    Object[] objects;
-    int index = 0;
+public class SimpleList<E> extends AbstractSimple<E> {
 
     public SimpleList(int size) {
         this.objects = new Object[size];
@@ -14,10 +12,6 @@ public class SimpleList<E> implements Iterable<E> {
     public <K> K print(K value) {
         System.out.println(value);
         return value;
-    }
-
-    public void add(E value) { //lowCasting понижаем тип до типа Object
-        this.objects[index++] = value;
     }
 
     public E get(int position) {
@@ -36,23 +30,7 @@ public class SimpleList<E> implements Iterable<E> {
         return element;
     }
 
-    @Override
-    public Iterator<E> iterator() {
-        return new Iterator<E>() {
-            @Override
-            public boolean hasNext() {
-                return index < objects.length;
-            }
 
-            @Override
-            public E next() {
-                if (!hasNext()) {
-                    throw new NoSuchElementException();
-                }
-                return (E) objects[index++];
-            }
-        };
-    }
     //как использовать ArrayList
     public void showList() {
         List<String> list = new ArrayList<>(100);
