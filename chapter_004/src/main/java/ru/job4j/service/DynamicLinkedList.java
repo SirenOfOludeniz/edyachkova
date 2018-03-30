@@ -9,17 +9,24 @@ public class DynamicLinkedList<E> implements SimpleContainer<E> {
 
     public Node<E> first;
     public Node<E> last;
-    public int size = last.index + 1;
     int modCount = 0;
 
     public boolean isEmpty() {
         return first == null;
     }
+    public int size() {
+        if (isEmpty()) {
+            return 0;
+        }
+        return last.index;
+    }
+
+
 
     @Override
     public void add(E e) {
         //вставка в конец
-        Node<E> node = new Node<>(first, e, last);
+        Node<E> node = new Node<>(last, e, null);
         if (isEmpty()) {
             first = node;
         }
@@ -47,13 +54,22 @@ public class DynamicLinkedList<E> implements SimpleContainer<E> {
             Node<E> next = first;
             int indexIter = 0;
             int expectedModCount = modCount;
+
             @Override
             public boolean hasNext() {
                 boolean result = false;
+
+                current = next;
+
                 if (isEmpty()) {
                     result = false;
                 }
-                else result = true;
+                else {
+                    if (current != null) {
+                        result = true;
+                    }
+                    else result = false;
+                }
 
                 return result;
             }
