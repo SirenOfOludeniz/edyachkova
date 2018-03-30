@@ -12,6 +12,8 @@ public class SimpleQueue<E> {
         linkedList.add(value);
     }
     public E poll() {
-        return linkedList.get(front--);
+        E tmp = linkedList.get(front); //было front--
+        linkedList.delete(front--); //проверить, нужноли здесь --
+        return tmp;
     }
 }

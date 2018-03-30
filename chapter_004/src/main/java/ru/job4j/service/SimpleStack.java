@@ -14,7 +14,9 @@ public class SimpleStack<E> {
         linkedList.add(value);
     }
     public E poll() {
-        return linkedList.get(top--);
+        E tmp = linkedList.get(top);
+        linkedList.delete(top--); //проверить, нужно ли здесь --
+        return tmp;
     }
 
 }

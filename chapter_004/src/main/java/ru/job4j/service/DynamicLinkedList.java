@@ -37,6 +37,18 @@ public class DynamicLinkedList<E> implements SimpleContainer<E> {
         last = node;
         modCount++;
     }
+    public Node<E> findNode(int position) {
+        Node<E> current = first;
+        while (current.index != position) {
+            current = current.next;
+        }
+        return current;
+    }
+    public void delete(int position) {
+        Node<E> current = findNode(position);
+        current.prev.next = current.next;
+        current.next.prev = current.prev;
+    }
 
     @Override
     public E get(int position) {
