@@ -13,7 +13,7 @@ public class ForecastDisplay implements Observer, DisplayElement {
 
 	public void update(Observable observable, Object arg) {
 		if (observable instanceof WeatherData) {
-			WeatherData weatherData = (WeatherData)observable;
+			WeatherData weatherData = (WeatherData) observable;
 			lastPressure = currentPressure;
 			currentPressure = weatherData.getPressure();
 			display();

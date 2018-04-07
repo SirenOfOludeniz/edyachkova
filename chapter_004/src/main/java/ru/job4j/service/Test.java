@@ -17,21 +17,19 @@ public class Test {
         cow.printName();
     }
 }
-class Cow{
+class Cow {
     public void printColor() {
         System.out.println("Я = белая");
     }
     public void printName() {
         System.out.println("Корова");
     }
-
 }
 
-class Whale extends Cow{
+class Whale extends Cow {
     public void printName() {
         System.out.println("Я - кит");
     }
-
 }
 
 

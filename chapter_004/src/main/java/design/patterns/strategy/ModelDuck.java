@@ -1,6 +1,6 @@
 package design.patterns.strategy;
 
-public class ModelDuck extends Duck{
+public class ModelDuck extends Duck {
 
     public ModelDuck() {
         flyBehavior = new FlyNoWay();

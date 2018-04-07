@@ -5,7 +5,7 @@ public enum Wood {
   COCOBOLO, CEDAR, ADIRONDACK, ALDER, SITKA;
 
   public String toString() {
-    switch(this) {
+    switch (this) {
       case INDIAN_ROSEWOOD:    return "Indian Rosewood";
       case BRAZILIAN_ROSEWOOD: return "Brazilian Rosewood";
       case MAHOGANY:           return "Mahogany";

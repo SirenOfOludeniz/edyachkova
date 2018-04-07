@@ -1,14 +1,12 @@
 package ru.job4j.iterator;
 
-import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class PrimeIterator implements Iterator<Integer>{
+public class PrimeIterator implements Iterator<Integer> {
 
     private int[] values;
-    private int index= 0;
+    private int index = 0;
 
     public PrimeIterator(int[] values) {
         this.values = values;

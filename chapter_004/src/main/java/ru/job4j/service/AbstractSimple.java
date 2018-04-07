@@ -3,7 +3,7 @@ package ru.job4j.service;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public abstract class AbstractSimple<E> implements Iterable<E>{
+public abstract class AbstractSimple<E> implements Iterable<E> {
     Object[] objects;
     int index = 0;
     public void add(E value) {

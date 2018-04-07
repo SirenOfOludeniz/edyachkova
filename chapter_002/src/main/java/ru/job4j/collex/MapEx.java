@@ -18,12 +18,12 @@ public class MapEx {
         }*/
 
         LinkedList<String> states = new LinkedList<>();
-        states.add     ("Германия"      );
-        states.add     ("Франция"       );
-        states.addLast ("Великобритания"); // добавляем элемент в конец
-        states.addFirst("Испания"       ); // добавляем элемент в первую позицию
+        states.add("Германия");
+        states.add("Франция");
+        states.addLast("Великобритания"); // добавляем элемент в конец
+        states.addFirst("Испания"); // добавляем элемент в первую позицию
         System.out.println(states);
-        states.add     (1, "Италия"     ); // добавляем элемент с индексом 1
+        states.add(1, "Италия"); // добавляем элемент с индексом 1
         System.out.println(states);
         states.set(1, "brbr");
         System.out.println(states);

@@ -1,6 +1,6 @@
 package design.patterns.decorator;
 
-public class Whip extends Beverage{
+public class Whip extends Beverage {
     Beverage beverage;
     public Whip(Beverage beverage) {
         this.beverage = beverage;

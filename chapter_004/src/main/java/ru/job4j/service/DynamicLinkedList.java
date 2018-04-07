@@ -21,16 +21,13 @@ public class DynamicLinkedList<E> implements SimpleContainer<E> {
         return last.index;
     }
 
-
-
     @Override
     public void add(E e) {
         //вставка в конец
         Node<E> node = new Node<>(last, e, null);
         if (isEmpty()) {
             first = node;
-        }
-        else {
+        } else {
             last.next = node;
             node.prev = last;
         }
@@ -75,14 +72,13 @@ public class DynamicLinkedList<E> implements SimpleContainer<E> {
 
                 if (isEmpty()) {
                     result = false;
-                }
-                else {
+                } else {
                     if (current != null) {
                         result = true;
+                    } else {
+                        result = false;
                     }
-                    else result = false;
                 }
-
                 return result;
             }
             @Override

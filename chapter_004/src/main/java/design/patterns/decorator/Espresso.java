@@ -1,6 +1,6 @@
 package design.patterns.decorator;
 
-public class Espresso extends Beverage{
+public class Espresso extends Beverage {
     public Espresso() {
         description = "Espresso";
     }

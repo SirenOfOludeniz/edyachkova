@@ -10,12 +10,11 @@ public class AbstractSimpleClass<E> {
 
     public AbstractSimpleClass(int size) {
         this.objects = new Object[size];
-        Class<E> t =(Class<E>)((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        Class<E> t = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         try {
             E value = t.newInstance();
             System.out.printf("string " + value);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

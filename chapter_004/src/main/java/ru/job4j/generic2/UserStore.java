@@ -2,7 +2,7 @@ package ru.job4j.generic2;
 
 import ru.job4j.service.SimpleList;
 
-public class UserStore extends AbstractStore implements Store<User>{
+public class UserStore extends AbstractStore implements Store<User> {
     // здесь должно быть UserStore<User>
     // но тогда Store<User> подчеркивает красным
     SimpleList<User> simpleList = new SimpleList<>(10);

@@ -20,7 +20,7 @@ public class SetOnHashTableTest {
         words.add("water");
         words.add("moon");
 
-        for (int i = 0; i <words.sizeArray; i++) {
+        for (int i = 0; i < words.sizeArray; i++) {
             System.out.println(words.objects[i]);
         }
     }

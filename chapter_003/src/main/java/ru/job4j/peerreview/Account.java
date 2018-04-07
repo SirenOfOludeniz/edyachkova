@@ -11,7 +11,7 @@ public class Account {
     public double getValues() {
         return this.values;
     }
-    public String getReqs () {
+    public String getReqs() {
         return this.reqs;
     }
     boolean transfer(Account destination, double amount) {

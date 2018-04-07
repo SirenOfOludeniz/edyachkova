@@ -1,6 +1,4 @@
-package ru.job4j.list_in_map;
-
-import ru.job4j.listinmap.User;
+package ru.job4j.listinmap;
 
 import java.util.*;
 

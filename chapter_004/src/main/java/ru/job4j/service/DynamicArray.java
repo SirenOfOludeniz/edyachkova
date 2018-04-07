@@ -18,7 +18,7 @@ public class DynamicArray<E> implements SimpleContainer<E> {
         Object[] copy = new Object[container.length];
         if (index == container.length) {
             copy = this.container;
-            size = ((this.container.length * 3)/2 + 1);
+            size = ((this.container.length * 3) / 2 + 1);
             this.container = new Object[size];
             System.arraycopy(copy, 0, this.container, 0, copy.length);
         }

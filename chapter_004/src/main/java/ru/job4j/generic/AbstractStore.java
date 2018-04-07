@@ -2,7 +2,7 @@ package ru.job4j.generic;
 
 import ru.job4j.service.SimpleList;
 
-public abstract class AbstractStore<T extends Base> implements Store<T>{
+public abstract class AbstractStore<T extends Base> implements Store<T> {
     private SimpleList<T> simpleList = new SimpleList<>(10);
 
     public void add(T model) {

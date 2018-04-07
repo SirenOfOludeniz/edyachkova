@@ -4,7 +4,7 @@ public class LinkList {
 
     private Link first;
 
-    public void LinkList() {
+    public LinkList() {
         first = null;
     }
     public boolean isEmpty() {
@@ -21,8 +21,7 @@ public class LinkList {
         while (current.iData != key) {
             if (current.next == null) {
                 return null;
-            }
-            else {
+            } else {
                 current = current.next;
             }
         }
@@ -36,8 +35,7 @@ public class LinkList {
         while (current.iData != key) {
             if (current.next == null) {
                 return null;
-            }
-            else {
+            } else {
                 previous = current;
                 current = current.next;
             }

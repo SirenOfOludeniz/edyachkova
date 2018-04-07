@@ -2,7 +2,7 @@ package ru.job4j.service;
 
 import java.util.Iterator;
 
-public class IteratorArray implements Iterator{
+public class IteratorArray implements Iterator {
 
     private final int[] values;
     private int index = 0;

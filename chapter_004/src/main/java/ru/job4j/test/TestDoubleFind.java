@@ -16,15 +16,13 @@ public class TestDoubleFind {
        int downBound = 0;
        int upBound = array.length;
        int current = 0;
-       while (current!= key) {
-           current = (downBound + upBound)/2;
+       while (current != key) {
+           current = (downBound + upBound) / 2;
            if (current > key) {
                upBound = current;
-           }
-           else {
+           } else {
                downBound = current;
-               upBound = (current + current * 2)/2;
-
+               upBound = (current + current * 2) / 2;
            }
        }
        return current;
@@ -42,14 +40,12 @@ public class TestDoubleFind {
        int upBound = array[array.length - 1];
        int current = 0;
        while (current != key) {
-           current = (downBound + upBound)/2;
+           current = (downBound + upBound) / 2;
            if (current > key) {
                upBound = current;
-           }
-           else {
+           } else {
                downBound = current;
-               upBound = (current + current * 2)/2;
-
+               upBound = (current + current * 2) / 2;
            }
        }
        return current;

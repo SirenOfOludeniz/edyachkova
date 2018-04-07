@@ -3,7 +3,7 @@ package ru.job4j.service;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class SetOnHashTable<E> implements Iterable<E>{
+public class SetOnHashTable<E> implements Iterable<E> {
     Object[] objects;
     int index = 0;
     int sizeArray;
@@ -35,8 +35,9 @@ public class SetOnHashTable<E> implements Iterable<E>{
         if (contains(e)) {
             this.objects[hashFunction(e.hashCode())] = e;
             index++;
+        } else {
+            result = false;
         }
-        else result = false;
         return result;
     }
 
@@ -74,8 +75,7 @@ public class SetOnHashTable<E> implements Iterable<E>{
             public E next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
-                }
-                else {
+                } else {
                     return (E) objects[index++];
                 }
 

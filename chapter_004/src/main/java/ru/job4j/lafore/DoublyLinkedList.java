@@ -12,9 +12,9 @@ public class DoublyLinkedList {
         Link newLink = new Link(dd);
         if (isEmpty()) {
             last = newLink;
+        } else {
+            first.previous = newLink;
         }
-        else {
-            first.previous = newLink; }
             newLink.next = first;
             first = newLink;
 
@@ -28,8 +28,7 @@ public class DoublyLinkedList {
         Link newLink = new Link(dd);
         if (isEmpty()) {
             first = newLink; // почему не в last?
-        }
-        else {
+        } else {
             last.next = newLink;
             newLink.previous = last;
         }
@@ -41,8 +40,7 @@ public class DoublyLinkedList {
         Link temp = first;
         if (first.next == null) {
             last = null; // почему last, а не first?
-        }
-        else {
+        } else {
             first.next.previous = null;
         }
         first = first.next;
@@ -53,8 +51,7 @@ public class DoublyLinkedList {
         Link temp = last;
         if (first.next == null) {
             first = null; // почему first, а не last?
-        }
-        else {
+        } else {
             last.previous.next = null;
         }
         last = last.previous;
@@ -73,8 +70,7 @@ public class DoublyLinkedList {
         if (current == last) { // почему здесь == , а не equal?
             newLink.next = null;
             last = newLink;
-        }
-        else {
+        } else {
             newLink.next = current.next;
             current.next.previous = newLink;
         }

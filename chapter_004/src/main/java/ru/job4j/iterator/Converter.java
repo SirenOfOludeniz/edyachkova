@@ -17,19 +17,16 @@ public class Converter {
                 if (it.hasNext()) {
                     if (iter.hasNext()) {
                         result = true;
-                    }
-                    else {
+                    } else {
                         iter = it.next();
                         System.out.println("iter.hasNext() : " + iter.hasNext());
                         result = iter.hasNext();
                         //result = false;
                     }
-                }
-                else {
+                } else {
                     if (iter.hasNext()) {
                         result = true;
-                    }
-                    else {
+                    } else {
                         result = false;
                     }
 
