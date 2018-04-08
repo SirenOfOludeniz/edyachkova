@@ -6,9 +6,9 @@ import static org.junit.Assert.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 public class SimpleListTest {
-    public class A {}
-    public class B extends A {}
-    public class C extends B {}
+    public class A { }
+    public class B extends A { }
+    public class C extends B { }
 
 
     @Test

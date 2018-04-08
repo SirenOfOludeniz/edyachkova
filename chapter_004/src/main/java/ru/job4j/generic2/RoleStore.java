@@ -3,7 +3,7 @@ package ru.job4j.generic2;
 
 import ru.job4j.service.SimpleList;
 
-public class RoleStore extends AbstractStore implements Store<Role>{
+public class RoleStore extends AbstractStore implements Store<Role> {
     // здесь должно быть RoleStore<Role>
     // но тогда Store<Role> подчеркивает красным
 

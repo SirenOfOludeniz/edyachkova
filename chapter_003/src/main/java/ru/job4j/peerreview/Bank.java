@@ -36,7 +36,7 @@ public class Bank {
                                  User user2, Account account2, double amount) {
         return this.treemap.get(user1).contains(account1)
                 && this.treemap.get(user2).contains(account2)
-                && getActualAccount(user1, account1).transfer( //здесь метод transfer из класса Account
+                && getActualAccount(user1, account1).transfer(//здесь метод transfer из класса Account
                 getActualAccount(user2, account2), amount);
     }
     public boolean transferVariant2(User user1, Account account1, User user2, Account account2, double amount) {

@@ -18,7 +18,7 @@ public class Queue {
     public void insert(int j) {
         //вставка в конец очереди
         if (rear == maxSize - 1) {
-            rear = - 1;
+            rear = -1;
         }
         queArray[++rear] = j;
         nItems++;

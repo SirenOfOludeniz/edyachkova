@@ -1,6 +1,6 @@
 package design.patterns.decorator;
 
-public class Soy extends Beverage{
+public class Soy extends Beverage {
     Beverage beverage;
     public Soy(Beverage beverage) {
         this.beverage = beverage;

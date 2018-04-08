@@ -25,7 +25,7 @@ public class SimpleList<E> extends AbstractSimple<E> {
         return element;
     }
     public E delete(int position) {
-        E element =(E) this.objects[position];
+        E element = (E) this.objects[position];
         this.objects[position] = null;
         return element;
     }

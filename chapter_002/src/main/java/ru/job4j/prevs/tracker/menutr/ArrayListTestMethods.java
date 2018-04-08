@@ -1,4 +1,4 @@
-package ru.job4j.prevs_tracker_menutr;
+package ru.job4j.prevs.tracker.menutr;
 
 import java.util.ArrayList;
 

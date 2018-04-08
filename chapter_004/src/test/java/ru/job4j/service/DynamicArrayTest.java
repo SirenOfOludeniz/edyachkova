@@ -1,11 +1,13 @@
 package ru.job4j.service;
 import org.junit.Test;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 public class DynamicArrayTest {
+
     @Test
     public void dynamicArrayTest() {
         DynamicArray<String> dynamicArray = new DynamicArray();
@@ -23,18 +25,25 @@ public class DynamicArrayTest {
         for (int i = 0; i < 100500; i++) {
             dynamicArray.add("bb");
         }
-
-
-
-
-        /**
-         * здесь кидает ConcurrentModificationException
-         * так и должно быть
-         */
-        for (String d : dynamicArray) {
-            dynamicArray.add("jj");
-            System.out.println(d);
-        }
     }
+
+    /**
+     * здесь кидает ConcurrentModificationException
+     * так и должно быть
+     */
+    @Test(expected = ConcurrentModificationException.class)
+    public void whenExpectException() {
+        DynamicArray<String> dynamicArray = new DynamicArray();
+        dynamicArray.add("A");
+        for (String d : dynamicArray) {
+        dynamicArray.add("jj");
+        System.out.println(d);
+    }
+}
+
+
+
+
+
 
 }

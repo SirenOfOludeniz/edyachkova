@@ -1,6 +1,6 @@
 package design.patterns.decorator;
 
-public class Mocha extends Beverage{
+public class Mocha extends Beverage {
     Beverage beverage;
 
     public Mocha(Beverage beverage) {

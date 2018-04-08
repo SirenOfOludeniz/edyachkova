@@ -27,42 +27,57 @@ public class GuitarSpec {
     public List compareGuitarSpec(GuitarSpec searchSpec) {
         Inventory inventory = new Inventory();
         List matchingGuitars = new LinkedList();
-        for (Iterator i = inventory.getGuitars().iterator(); i.hasNext(); ) {
-            Guitar guitar = (Guitar)i.next();
+        for (Iterator i = inventory.getGuitars().iterator(); i.hasNext();) {
+            Guitar guitar = (Guitar) i.next();
             GuitarSpec guitarSpec = guitar.getSpec();
-            if (searchSpec.getBuilder() != guitarSpec.getBuilder())
+            if (searchSpec.getBuilder() != guitarSpec.getBuilder()) {
                 continue;
+            }
             String model = searchSpec.getModel().toLowerCase();
-            if ((model != null) && (!model.equals("")) &&
-                    (!model.equals(guitarSpec.getModel().toLowerCase())))
+            //todo model всегда будет неравна null чего не скажешь о getModel() - тут потенциальный NPE
+            //todo много много иф тут можно заменить одним условием.
+            if ((model != null) && (!model.equals(""))
+                    && (!model.equals(guitarSpec.getModel().toLowerCase()))) {
                 continue;
-            if (searchSpec.getType() != guitarSpec.getType())
+            }
+            if (searchSpec.getType() != guitarSpec.getType()) {
                 continue;
-            if (searchSpec.getBackWood() != guitarSpec.getBackWood())
+            }
+            if (searchSpec.getBackWood() != guitarSpec.getBackWood()) {
                 continue;
-            if (searchSpec.getTopWood() != guitarSpec.getTopWood())
+            }
+            if (searchSpec.getTopWood() != guitarSpec.getTopWood()) {
                 continue;
-            if (searchSpec.getNumStrings() != guitarSpec.getNumStrings())
+            }
+            if (searchSpec.getNumStrings() != guitarSpec.getNumStrings()) {
                 continue;
+            }
             matchingGuitars.add(guitar);
         }
         return matchingGuitars;
     }
 
     public boolean matches(GuitarSpec otherSpec) {
-        if (builder != otherSpec.builder)
+        //todo мультиретурн!  тут наверное для упрощения лучше использовать equals
+        if (builder != otherSpec.builder) {
             return false;
-        if ((model != null) && (!model.equals("")) &&
-                (!model.toLowerCase().equals(otherSpec.model.toLowerCase())))
+        }
+        if ((model != null) && (!model.equals(""))
+                && (!model.toLowerCase().equals(otherSpec.model.toLowerCase()))) {
             return false;
-        if (type != otherSpec.type)
+        }
+        if (type != otherSpec.type) {
             return false;
-        if (numStrings != otherSpec.numStrings)
+        }
+        if (numStrings != otherSpec.numStrings) {
             return false;
-        if (backWood != otherSpec.backWood)
+        }
+        if (backWood != otherSpec.backWood) {
             return false;
-        if (topWood != otherSpec.topWood)
+        }
+        if (topWood != otherSpec.topWood) {
             return false;
+        }
         return true;
     }
 

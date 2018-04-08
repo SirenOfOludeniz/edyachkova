@@ -22,8 +22,8 @@ public class Inventory {
 
     public Guitar getGuitar(String serialNumber) {
         Guitar guitar1 = null;
-        for (Iterator i = guitars.iterator(); i.hasNext(); ) {
-            Guitar guitar = (Guitar)i.next();
+        for (Iterator i = guitars.iterator(); i.hasNext();) {
+            Guitar guitar = (Guitar) i.next();
             if (guitar.getSerialNumber().equals(serialNumber)) {
                 guitar1 = guitar;
             }
@@ -37,7 +37,7 @@ public class Inventory {
     public List search(GuitarSpec searchSpec) {
         List matchingGuitars = new LinkedList();
         for (Iterator i = guitars.iterator(); i.hasNext();) {
-            Guitar guitar = (Guitar)i.next();
+            Guitar guitar = (Guitar) i.next();
             if (guitar.getSpec().matches(searchSpec)) {
                 matchingGuitars.add(guitar);
             }

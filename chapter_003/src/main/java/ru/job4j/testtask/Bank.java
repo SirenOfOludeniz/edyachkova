@@ -64,7 +64,7 @@ public class Bank {
         return account;
     }
 
-    public boolean transferMoney (String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
+    public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
         boolean result = false;
         Account accountSrc = findAccountByRequisites(srcPassport, srcRequisite);
         Account accountDest = findAccountByRequisites(destPassport, dstRequisite);

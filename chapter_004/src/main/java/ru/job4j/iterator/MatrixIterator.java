@@ -3,7 +3,7 @@ package ru.job4j.iterator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class MatrixIterator implements Iterator{
+public class MatrixIterator implements Iterator {
 
     private int[][] arrayIt;
     private int indexRow = 0;
@@ -20,14 +20,14 @@ public class MatrixIterator implements Iterator{
         boolean result;
         if (indexColumn < arrayIt[indexRow].length) {
             result = true;
-        }
-        else {
+        } else {
             if (1 + indexRow < arrayIt.length) {
                 ++indexRow;
                 indexColumn = 0;
                 result = true;
+            } else {
+                result = false;
             }
-            else result = false;
         }
         return result;
     }
