@@ -32,7 +32,7 @@ public class MyOwnHashMap<K,V> implements Iterable<Entry<K,V>>{
     public boolean contains(K keyUnique) {
         boolean result = false;
         for (Entry<K,V> entry : this.entrySet) {
-            if (entry.key.equals(keyUnique) && entry.key.hashCode() == keyUnique.hashCode()) {
+            if (entry != null && entry.key.equals(keyUnique) && entry.key.hashCode() == keyUnique.hashCode()) {
                 result = true;
             }
         }
@@ -53,7 +53,7 @@ public class MyOwnHashMap<K,V> implements Iterable<Entry<K,V>>{
     public V get(K key) {
         V aim = null;
         for (Entry<K,V> entry : entrySet) {
-            if (entry.key.equals(key)) {
+            if (entry != null && entry.key.equals(key)) {
                 aim = entry.value;
             }
         }
@@ -63,13 +63,21 @@ public class MyOwnHashMap<K,V> implements Iterable<Entry<K,V>>{
     public boolean delete(K key) {
         boolean result = true;
         for (Entry<K,V> entry : entrySet) {
-            if (entry.key.equals(key)) {
+            if (entry != null && entry.key.equals(key)) {
                entry = null;
             }
             else result = false;
         }
 
         return result;
+    }
+
+    public void display() {
+        for (Entry<K,V> entry : entrySet) {
+            if (entry != null) {
+                System.out.println("Key: " + entry.key + "Value: " + entry.value);
+            }
+        }
     }
 
     @Override
