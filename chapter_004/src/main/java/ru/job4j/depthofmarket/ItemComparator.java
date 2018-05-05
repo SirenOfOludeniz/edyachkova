@@ -3,12 +3,13 @@ package ru.job4j.depthofmarket;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class ItemComparator implements Comparator<Integer>{
 
-    HashMap<Integer, Item> map;
+    TreeMap<Integer, Item> map;
 
-    public ItemComparator(HashMap<Integer, Item> map) {
+    public ItemComparator(TreeMap<Integer, Item> map) {
         this.map = map;
     }
 
