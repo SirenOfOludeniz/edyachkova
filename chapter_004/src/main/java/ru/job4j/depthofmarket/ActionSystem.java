@@ -10,21 +10,19 @@ import java.util.TreeMap;
 /**
  * Если эмитент заявки уже существует, то добавляем
  * в стакан этого эмитента
- *
+ * <p>
  * Как идея: Если поступившая заявка содержит неизвестного эмитента,
- *то для него создаётся новый стакан
- *
+ * то для него создаётся новый стакан
  */
-
 
 
 public class ActionSystem {
 
     public ArrayList<Dom> doms;
 
-   public ActionSystem() {
-       this.doms = new ArrayList<>();
-   }
+    public ActionSystem() {
+        this.doms = new ArrayList<>();
+    }
 
     /**
      * если не нашли эмитента, создаем
@@ -37,29 +35,26 @@ public class ActionSystem {
      * поле type, если заявку выставить,
      * то значение true
      * если снять , то false
-     *
+     * <p>
      * поле action
      * bid = true
      * ask = false
-     *
+     * <p>
      * идея. сделать интерфейсы Type, Action
-     *
      */
     public void inputItem(Item item, Dom dom) {
 
         if (item.isType()) {//add
             if (item.isAction()) {//bid
                 addItem(item, dom.bid, dom);
-            }
-            else {//ask
+            } else {//ask
                 addItem(item, dom.ask, dom);
             }
         }
         if (!item.isType()) { //delete
             if (item.isAction()) {
                 deleteItemById(dom.bid, item);
-            }
-            else {
+            } else {
                 deleteItemById(dom.ask, item);
             }
         }
@@ -68,19 +63,15 @@ public class ActionSystem {
     public void addItem(Item item, TreeMap<Integer, Item> tree, Dom dom) {
         Item aimItem;
 
-
-
         if (!tree.isEmpty()) {
             if (item.isAction()) {
-                 aimItem = dom.ask.lastEntry().getValue();
-            }
-            else {
+                aimItem = dom.ask.lastEntry().getValue();
+            } else {
                 aimItem = dom.bid.firstEntry().getValue();
             }
             if (aimItem.getPrice() <= item.getPrice()) {
                 buySell(dom.ask, item, dom.bid);
-            }
-            else {
+            } else {
                 tree.put(item.getId(), item);
             }
         }
@@ -90,29 +81,40 @@ public class ActionSystem {
 
     }
 
-
+    public Dom findDom(String book) {
+        Dom result = Dom.EMPTY;
+        for (Dom dom : this.doms) {
+            if (dom.book.equals(book)) {
+                result = dom;
+            } else {
+                System.out.println("Заявок с таким эмитентом еще нет");
+            }
+        }
+        return result;
+    }
 
     /**
      * удаление по цене может не подойти, если
      * есть в tree несколько заявок с одинаковой ценой
      * поэтому пока применен deleteItemById в inputItem().
-     *
+     * <p>
      * но это в расчете на то, что в заявке на удаление
      * пользователь ОБЯЗАТЕЛЬНО введет то же id, что он ставил в
      * своей заявке на доавление до этого.
+     *
      * @param tree
      * @param item
      */
 
-    public void deleteItemByPrice(TreeMap<Integer, Item> tree, Item item) { {
-        Item tmp = findItemByPrice(tree, item.getPrice());
-        if (tmp.getVolume() > item.getVolume()) { // частичное удаление
-            tree.get(tmp.getId()).setVolume(tmp.getVolume() - item.getVolume());
+    public void deleteItemByPrice(TreeMap<Integer, Item> tree, Item item) {
+        {
+            Item tmp = findItemByPrice(tree, item.getPrice());
+            if (tmp.getVolume() > item.getVolume()) { // частичное удаление
+                tree.get(tmp.getId()).setVolume(tmp.getVolume() - item.getVolume());
+            } else { //полное удаление заявки
+                tree.remove(tmp.getId());
+            }
         }
-        else { //полное удаление заявки
-            tree.remove(tmp.getId());
-        }
-    }
 
     }
 
@@ -131,8 +133,7 @@ public class ActionSystem {
         Item tmp = tree.get(item.getId());
         if (tmp.getVolume() > item.getVolume()) { //частичное удаление
             tree.get(item.getId()).setVolume(tmp.getVolume() - item.getVolume());
-        }
-        else { //полное удаление всей заявки
+        } else { //полное удаление всей заявки
             tree.remove(item.getId());
         }
     }
@@ -149,8 +150,7 @@ public class ActionSystem {
                         result = true;
                     }
                 }
-            }
-            else {
+            } else {
                 for (Map.Entry<Integer, Item> pair : dom.ask.entrySet()) {
                     if (item.getPrice() == pair.getValue().getPrice()) {
                         dom.ask.get(pair.getKey()).setVolume(pair.getValue().getVolume() + item.getVolume());
@@ -183,8 +183,8 @@ public class ActionSystem {
      * Action: bid , ask
      * bid - true (isAction())
      * ask - false (!isAction())
-     *
-     *если заявка типа bid, то совмещаем её с подследней заявкой из дерева ask
+     * <p>
+     * если заявка типа bid, то совмещаем её с подследней заявкой из дерева ask
      * если заявка типа ask, то совмещаем ее с первой заявкой из дерева bid
      *
      * @param
@@ -196,8 +196,7 @@ public class ActionSystem {
 
         if (item.isAction()) {
             aimItem = ask.lastEntry().getValue();
-        }
-        else {
+        } else {
             aimItem = bid.firstEntry().getValue();
         }
 
@@ -206,23 +205,18 @@ public class ActionSystem {
             if (item.isAction()) {
                 bid.put(item.getId(), item);
                 ask.remove(aimItem.getId());
-            }
-            else {
+            } else {
                 ask.put(item.getId(), item);
                 bid.remove(aimItem.getId());
             }
 
-        }
-        else if (item.getVolume() == aimItem.getVolume()) {
+        } else if (item.getVolume() == aimItem.getVolume()) {
             ask.remove(aimItem.getId());
             bid.remove(item.getId());
-        }
-
-        else if (item.getVolume() < aimItem.getVolume()) {
+        } else if (item.getVolume() < aimItem.getVolume()) {
             if (item.isAction()) {
                 ask.lastEntry().getValue().setVolume(aimItem.getVolume() - item.getVolume());
-            }
-            else {
+            } else {
                 bid.firstEntry().getValue().setVolume(aimItem.getVolume() - item.getVolume());
             }
 
@@ -230,13 +224,13 @@ public class ActionSystem {
     }
 
     /**
-     *в полях bid, ask class Dom, в итоге использован Collections.reverseOrder();
+     * в полях bid, ask class Dom, в итоге использован Collections.reverseOrder();
      *
      * @param map
      * @return
      */
     public TreeMap<Integer, Item> sortItems(TreeMap<Integer, Item> map) {
-       ItemComparator comparator = new ItemComparator(map);
+        ItemComparator comparator = new ItemComparator(map);
         TreeMap<Integer, Item> tree = new TreeMap<Integer, Item>(comparator);
         tree.putAll(map);
         return tree;

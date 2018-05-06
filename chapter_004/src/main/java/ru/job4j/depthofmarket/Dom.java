@@ -22,12 +22,22 @@ import java.util.TreeMap;
  */
 
 public class Dom {
+    public static final Dom EMPTY = new Dom() {
+        @Override
+        public String toString() {
+            return "Empty";
+        }
+    };
+
     public String book;
     TreeMap<Integer,Item> ask = new TreeMap<>(Collections.reverseOrder()); // или их лучше в конструкторе проинициализировать
     TreeMap<Integer,Item> bid = new TreeMap<>(Collections.reverseOrder()); // вообще, есть ли разница в способах инициазации
 
     public Dom(String book) {
         this.book = book;
+    }
+    public Dom() {
+
     }
 
 }

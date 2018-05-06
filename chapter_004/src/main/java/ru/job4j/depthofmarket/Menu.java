@@ -35,12 +35,31 @@ public class Menu {
     }
 
     public void visual(String book) {
-        for (Dom dom : actionSystem.doms) {
-            if (dom.book.equals(book)) {
-                System.out.println(dom.ask);
-                System.out.println(dom.bid);
-            }
-            else System.out.println("Заявок с таким эмитентом нет");
+        Dom dom = actionSystem.findDom(book);
+        System.out.printf("|%-7s|%-7s|%-7s", "Покупка", "Цена", "Продажа");
+        System.out.println();
+        for (Item item : dom.ask.values()) {
+
+            itemTable(item);
+        }
+        System.out.println();
+        for (Item item : dom.bid.values()) {
+            itemTable(item);
+        }
+
+    }
+
+    public void itemTable(Item item) {
+
+        if (item.isAction()) { //bid
+            System.out.println("---------------------------------------------");
+            System.out.printf("|%-7d|%-7d|%-7s", item.getVolume(), item.getPrice(), "");
+
+
+        } else {
+            System.out.println("---------------------------------------------");
+            System.out.printf("|%-7s|%-7d|%-7d", "", item.getPrice(), item.getVolume());
+
         }
 
     }
@@ -49,3 +68,12 @@ public class Menu {
 
 
 }
+
+
+
+
+
+
+
+
+

@@ -14,6 +14,7 @@ public class Start {
         do {
             String choice = "Выберите действие: 1 - Ввести заявку, 2 - показать стакан";
             menu.select(userInput.actionInt(choice));
+            System.out.println();
             exit = userInput.actionString("Выйти из программы?");
         }
         while (!exit.equals("Y"));
