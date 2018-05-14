@@ -62,8 +62,11 @@ public class ActionSystem {
 
     public void addItem(Item item, TreeMap<Integer, Item> tree, Dom dom) {
         Item aimItem;
+        TreeMap<Integer, Item> resultTree;
 
-        if (!tree.isEmpty()) {
+        resultTree = item.isAction() ? dom.ask : dom.bid;
+
+        if (!resultTree.isEmpty()) {
             if (item.isAction()) {
                 aimItem = dom.ask.lastEntry().getValue();
             } else {
@@ -75,7 +78,7 @@ public class ActionSystem {
                 tree.put(item.getId(), item);
             }
         }
-        if (tree.isEmpty()) {
+        if (resultTree.isEmpty()) {
             tree.put(item.getId(), item);
         }
 
@@ -136,30 +139,6 @@ public class ActionSystem {
         } else { //полное удаление всей заявки
             tree.remove(item.getId());
         }
-    }
-
-    //слияние заявок должно быть только при выводе на экран?
-    // или при хранении их тоже?
-    public boolean equalPrice(Item item, Dom dom) {
-        boolean result = false;
-        if (item.isType()) { //сливаем 2 заявки с одинаковой ценой в одну, только если тип add
-            if (item.isAction()) { //bid
-                for (Map.Entry<Integer, Item> pair : dom.bid.entrySet()) {
-                    if (item.getPrice() == pair.getValue().getPrice()) {
-                        dom.bid.get(pair.getKey()).setVolume(pair.getValue().getVolume() + item.getVolume());
-                        result = true;
-                    }
-                }
-            } else {
-                for (Map.Entry<Integer, Item> pair : dom.ask.entrySet()) {
-                    if (item.getPrice() == pair.getValue().getPrice()) {
-                        dom.ask.get(pair.getKey()).setVolume(pair.getValue().getVolume() + item.getVolume());
-                        result = true;
-                    }
-                }
-            }
-        }
-        return result;
     }
 
     public Dom defineBook(Item item) {

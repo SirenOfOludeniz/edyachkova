@@ -30,6 +30,9 @@ public class Item {
         this.price = price;
         this.volume = volume;
     }
+    public Item() {
+
+    }
 
     public int getId() {
         return id;

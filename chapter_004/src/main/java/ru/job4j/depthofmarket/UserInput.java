@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-public class UserInput {
+public class UserInput implements Input{
 
     Scanner scanner = new Scanner(System.in);
 

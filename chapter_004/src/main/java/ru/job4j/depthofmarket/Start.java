@@ -1,10 +1,14 @@
 package ru.job4j.depthofmarket;
 
 public class Start {
-   private final UserInput userInput;
+   private final Input userInput;
 
     public Start() {
-        userInput = new UserInput();
+        this.userInput = new UserInput();
+    }
+
+    public Start(final Input input) {
+        this.userInput = input;
     }
 
     public void init() {
