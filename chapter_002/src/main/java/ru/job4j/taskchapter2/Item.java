@@ -1,7 +1,12 @@
 package ru.job4j.taskchapter2;
 
 public class Item {
-    public static final Item EMPTY = new Item();
+    public static final Item EMPTY = new Item() {
+        @Override
+        public String toString() {
+            return "Empty";
+        }
+    };
     private String id;
     private String name;
     private String description;
@@ -17,6 +22,33 @@ public class Item {
         this.datecreation = datecreation;
         this.komment = komment;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", datecreation='" + datecreation + '\'' +
+                ", komment='" + komment + '\'' +
+                '}';
+    }
+
+    /* @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Item item = (Item) o;
+
+        return id != null ? id.equals(item.id) : item.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }*/
+
     public String getName() {
         return this.name;
     }
