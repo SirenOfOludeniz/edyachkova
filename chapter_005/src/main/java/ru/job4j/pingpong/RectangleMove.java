@@ -8,25 +8,30 @@ public class RectangleMove implements Runnable{
         this.rect = rect;
     }
 
-   /* @Override
+    @Override
     public void run() {
-        while (true) {
+        Thread current = Thread.currentThread();
+        while (!current.isInterrupted()) {
             if (this.rect.getX() != 0 && this.rect.getX() != 300) {
                 this.rect.setX(this.rect.getX() + 1);
             }
             if (this.rect.getY() != 0 && this.rect.getY() != 300) {
                 this.rect.setY(this.rect.getY() + 1);
             }
+           // this.rect.setX(this.rect.getX() + 1);
             borderMove();
             try {
                 Thread.sleep(30);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+           /* if (current.isInterrupted()) {
+                return;
+            }*/
         }
-    }*/
+    }
 
-    public void run() {
+    /*public void run() {
         while (true) {
             if (this.rect.getX() != 0 && this.rect.getX() != 300) {
                 this.rect.setX(this.rect.getX() + 1);
@@ -62,7 +67,9 @@ public class RectangleMove implements Runnable{
             }
         }
         
-    }
+    }*/
+
+
 
     public void detectBorder(double coordinate, double randomCoord) {
         if (coordinate == 0 ) {
@@ -93,7 +100,7 @@ public class RectangleMove implements Runnable{
     }
 
     public void borderMove() {
-        if (this.rect.getY() == 0) {
+        if (this.rect.getY() <= 0) {
             int random = (int)(Math.random() * 10);
             while (this.rect.getY() < 300 && this.rect.getX() < 300 && this.rect.getX() > 0) {
                 this.rect.setY(this.rect.getY() + 1);
@@ -106,7 +113,7 @@ public class RectangleMove implements Runnable{
             }
 
         }
-        if (this.rect.getY() == 300) {
+        if (this.rect.getY() >= 300) {
             int random = (int)(Math.random() * 10);
             while (this.rect.getY() > 0 && this.rect.getX() < 300 && this.rect.getX() > 0) {
                 this.rect.setY(this.rect.getY() - 1);
@@ -119,7 +126,7 @@ public class RectangleMove implements Runnable{
             }
         }
 
-        if (this.rect.getX() == 0) {
+        if (this.rect.getX() <= 0) {
             int random = (int)(Math.random() * 10);
             while (this.rect.getX() < 300 && this.rect.getY() < 300 && this.rect.getY() > 0) {
                 this.rect.setX(this.rect.getX() + 1);
@@ -132,7 +139,7 @@ public class RectangleMove implements Runnable{
             }
 
         }
-        if (this.rect.getX() == 300) {
+        if (this.rect.getX() >= 300) {
             int random = (int)(Math.random() * 10);
             while (this.rect.getX() > 0 && this.rect.getY() < 300 && this.rect.getY() > 0) {
                 this.rect.setX(this.rect.getX() - 1);
@@ -145,6 +152,7 @@ public class RectangleMove implements Runnable{
             }
         }
     }
+
 
     public void randomMoveX(int a) {
         if (a >= 0 && a <= 4) {
