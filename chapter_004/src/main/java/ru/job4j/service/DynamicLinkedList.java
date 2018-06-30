@@ -4,29 +4,36 @@ import java.util.ConcurrentModificationException;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.ThreadSafe;
+@ThreadSafe
 public class DynamicLinkedList<E> implements SimpleContainer<E> {
-
+    @GuardedBy("this")
     public Node<E> first;
     public Node<E> last;
     int modCount = 0;
+    int indexElement = 0;
 
     public boolean isEmpty() {
-        return first == null;
+        synchronized (this) {
+            return first == null;
+        }
     }
     public int size() {
-        if (isEmpty()) {
-            return 0;
+        synchronized (this) {
+            if (isEmpty()) {
+                return 0;
+            }
         }
-        return last.index;
+        return this.indexElement;
     }
 
 
 
     @Override
-    public void add(E e) {
+    public synchronized void add(E e) {
         //вставка в конец
-        Node<E> node = new Node<>(last, e, null);
+        Node<E> node = new Node<>(last, e, null, this.indexElement);
         if (isEmpty()) {
             first = node;
         }
@@ -36,31 +43,36 @@ public class DynamicLinkedList<E> implements SimpleContainer<E> {
         }
         last = node;
         modCount++;
+        this.indexElement++;
     }
-    public Node<E> findNode(int position) {
-        Node<E> current = first;
-        while (current.index != position) {
+    public synchronized Node<E> findNode(int position) {
+        Node<E> current = this.first;
+        while ( current.index != position) {
+            System.out.println("current.index " + current.index);
             current = current.next;
         }
         return current;
     }
-    public void delete(int position) {
+    public synchronized void delete(int position) {
         Node<E> current = findNode(position);
+        System.out.println("current from delete " + current.getItem());
+        System.out.println("current.next from delete " + current.next.getItem());
+        System.out.println("current.prev from delete " + current.prev.getItem());
         current.prev.next = current.next;
         current.next.prev = current.prev;
     }
 
     @Override
-    public E get(int position) {
-        Node<E> current = first;
-        while (current.index != position) {
+    public synchronized E get(int position) {
+        Node<E> current = this.first;
+        while (current == null && current.index != position) {
             current = current.next;
         }
         return current.item;
     }
 
     @Override
-    public Iterator<E> iterator() {
+    public synchronized Iterator<E> iterator() {
         return new Iterator<E>() {
             Node<E> current;
             Node<E> next = first;
@@ -101,17 +113,21 @@ public class DynamicLinkedList<E> implements SimpleContainer<E> {
         };
     }
 
-    private static class Node<E> {
+    public static class Node<E> {
         E item;
         Node<E> next;
         Node<E> prev;
         int index = 0;
 
-        Node(Node<E> prev, E element, Node<E> next) {
+        Node(Node<E> prev, E element, Node<E> next, int index) {
             this.item = element;
             this.next = next;
             this.prev = prev;
-            index++;
+            this.index = index;
+        }
+
+        public E getItem() {
+            return item;
         }
     }
 }
