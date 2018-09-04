@@ -1,9 +1,11 @@
 package ru.job4j.sql;
 
-import java.sql.*;
-import java.util.Properties;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-public class SQLStorage {
+public class SQLStorageDelete {
     public static void main(String[] args) {
         String url = "jdbc:postgresql://localhost:5433/test";
         String username = "postgres";
@@ -11,16 +13,12 @@ public class SQLStorage {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url, username, password);
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM product");
-            while (rs.next())
-            {
-                System.out.println(String.format("%s", rs.getString("name")));
-               // System.out.println(rs.getString(1));
-            } rs.close();
+            //   int foovalue = 500;
+            PreparedStatement st = conn.prepareStatement("DELETE FROM product where id=?");
+            st.setInt(1, 8);
+            int rowsDeleted = st.executeUpdate();
+            System.out.println(rowsDeleted + " rows updated");
             st.close();
-
-
 
         } catch (Exception e) {
             e.printStackTrace();
