@@ -1,6 +1,6 @@
 package hh.task;
 
-import jdk.nashorn.tools.Shell;
+
 
 public class ShellSorting {
     public static void main(String[] args) {
@@ -14,13 +14,12 @@ public class ShellSorting {
     public void sort(int[] array) {
         int inner, outer;
         int temp;
-        int nElems = array.length;
         int h = 1;
-        while (h <= nElems/3) {
-            h = h*3 + 1;
-
+        while (h <= array.length/3) {
+            h = h * 3 + 1;
+        }
             while (h > 0) {
-                for (outer = h; outer < nElems; outer++) {
+                for (outer = h; outer < array.length; outer++) {
                     temp = array[outer];
                     inner = outer;
 
@@ -32,6 +31,6 @@ public class ShellSorting {
                 }
                 h = (h - 1)/3;
             }
-        }
+
     }
 }
