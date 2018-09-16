@@ -1,5 +1,7 @@
 package ru.job4j.taskchapter2;
 
+import java.util.Date;
+
 public class Item {
     public static final Item EMPTY = new Item() {
         @Override
@@ -7,15 +9,15 @@ public class Item {
             return "Empty";
         }
     };
-    private String id;
+    private int id;
     private String name;
     private String description;
-    private String datecreation;
+    private Date datecreation;
     private String komment;
 
     public Item() { }
 
-    public Item(String id, String name, String description, String datecreation, String komment) {
+    public Item(int id, String name, String description, Date datecreation, String komment) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -61,10 +63,10 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getDatecreation() {
+    public Date getDatecreation() {
         return this.datecreation;
     }
-    public void setDatecreation(String datecreation) {
+    public void setDatecreation(Date datecreation) {
         this.datecreation = datecreation;
     }
     public String getKomment() {
@@ -73,10 +75,10 @@ public class Item {
     public void setKomment(String komment) {
         this.komment = komment;
     }
-    public String getId() {
+    public int getId() {
         return this.id;
     }
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

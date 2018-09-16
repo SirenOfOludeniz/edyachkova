@@ -1,68 +1,104 @@
 package ru.job4j.taskchapter2;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-public class Tracker {
-    private ArrayList<Item> items = new ArrayList<>();
+public class Tracker implements AutoCloseable{
+   // private ArrayList<Item> items = new ArrayList<>();
+    private Connection connection;
 
 
-    public Item add(Item item) {
+    public void add(Item item) {
+        try (PreparedStatement statement = this.connection.prepareStatement(
+                "INSERT INTO item (id, name, created, description)" +
+                        "VALUES (?, ?, now(), ?)")) {
+            statement.setInt(1, item.getId());
+            statement.setString(2, item.getName());
+            statement.setString(3, item.getDatecreation());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException("Failed to create issue", e);
+        }
+    }
+   /* public Item add(Item item) {
         this.items.add(item);
         return item;
-    }
-
-    public void update(Item item) {
-        for (int i = 0; i < this.items.size(); i++) {
-            if (this.items.get(i).getId().equals(item.getId())) {
-                this.items.set(i, item);
-                break;
-            }
-        }
-        }
-
-
-    public void delete(Item item) {
-        this.items.remove(this.items.indexOf(item));
-       // this.items.remove(item);
-    }
-
-    public ArrayList<Item> findAll() {
-        return this.items;
-    }
-
-    public ArrayList<Item> findByName(String key) {
-        ArrayList<Item> result = new ArrayList<>();
-        for (Item item : this.items) {
-            if (item.getName().equals(key)) {
-                result.add(item);
-            }
-        }
-        return result;
-    }
-
-    public Item findById(String id) {
-        Item result = Item.EMPTY;
-        for (Item item : this.items) {
-            if (id.equals(item.getId())) {
-                result = item;
-                break;
-            }
-        }
-        return result;
-    }
-
-  /* public Item findById(String id) {
-        Item result = new Item();
-        for (Item item : this.items) {
-            if (item.getId().equals(id)) {
-                //result = this.items.get(this.items.indexOf(item));
-           result = item;
-            }
-        }
-        return result;
     }*/
 
-    public ArrayList<Item> getItems() {
+   public void update(Item item) {
+       try (PreparedStatement statement = this.connection.prepareStatement(
+               "UPDATE item SET id = ?, name = ?, created = now()" +
+                       "WHERE id = ?")) {
+           statement.setInt(1, item.getId());
+           statement.setString(2, item.getName());
+           statement.setString(3, item.getDatecreation());
+           statement.setInt(4, item.getId());
+
+           statement.executeUpdate();
+       } catch (SQLException e) {
+           throw new IllegalStateException("Failed to create issue", e);
+       }
+   }
+
+
+
+   public void delete(Item item) {
+       try(PreparedStatement statement = this.connection.prepareStatement(
+               "DELETE FROM item WHERE id = ?")) {
+           statement.setInt(1, item.getId());
+           statement.executeUpdate();
+       } catch (SQLException e) {
+           throw new IllegalStateException("Failed to create issue", e);
+       }
+   }
+
+
+    public void findAll() {
+        try(PreparedStatement statement = this.connection.prepareStatement(
+                "SELECT * FROM item")) {
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException("Failed to create issue", e);
+        }
+    }
+
+
+    public void findByName(String key) {
+        try(PreparedStatement statement = this.connection.prepareStatement(
+                "SELECT * FROM item WHERE name = ?")) {
+           statement.setString(1, key);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException("Failed to create issue", e);
+        }
+    }
+
+
+
+    public void findById(int id) {
+        try(PreparedStatement statement = this.connection.prepareStatement(
+                "SELECT * FROM item WHERE id = ?")) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException("Failed to create issue", e);
+        }
+    }
+
+
+    /*public ArrayList<Item> getItems() {
         return items;
+    }*/
+
+    @Override
+    public void close() throws Exception {
+       try (Tracker tracker = new Tracker();) {
+
+       } catch (IOException e) {
+
+       }
     }
 }
 
