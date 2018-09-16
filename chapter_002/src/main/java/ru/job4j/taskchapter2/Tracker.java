@@ -16,7 +16,7 @@ public class Tracker implements AutoCloseable{
                         "VALUES (?, ?, now(), ?)")) {
             statement.setInt(1, item.getId());
             statement.setString(2, item.getName());
-            statement.setString(3, item.getDatecreation());
+            statement.setString(3, item.getDescription());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new IllegalStateException("Failed to create issue", e);
@@ -29,11 +29,11 @@ public class Tracker implements AutoCloseable{
 
    public void update(Item item) {
        try (PreparedStatement statement = this.connection.prepareStatement(
-               "UPDATE item SET id = ?, name = ?, created = now()" +
+               "UPDATE item SET id = ?, name = ?, description = ?, created = now()" +
                        "WHERE id = ?")) {
            statement.setInt(1, item.getId());
            statement.setString(2, item.getName());
-           statement.setString(3, item.getDatecreation());
+           statement.setString(3, item.getDescription());
            statement.setInt(4, item.getId());
 
            statement.executeUpdate();
@@ -95,7 +95,7 @@ public class Tracker implements AutoCloseable{
     @Override
     public void close() throws Exception {
        try (Tracker tracker = new Tracker();) {
-
+            tracker.connection.close();
        } catch (IOException e) {
 
        }

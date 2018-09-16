@@ -17,6 +17,7 @@ import java.util.Properties;
          */
         private final Properties prs = new Properties();
 
+
         /**
          * load - loads params from file app.properties.
          * @param io - link variable to object of class InputStream.
