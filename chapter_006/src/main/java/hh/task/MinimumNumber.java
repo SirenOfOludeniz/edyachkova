@@ -11,7 +11,7 @@ public class MinimumNumber {
         MinimumNumber minNum = new MinimumNumber();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String input = reader.readLine();
-        minNum.findMinimumNumber(input);
+        System.out.println(minNum.findMinimumNumber(input));
     }
     public int findMinimumNumber(String source) {
         String[] numbers = source.split(" ");
@@ -39,7 +39,7 @@ public class MinimumNumber {
         sort(result);
         //ищем пропущенное число
         int min = findNumbers(result)[0];
-        System.out.println(Arrays.toString(findNumbers(result)));
+        //System.out.println(Arrays.toString(findNumbers(result)));
 
         return min;
     }
