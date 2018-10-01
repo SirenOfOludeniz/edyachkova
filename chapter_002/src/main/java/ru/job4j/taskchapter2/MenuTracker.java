@@ -11,7 +11,7 @@ class EditItem extends BaseAction {
         return 2;
     }
     public void execute(Input input, Tracker tracker) {
-        String id = input.action("Введите id");
+        int id = input.action("Введите id");
         String name = input.action("Введите называние заявки");
         String desc = input.action("Введите описание");
         String date = input.action("Введите дату");
