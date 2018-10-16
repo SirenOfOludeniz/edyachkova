@@ -10,15 +10,15 @@ public class StoreSQL {
 
     public StoreSQL(Config config) throws SQLException {
         this.config = config;
+        connection = DriverManager.getConnection(Constant.URL_BASE_POSTGRES,
+                Constant.NAME, Constant.PASSWORD);
     }
 
 
 
-    public ArrayList<Entry> generate(int n) {
+    public ArrayList<Entry> get(int n) {
         ArrayList<Entry> list = new ArrayList<>();
         try {
-            connection = DriverManager.getConnection(Constant.URL_BASE_POSTGRES,
-                    Constant.NAME, Constant.PASSWORD);
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM entry");
             while(rs.next()) {
@@ -31,5 +31,22 @@ public class StoreSQL {
         }
 
         return list;
+    }
+    public void generate(int n) {
+        try {
+            for (int i = 0; i < n; i++) {
+                //почему пишет unable to resolve table 'entry'?
+                PreparedStatement st = connection.prepareStatement("INSERT INTO entry (id, name) " +
+                        "VALUES (?, ?)");
+                st.setInt(1, i);
+                st.setString(2,"someName " + i );
+                st.executeUpdate();
+                st.close();
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }
