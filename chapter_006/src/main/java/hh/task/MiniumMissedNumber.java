@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class MiniumMissedNumber {
-    public static void main(String[] args) throws IOException{
+   /* public static void main(String[] args) throws IOException{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         FileInputStream inputStream = new FileInputStream("C:/input.txt");
@@ -46,5 +46,5 @@ public class MiniumMissedNumber {
         int min = Collections.min(list);
 
 
-    }
+    }*/
 }
