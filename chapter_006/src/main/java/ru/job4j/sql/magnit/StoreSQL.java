@@ -34,19 +34,20 @@ public class StoreSQL {
     }
     public void generate(int n) {
         try {
+            connection.setAutoCommit(false);
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO entry (id, name) " +
+                    "VALUES (?, ?)");
             for (int i = 0; i < n; i++) {
-                //почему пишет unable to resolve table 'entry'?
-                PreparedStatement st = connection.prepareStatement("INSERT INTO entry (id, name) " +
-                        "VALUES (?, ?)");
-                st.setInt(1, i);
-                st.setString(2,"someName " + i );
-                st.executeUpdate();
-                st.close();
-
+                statement.setInt(1, i);
+                statement.setString(2,"someName " + i );
             }
+            statement.addBatch();
+            int[] count = statement.executeBatch();
+            connection.commit();
         } catch (SQLException e) {
-            e.printStackTrace();
+
         }
 
     }
+
 }
