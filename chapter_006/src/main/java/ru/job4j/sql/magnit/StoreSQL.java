@@ -40,8 +40,9 @@ public class StoreSQL {
             for (int i = 0; i < n; i++) {
                 statement.setInt(1, i);
                 statement.setString(2,"someName " + i );
+                statement.addBatch();
             }
-            statement.addBatch();
+
             int[] count = statement.executeBatch();
             connection.commit();
         } catch (SQLException e) {
