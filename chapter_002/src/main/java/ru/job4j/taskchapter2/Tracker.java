@@ -1,15 +1,33 @@
 package ru.job4j.taskchapter2;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Properties;
+
 public class Tracker implements AutoCloseable{
-   // private ArrayList<Item> items = new ArrayList<>();
     private Connection connection;
 
-
+    public boolean init() {
+        try(InputStream in = Tracker.class.getClassLoader()
+        .getResourceAsStream("app.properties")) {
+            Properties config = new Properties();
+            config.load(in);
+            Class.forName(config.getProperty("driver-class-name"));
+            this.connection = DriverManager.getConnection(
+                    config.getProperty("username"),
+                    config.getProperty("password"),
+                    config.getProperty("app.urlBaseTracker")
+            );
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
+        return this.connection != null;
+    }
     public void add(Item item) {
         try (PreparedStatement statement = this.connection.prepareStatement(
                 "INSERT INTO item (id, name, created, description)" +
@@ -22,11 +40,6 @@ public class Tracker implements AutoCloseable{
             throw new IllegalStateException("Failed to create issue", e);
         }
     }
-   /* public Item add(Item item) {
-        this.items.add(item);
-        return item;
-    }*/
-
    public void update(Item item) {
        try (PreparedStatement statement = this.connection.prepareStatement(
                "UPDATE item SET id = ?, name = ?, description = ?, created = now()" +
@@ -41,9 +54,6 @@ public class Tracker implements AutoCloseable{
            throw new IllegalStateException("Failed to create issue", e);
        }
    }
-
-
-
    public void delete(Item item) {
        try(PreparedStatement statement = this.connection.prepareStatement(
                "DELETE FROM item WHERE id = ?")) {
@@ -53,8 +63,6 @@ public class Tracker implements AutoCloseable{
            throw new IllegalStateException("Failed to create issue", e);
        }
    }
-
-
     public void findAll() {
         try(PreparedStatement statement = this.connection.prepareStatement(
                 "SELECT * FROM item")) {
@@ -63,8 +71,6 @@ public class Tracker implements AutoCloseable{
             throw new IllegalStateException("Failed to create issue", e);
         }
     }
-
-
     public void findByName(String key) {
         try(PreparedStatement statement = this.connection.prepareStatement(
                 "SELECT * FROM item WHERE name = ?")) {
@@ -74,9 +80,6 @@ public class Tracker implements AutoCloseable{
             throw new IllegalStateException("Failed to create issue", e);
         }
     }
-
-
-
     public void findById(int id) {
         try(PreparedStatement statement = this.connection.prepareStatement(
                 "SELECT * FROM item WHERE id = ?")) {
@@ -86,19 +89,16 @@ public class Tracker implements AutoCloseable{
             throw new IllegalStateException("Failed to create issue", e);
         }
     }
-
-
-    /*public ArrayList<Item> getItems() {
-        return items;
-    }*/
-
     @Override
     public void close() throws Exception {
-       try (Tracker tracker = new Tracker();) {
-            tracker.connection.close();
-       } catch (IOException e) {
+        try{
+            if(!this.connection.isClosed()) {
+                this.connection.close();
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
 
-       }
     }
 }
 
