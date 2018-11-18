@@ -1,10 +1,7 @@
 package ru.job4j.taskchapter2;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
@@ -28,26 +25,27 @@ public class Tracker implements AutoCloseable{
         }
         return this.connection != null;
     }
-    public void add(Item item) {
+    public Item add(Item item) {
         try (PreparedStatement statement = this.connection.prepareStatement(
                 "INSERT INTO item (id, name, created, description)" +
                         "VALUES (?, ?, now(), ?)")) {
-            statement.setInt(1, item.getId());
+            statement.setString(1, item.getId());
             statement.setString(2, item.getName());
             statement.setString(3, item.getDescription());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new IllegalStateException("Failed to create issue", e);
         }
+        return item;
     }
    public void update(Item item) {
        try (PreparedStatement statement = this.connection.prepareStatement(
                "UPDATE item SET id = ?, name = ?, description = ?, created = now()" +
                        "WHERE id = ?")) {
-           statement.setInt(1, item.getId());
+           statement.setString(1, item.getId());
            statement.setString(2, item.getName());
            statement.setString(3, item.getDescription());
-           statement.setInt(4, item.getId());
+           statement.setString(4, item.getId());
 
            statement.executeUpdate();
        } catch (SQLException e) {
@@ -57,37 +55,56 @@ public class Tracker implements AutoCloseable{
    public void delete(Item item) {
        try(PreparedStatement statement = this.connection.prepareStatement(
                "DELETE FROM item WHERE id = ?")) {
-           statement.setInt(1, item.getId());
+           statement.setString(1, item.getId());
            statement.executeUpdate();
        } catch (SQLException e) {
            throw new IllegalStateException("Failed to create issue", e);
        }
    }
-    public void findAll() {
+    public ArrayList<Item> findAll() {
+        ArrayList<Item> list = new ArrayList<>();
         try(PreparedStatement statement = this.connection.prepareStatement(
                 "SELECT * FROM item")) {
-            statement.executeUpdate();
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                list.add(new Item(rs.getString("id"), rs.getString("name"),
+                        rs.getString("description"), rs.getString("datecreation"),
+                        rs.getString("komment")));
+            }
         } catch (SQLException e) {
             throw new IllegalStateException("Failed to create issue", e);
         }
+        return list;
     }
-    public void findByName(String key) {
+    public ArrayList<Item> findByName(String key) {
+        ArrayList<Item> list = new ArrayList<>();
         try(PreparedStatement statement = this.connection.prepareStatement(
                 "SELECT * FROM item WHERE name = ?")) {
            statement.setString(1, key);
-            statement.executeUpdate();
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()) {
+                list.add(new Item(rs.getString("id"), rs.getString("name"),
+                        rs.getString("description"), rs.getString("datecreation"),
+                        rs.getString("komment")));
+            }
         } catch (SQLException e) {
             throw new IllegalStateException("Failed to create issue", e);
         }
+        return list;
     }
-    public void findById(int id) {
+    public Item findById(String id) {
+        Item returnedItem = null;
         try(PreparedStatement statement = this.connection.prepareStatement(
                 "SELECT * FROM item WHERE id = ?")) {
-            statement.setInt(1, id);
-            statement.executeUpdate();
+            statement.setString(1, id);
+            ResultSet rs = statement.executeQuery();
+            returnedItem = new Item(rs.getString("id"), rs.getString("name"),
+            rs.getString("description"), rs.getString("datecreation"),
+                    rs.getString("komment"));
         } catch (SQLException e) {
             throw new IllegalStateException("Failed to create issue", e);
         }
+        return returnedItem;
     }
     @Override
     public void close() throws Exception {

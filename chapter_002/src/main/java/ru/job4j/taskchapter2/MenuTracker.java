@@ -11,7 +11,7 @@ class EditItem extends BaseAction {
         return 2;
     }
     public void execute(Input input, Tracker tracker) {
-        int id = input.action("Введите id");
+        String id = input.action("Введите id");
         String name = input.action("Введите называние заявки");
         String desc = input.action("Введите описание");
         String date = input.action("Введите дату");
@@ -120,21 +120,6 @@ public class MenuTracker {
         }
     }
 
-   /* private class FindByName implements UserAction{
-        public int key() {
-            return 4;
-        }
-        public void execute(Input input, Tracker tracker) {
-            for (int i = 0; i < tracker.findByName(input.action("Enter name of items")).length ; i++) {
-                System.out.println(tracker.findByName("Введите название заявки еще раз")[i]);
-
-            }
-        }
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find Items by Name");
-        }
-    }*/
-
     private class FindByName extends BaseAction {
         public FindByName(String name, int key) {
             super(name, key);
@@ -181,7 +166,7 @@ public class MenuTracker {
         }
         public void execute(Input input, Tracker tracker) {
 
-            System.out.println(tracker.findById(input.action("Enter id")));
+            System.out.println(tracker.findById(input.action("Enter id")).toString());
         }
         public String info() {
             return String.format("%s. %s", this.key(), "Find Item by Id");

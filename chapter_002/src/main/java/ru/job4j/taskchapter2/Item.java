@@ -9,15 +9,15 @@ public class Item {
             return "Empty";
         }
     };
-    private int id;
+    private String id;
     private String name;
     private String description;
-    private Date datecreation;
+    private String datecreation;
     private String komment;
 
     public Item() { }
 
-    public Item(int id, String name, String description, Date datecreation, String komment) {
+    public Item(String id, String name, String description, String datecreation, String komment) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -63,10 +63,10 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }
-    public Date getDatecreation() {
+    public String getDatecreation() {
         return this.datecreation;
     }
-    public void setDatecreation(Date datecreation) {
+    public void setDatecreation(String datecreation) {
         this.datecreation = datecreation;
     }
     public String getKomment() {
@@ -75,10 +75,10 @@ public class Item {
     public void setKomment(String komment) {
         this.komment = komment;
     }
-    public int getId() {
+    public String getId() {
         return this.id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 }
