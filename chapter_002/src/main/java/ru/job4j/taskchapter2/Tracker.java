@@ -14,13 +14,14 @@ public class Tracker implements AutoCloseable{
         .getResourceAsStream("app.properties")) {
             Properties config = new Properties();
             config.load(in);
-            Class.forName(config.getProperty("driver-class-name"));
+            Class.forName(config.getProperty("app.driver-class-name"));
             this.connection = DriverManager.getConnection(
-                    config.getProperty("username"),
-                    config.getProperty("password"),
-                    config.getProperty("app.urlBaseTracker")
+                    config.getProperty("app.urlBaseTracker"),
+                    config.getProperty("app.username"),
+                    config.getProperty("app.password")
             );
         } catch (Exception e) {
+           // e.printStackTrace();
             throw new IllegalStateException(e);
         }
         return this.connection != null;
