@@ -10,11 +10,8 @@ public class StoreSQL {
 
     public StoreSQL(Config config) throws SQLException {
         this.config = config;
-        connection = DriverManager.getConnection(Constant.URL_BASE_POSTGRES,
-                Constant.NAME, Constant.PASSWORD);
+        this.connection = config.getConnection();
     }
-
-
 
     public ArrayList<Entry> get(int n) {
         ArrayList<Entry> list = new ArrayList<>();
@@ -49,6 +46,15 @@ public class StoreSQL {
 
         }
 
+    }
+    public void generateTable() {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "CREATE TABLE IF NOT EXISTS entry (field integer)");
+            statement.executeUpdate();
+        } catch (SQLException e) {
+           throw new IllegalStateException("Failed to create table");
+        }
     }
 
 }

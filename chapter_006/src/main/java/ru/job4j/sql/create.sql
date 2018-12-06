@@ -83,7 +83,7 @@ CREATE TABLE users(
   last_name VARCHAR(50) ,
   email VARCHAR(30),
   password VARCHAR(30),
-  role_id references roles(role_id)
+  role_id integer references roles(role_id)
 );
 
 insert into users values (1, 1, 'Ivan', 'Vazovskiy', 'ivan@mail.ru', 'password', 2);
