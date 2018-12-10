@@ -32,11 +32,10 @@ public class StoreSQL {
     public void generate(int n) {
         try {
             connection.setAutoCommit(false);
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO entry (id, name) " +
-                    "VALUES (?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO entry (id) " +
+                    "VALUES (?)");
             for (int i = 0; i < n; i++) {
                 statement.setInt(1, i);
-                statement.setString(2,"someName " + i );
                 statement.addBatch();
             }
 
@@ -47,6 +46,10 @@ public class StoreSQL {
         }
 
     }
+
+    /**
+     * generate new table entry
+     */
     public void generateTable() {
         try {
             PreparedStatement statement = connection.prepareStatement(
@@ -56,5 +59,27 @@ public class StoreSQL {
            throw new IllegalStateException("Failed to create table");
         }
     }
+
+    /**
+     * delete old records in table entry, if it exist,
+     * and insert new n records in table entry
+     */
+    public void insertRecords(int number) {
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM entry");
+            //если есть записи, мы их удаляем перед вставкой
+            if (rs.next()) {
+               st.executeUpdate("DELETE FROM entry");
+            }
+            //вставляем в таблицу entry n записей
+            generate(number);
+
+        } catch (SQLException e) {
+            throw new IllegalStateException("Failed to delete old records or insert new records");
+        }
+
+    }
+
 
 }
