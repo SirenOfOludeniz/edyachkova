@@ -29,7 +29,8 @@ public class StoreXML {
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         jaxbMarshaller.marshal(
-                new Entries(Arrays.asList(new Entry(1), new Entry(2))),
+                //new Entries(Arrays.asList(new Entry(1), new Entry(2))),
+                new Entries(list),
                 target
         );
     }
